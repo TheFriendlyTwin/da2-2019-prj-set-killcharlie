@@ -10,7 +10,6 @@ namespace SetepassosPRJ.Controllers
     {
         public IActionResult NovoJogo()
         {
-            ViewBag.Titulo = "Novo Jogo";
             return View();
         }
 
