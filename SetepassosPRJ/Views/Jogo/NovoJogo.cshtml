@@ -1,22 +1,9 @@
-﻿
-@{
-    ViewData["Title"] = "Novo Jogo";
+﻿@{
+    Layout = "_MeuLayout";
 }
 
 <h2>Novo Jogo</h2>
 
 <form asp-action="NovoJogo" method="post">
-    <div>
-        <label asp-for="Utilizador">Utilizador:</label>
-        <input asp-for="Utilizador" />
-    </div>
-    <div>
-        <label asp-for="Perfil">Perfil:</label>
-        <select asp-for="Perfil">
-           <option value="BlackMamba">Black Mamba</option>
-            <option value="Cottonmouth">Cottonmouth</option>
-            <option value="Copperhead">Copperhead</option>
-        </select>
-    </div>
-    <a asp-action="Jogo" class="btn btn-primary">Iniciar Jogo</a>
+    
 </form>
