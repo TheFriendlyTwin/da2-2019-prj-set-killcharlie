@@ -1,9 +1,13 @@
 ﻿@{
-    Layout = "_MeuLayout";
+    ViewData["Title"] = "Novo Jogo";
+    Layout = "_Layout";
 }
 
 <h2>Novo Jogo</h2>
 
 <form asp-action="NovoJogo" method="post">
-    
+    <div>
+        <label asp-for="Utilizador">Utilizador:</label>
+
+    </div>
 </form>
