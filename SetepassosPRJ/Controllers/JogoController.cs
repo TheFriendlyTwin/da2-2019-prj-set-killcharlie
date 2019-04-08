@@ -12,5 +12,10 @@ namespace SetepassosPRJ.Controllers
         {
             return View();
         }
+
+        public IActionResult Jogo()
+        {
+            return View();
+        }
     }
 }
