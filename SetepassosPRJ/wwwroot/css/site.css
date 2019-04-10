@@ -50,9 +50,7 @@ footer {
     text-align:center
 }
 
-/*Centra o formulário*/
-.formulario {
-    max-width: 600px;
-    margin: auto;
-    padding: 10px;
+/*background:transparent !important torna a background-color do jumbotron transparente*/
+.jumbotron {
+    background: transparent !important;
 }
