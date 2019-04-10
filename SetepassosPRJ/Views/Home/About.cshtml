@@ -1,50 +1,55 @@
 ﻿@{
     ViewData["Title"] = "Sobre";
-    Layout = "_Layout";
+  
 }
 <h2>Sobre nós</h2>
 
 <p>Use this area to provide additional information.</p>
 
+<div class="container">
+    <div class="jumbotron" text-center>
+        <div id="KillCharliecarousel" class="carousel slide" data-ride="carousel">
+            <!--Indicators – Um <li> por cada slide com o slide-to diferente -->
+            <ol class="carousel-indicators">
+                <li data-target="#KillCharliecarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#KillCharliecarousel" data-slide-to="1" class="active"></li>
+                <li data-target="#KillCharliecarousel" data-slide-to="2" class="active"></li>
+            </ol>
+            <!--Slides: um <div> com a classe “item” por cada slide -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <!--imagem-->
+                    <img src="Millie-Bobby-Brown-Stranger-Things-1.jpg" class="img-responsive center-block">
+                    <div class="carousel-caption">
+                        <h1>Alexandra Viegas</h1>
+                    </div>
+                </div>
+                <div class="item">
+                    <!--imagem-->
+                    <img src="MafaldaSousa.jpg" class="img-responsive center-block">
+                    <div class="carousel-caption">
+                        <h1>Mafalda Sousa</h1>
+                    </div>
+                </div>
+                <div class="item">
+                    <!--imagem-->
+                    <img src="Kill Charlie.png" class="img-responsive center-block">
+                    <div class="carousel-caption">
+                        <h1>Marta Sousa</h1>
+                    </div>
+                </div>
 
-<div id="KillCharliecarousel" class="carousel slide" data-ride="carousel">
-    <!--Indicators – Um <li> por cada slide com o slide-to diferente -->
-    <ol class="carousel-indicators">
-        <li data-target="#KillCharliecarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#KillCharliecarousel" data-slide-to="1" class="active"></li>
-        <li data-target="#KillCharliecarousel" data-slide-to="2" class="active"></li>
-    </ol>
-    <!--Slides: um <div> com a classe “item” por cada slide -->
-    <div class="carousel-inner">
-        <div class="item active">
-            <!--imagem-->
-            <img src="KillBill.png" class="img-responsive center-block">
-            <div class="carousel-caption">
-                <h1>Alexandra Viegas</h1>
+                <!-- Controls -->
+                <a class="left carousel-control" href="#KillCharliecarousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#KillCharliecarousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
             </div>
         </div>
-        <div class="item ">
-            <!--imagem-->
-            <img src="MafaldaSousa.jpeg" class="img-responsive center-block">
-            <div class="carousel-caption">
-                <h1>Mafalda Sousa</h1>
-            </div>
-        </div>
-        <div class="item ">
-            <!--imagem-->
-            <img src="Kill Charlie.png" class="img-responsive center-block">
-            <div class="carousel-caption">
-                <h1>Marta Sousa</h1>
-            </div>
-        </div>
-        <!--Repetir 2x o slide anterior -->
-        <!-- Controls -->
-        <a class="left carousel-control" href="#KillCharliecarousel" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#KillCharliecarousel" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right"></span> 
-        </a>
+
     </div>
+
 </div>
