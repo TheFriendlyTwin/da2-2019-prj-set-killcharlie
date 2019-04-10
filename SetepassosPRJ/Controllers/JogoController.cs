@@ -9,11 +9,18 @@ namespace SetepassosPRJ.Controllers
 {
     public class JogoController : Controller
     {
+        [HttpGet]
         public IActionResult NovoJogo()
         {
             return View();
         }
-        
+
+        [HttpPost]
+        public IActionResult NovoJogo(NovoJogo jogo)
+        {
+            return View();
+        }
+
         public IActionResult HighScore()
         {
             return View();

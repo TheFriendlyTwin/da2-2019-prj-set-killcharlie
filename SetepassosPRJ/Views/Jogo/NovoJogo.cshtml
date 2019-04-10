@@ -5,23 +5,19 @@
 
 <h1>Novo Jogo</h1>
 
-<div class="container">
-    <div class="jumbotron text-center">
-        <form asp-action="NovoJogo" method="post">
-            <div asp-validation-summary="All"></div>
-            <div>
-                <label asp-for="Utilizador">Utilizador:</label>
-                <input asp-for="Utilizador" />
-            </div>
-            <div>
-                <label asp-for="PerfilHeroi">Perfil</label>
-                <select asp-for="PerfilHeroi">
-                    <option value="BlackMamba">Black Mamba</option>
-                    <option value="Cottonmouth">Cottonmouth</option>
-                    <option value="Copperhead">Copperhead</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Iniciar Jogo</button>
-        </form>
+<form asp-action="NovoJogo" method="post">
+    <div asp-validation-summary="All"></div>
+    <div>
+        <label asp-for="Utilizador">Utilizador:</label>
+        <input asp-for="Utilizador" />
     </div>
-</div>
+    <div>
+        <label asp-for="PerfilHeroi">Perfil</label>
+        <select asp-for="PerfilHeroi">
+            <option value="BlackMamba">Black Mamba</option>
+            <option value="Cottonmouth">Cottonmouth</option>
+            <option value="Copperhead">Copperhead</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Iniciar Jogo</button>
+</form>
