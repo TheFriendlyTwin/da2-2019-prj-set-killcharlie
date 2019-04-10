@@ -3,12 +3,11 @@ for details on configuring this project to bundle and minify static web assets. 
 body {
     padding-top: 70px;
     padding-bottom: 20px;
-
-    background-image:url("Kill Charlie.png");
-    background-repeat:no-repeat;
+    background-image: url("Kill Charlie.png");
+    background-repeat: no-repeat;
     background-position: top;
-    background-size: auto;
-    background-color:black;
+    background-size:1010px;
+    background-color: black;
 }
 
 /* Wrapping element */
@@ -16,6 +15,7 @@ body {
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    color: white;
 }
 
 /* Carousel */
