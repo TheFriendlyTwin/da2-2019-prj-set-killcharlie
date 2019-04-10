@@ -42,6 +42,17 @@ body {
     }
 }
 
-footer{
-    color:white;
+/* A posição do footer é fixa e está no fim da página */
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    text-align:center
+}
+
+/*Centra o formulário*/
+.formulario {
+    max-width: 600px;
+    margin: auto;
+    padding: 10px;
 }
