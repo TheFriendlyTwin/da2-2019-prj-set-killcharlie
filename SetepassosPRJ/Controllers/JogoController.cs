@@ -17,5 +17,10 @@ namespace SetepassosPRJ.Controllers
         {
             return View();
         }
+
+        public IActionResult HighScore()
+        {
+            return View();
+        }
     }
 }
