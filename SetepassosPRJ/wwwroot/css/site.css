@@ -72,3 +72,17 @@ footer {
 
 .validation-summary-valid {
     display: none;
+}
+
+.jumbotron > .titulo
+{
+    color:red;
+}
+
+/*Jumbotron fica transparente*/
+.jumbotron {
+    position: relative;
+    top: 150px;
+    background-color: transparent !important;
+    font-family: sans-serif;
+}

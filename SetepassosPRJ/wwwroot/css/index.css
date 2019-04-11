@@ -8,6 +8,9 @@
     background-color: black;
 }
 
+.titulo{
+    color:red;
+}
 /*Jumbotron fica transparente*/
 .jumbotron{
     position: relative; 
