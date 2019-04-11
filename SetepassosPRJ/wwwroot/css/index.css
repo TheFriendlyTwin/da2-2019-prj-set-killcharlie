@@ -4,7 +4,7 @@
     background-image: url("killBillGif.gif");
     background-repeat: no-repeat;
     background-position: top;
-    background-size: cover;
+    background-size: 2000px;
     background-color: black;
 }
 
@@ -13,4 +13,5 @@
     position: relative; 
     top: 150px; 
     background-color:transparent !important;
+    font-family:sans-serif;
 }
