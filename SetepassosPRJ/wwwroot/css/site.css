@@ -10,6 +10,16 @@ body {
     background-color: black;
 }
 
+.HomePage {
+    padding-top: 70px;
+    padding-bottom: 20px;
+    background-image: url("killBillGif.gif");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 2000px;
+    background-color: black;
+}
+
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
