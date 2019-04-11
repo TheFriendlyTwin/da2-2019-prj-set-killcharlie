@@ -8,16 +8,16 @@
 <form asp-action="NovoJogo" method="post">
     <div asp-validation-summary="All"></div>
     <div>
-        <label asp-for="Utilizador">Utilizador:</label>
+        <label asp-for="Utilizador">Utilizador:</label> <br />
         <input asp-for="Utilizador" />
     </div>
     <div>
-        <label asp-for="PerfilHeroi">Perfil</label>
+        <label asp-for="PerfilHeroi">Perfil</label> <br />
         <select asp-for="PerfilHeroi">
             <option value="BlackMamba">Black Mamba</option>
             <option value="Cottonmouth">Cottonmouth</option>
             <option value="Copperhead">Copperhead</option>
-        </select>
+        </select> <br />
     </div>
     <button type="submit" class="btn btn-primary">Iniciar Jogo</button>
 </form>

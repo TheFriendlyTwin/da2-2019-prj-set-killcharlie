@@ -3,10 +3,10 @@ for details on configuring this project to bundle and minify static web assets. 
 body {
     padding-top: 70px;
     padding-bottom: 20px;
-    background-image: url("Kill Charlie.png");
+    background-image: url("KillBillYellow.jpg");
     background-repeat: no-repeat;
     background-position: top;
-    background-size:1010px;
+    background-size:cover;
     background-color: black;
 }
 
