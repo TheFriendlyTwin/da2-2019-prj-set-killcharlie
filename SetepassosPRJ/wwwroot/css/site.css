@@ -101,3 +101,18 @@ footer {
     color:whitesmoke;
 }
 
+/*Estilo da Tabela de high scores*/
+#HighScore{
+    background-image:url(Fire.gif);
+    background-repeat:no-repeat;
+    background-size:cover;
+    color:azure;
+    font-weight:bolder;
+}
+
+/*Estilo de todas as page-header*/
+.page-header{
+    color:darkred;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-weight:bolder;
+}
