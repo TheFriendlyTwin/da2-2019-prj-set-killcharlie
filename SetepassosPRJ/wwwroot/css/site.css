@@ -10,6 +10,16 @@ body {
     background-color: black;
 }
 
+.HomePage {
+    padding-top: 70px;
+    padding-bottom: 20px;
+    background-image: url("killBillGif.gif");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+    background-color: black;
+}
+
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
@@ -72,3 +82,22 @@ footer {
 
 .validation-summary-valid {
     display: none;
+}
+
+.jumbotron > .titulo
+{
+    color:darkred;
+    font-weight:bolder;
+}
+
+/*Jumbotron fica transparente*/
+.jumbotron {
+    position: relative;
+    top: 180px;
+    background-color: transparent !important;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-weight:bolder;
+    font-size:100px;
+    color:whitesmoke;
+}
+
