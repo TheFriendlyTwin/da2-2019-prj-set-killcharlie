@@ -16,7 +16,7 @@ body {
     background-image: url("killBillGif.gif");
     background-repeat: no-repeat;
     background-position: top;
-    background-size: 2000px;
+    background-size: cover;
     background-color: black;
 }
 
