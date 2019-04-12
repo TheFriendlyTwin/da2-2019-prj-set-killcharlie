@@ -86,13 +86,18 @@ footer {
 
 .jumbotron > .titulo
 {
-    color:red;
+    color:darkred;
+    font-weight:bolder;
 }
 
 /*Jumbotron fica transparente*/
 .jumbotron {
     position: relative;
-    top: 150px;
+    top: 180px;
     background-color: transparent !important;
-    font-family: sans-serif;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-weight:bolder;
+    font-size:100px;
+    color:whitesmoke;
 }
+
