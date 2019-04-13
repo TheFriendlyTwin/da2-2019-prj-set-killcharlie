@@ -33,6 +33,7 @@ body {
 .carousel-caption p {
     font-size: 20px;
     line-height: 1.4;
+    color:darkred;
 }
 
 /* Make .svg files in the carousel display properly in older browsers */
@@ -127,4 +128,6 @@ footer {
 #elementos {
     border:5px solid black;
 }
+
+
 
