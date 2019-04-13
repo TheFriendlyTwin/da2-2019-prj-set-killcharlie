@@ -24,7 +24,7 @@ namespace SetepassosPRJ.Controllers
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "Em caso de dúvida contate-nos.";
 
             return View();
         }
