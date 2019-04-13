@@ -18,7 +18,12 @@ namespace SetepassosPRJ.Controllers
         [HttpPost]
         public IActionResult NovoJogo(NovoJogo jogo)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                return View("Jogo", jogo);
+            }
+            else
+                return View();
         }
 
         public IActionResult HighScore()

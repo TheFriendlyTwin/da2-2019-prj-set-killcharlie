@@ -1,0 +1,31 @@
+﻿@model SetepassosPRJ.Models.NovoJogo;
+@{
+    ViewData["Title"] = "7 Passos";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="jumbotron text-center">
+            <h1 class="titulo">7 Passos</h1>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4" id="elementos">
+        <strong>Nome do Jogador:</strong>@Model.Utilizador <br />
+        <strong>Perfil de herói:</strong>@Model.PerfilHeroi <br />
+        <strong>Pontos de vida:</strong> <br />
+        <strong>Pontos de ataque:</strong> <br />
+        <strong>Pontos de sorte:</strong> <br />
+        <strong>Poções de vida:</strong> <br />
+        <strong>Posse de chave:</strong> <br />
+        <strong>Posição do herói:</strong> <br />
+        <strong>Área de jogo:</strong> <br />
+        <strong>Controlos do jogo:</strong> <br />
+        <strong>Contexto:</strong>
+    </div>
+    <div class="col-md-8">
+        <img src="~/css/UmaThurman.png" alt="Corredor" title="Jogo" />
+    </div>
+</div>
+

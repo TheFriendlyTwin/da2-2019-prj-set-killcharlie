@@ -10,6 +10,7 @@ body {
     background-color: black;
 }
 
+/*BATOTA!*/
 .HomePage {
     padding-top: 70px;
     padding-bottom: 20px;
@@ -57,7 +58,8 @@ footer {
     position: fixed;
     left: 0;
     bottom: 0;
-    text-align:center
+    text-align:center;
+    color:white;
 }
 
 
@@ -92,13 +94,17 @@ footer {
 
 /*Jumbotron fica transparente*/
 .jumbotron {
-    position: relative;
-    top: 180px;
     background-color: transparent !important;
     font-family:Georgia, 'Times New Roman', Times, serif;
     font-weight:bolder;
     font-size:100px;
     color:whitesmoke;
+}
+
+/*Posição do conteúdo do body da página Home Page*/
+#index {
+    position: relative;
+    top: 180px;
 }
 
 /*Estilo da Tabela de high scores*/
@@ -116,3 +122,9 @@ footer {
     font-family:Georgia, 'Times New Roman', Times, serif;
     font-weight:bolder;
 }
+
+/*Moldura para os elementos do Jogo*/
+#elementos {
+    border:5px solid black;
+}
+
