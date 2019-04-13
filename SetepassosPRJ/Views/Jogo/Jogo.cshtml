@@ -14,14 +14,53 @@
     <div class="col-md-4" id="elementos">
         <strong>Nome do Jogador:</strong>@Model.Utilizador <br />
         <strong>Perfil de herói:</strong>@Model.PerfilHeroi <br />
-        <strong>Pontos de vida:</strong> <br />
-        <strong>Pontos de ataque:</strong> <br />
-        <strong>Pontos de sorte:</strong> <br />
-        <strong>Poções de vida:</strong> <br />
-        <strong>Posse de chave:</strong> <br />
-        <strong>Posição do herói:</strong> <br />
-        <strong>Área de jogo:</strong> <br />
-        <strong>Controlos do jogo:</strong> <br />
+        <strong>Pontos de vida:</strong>
+        @if (Model.PerfilHeroi == "BlackMamba")
+        {
+            @:4
+        }
+        else if (Model.PerfilHeroi == "CottonMouth")
+        {
+            @:3
+        }
+        else
+        {
+            @:3
+        }
+        <br />
+        <strong>Pontos de ataque:</strong>
+        @if (Model.PerfilHeroi == "BlackMamba")
+        {
+            @:3
+        }
+        else if (Model.PerfilHeroi == "CottonMouth")
+        {
+            @:3
+        }
+        else
+        {
+            @:2
+        }<br />
+
+        <strong>Pontos de sorte:</strong>
+        @if (Model.PerfilHeroi == "BlackMamba")
+        {
+            @:2
+        }
+        else if (Model.PerfilHeroi == "CottonMouth")
+        {
+            @:3
+        }
+        else
+        {
+            @:4
+        }<br />
+        <strong>Poções de vida:</strong>0<br />
+        <strong>Posse de chave:</strong>Não<br />
+        <strong>Posição do herói:</strong>1<br />
+        <strong>Área de jogo:</strong>Ocupado<br />
+        <strong>Controlos do jogo:</strong> 
+        <br />
         <strong>Contexto:</strong>
     </div>
     <div class="col-md-8">
