@@ -21,23 +21,24 @@ namespace SetepassosPRJ.Controllers
             if (ModelState.IsValid)
             {
                 Jogo primeiroJogo = new Jogo(jogo.Utilizador, jogo.PerfilHeroi);
-                
+                Repositorio.AdicionarJogo(primeiroJogo);
                 return View("Jogo", primeiroJogo);
             }
             else
                 return View();
         }
 
-        /* [HttpPost]
-         public IActionResult JogoAlternativoInimigo(Jogo jogoAlternativo)
+         public IActionResult JogoAlternativoInimigo()
          {
              if (ModelState.IsValid)
              {
-                 return View("JogoAlternativoInimigo", jogoAlternativo);
+                List<Jogo> jogos = Repositorio.Jogo;
+                Jogo jogoAlternativo = jogos[jogos.Count - 1]; //Devolve o último elemento guardado na lista
+                return View("JogoAlternativoInimigo", jogoAlternativo);
              }
              else
-                 return View();
-         }*/
+                 return View("Jogo");
+         }
 
         public IActionResult HighScore()
         {
