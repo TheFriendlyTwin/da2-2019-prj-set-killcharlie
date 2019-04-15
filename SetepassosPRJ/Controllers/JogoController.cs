@@ -21,6 +21,7 @@ namespace SetepassosPRJ.Controllers
             if (ModelState.IsValid)
             {
                 Jogo primeiroJogo = new Jogo(jogo.Utilizador, jogo.PerfilHeroi);
+                
                 return View("Jogo", primeiroJogo);
             }
             else
