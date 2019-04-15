@@ -38,7 +38,6 @@
                 <label asp-for="Controlo">Ações: </label> <br />
                 <select asp-for="Controlo">
                     <option value="PassoFrente">Dar um passo em frente</option>
-                    <option value="PassoAtras">Dar um passo atrás</option>
                     <option value="ExaminarArea">Examinar Area</option>
                     <option value="BeberPocaoVida">Beber uma poção de vida</option>
                 </select> <br />
@@ -46,8 +45,22 @@
         </form>
         <strong>Contexto: </strong>Acabas-te de encontrar uma poção!
     </div>
-    <div class="col-md-8">
+    <div class="col-md-4">
         <img src="~/css/Corredor.jpg" alt="Corredor" title="Jogo" />
+    </div>
+    <div class="col-md-4">
+        @if (Model.PerfilHeroi == "BlackMamba")
+        {
+            <img src="~/css/UmaThurman.png" alt="Black Mamba" title="Black Mamba" />
+        }
+        else if (Model.PerfilHeroi == "Cottonmouth")
+        {
+            <img src="~/css/cottonmouth.png" alt="Cottonmouth" title="Cottonmouth" />
+        }
+        else
+        {
+            <img src="~/css/copperhead.png" alt="Copperhead" title="Copperhead" />
+        }
     </div>
 </div>
 

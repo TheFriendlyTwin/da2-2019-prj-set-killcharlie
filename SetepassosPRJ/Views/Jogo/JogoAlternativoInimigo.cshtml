@@ -19,13 +19,13 @@
         <strong>Pontos de sorte: </strong>@Model.PontosSorte<br />
         <strong>Poções de vida: </strong>@Model.PocoesVida<br />
         <strong>Posse de chave: </strong>@if (Model.Chave)
-                                        {
-                                            @:Chave encontrada!
-                                        }
-                                        else
-                                        {
-                                            @:Ainda não encontras-te a chave!
-                                        }
+        {
+            @:Chave encontrada!
+        }
+        else
+        {
+            @:Ainda não encontras-te a chave!
+        }
         <br />
         <strong>Posição do herói: </strong>@Model.PosicaoHeroi<br />
         <strong>Área de jogo: </strong>Cuidado! O salto alto das anjos de Charlie é ponteagudo!<br />
@@ -41,8 +41,24 @@
         </form>
         <strong>Contexto: </strong>Por enquanto ainda tens pontos de vida suficientes, continua assim!
     </div>
-    <div class="col-md-8">
+    <div class="col-md-4">
         <img src="~/css/Corredor.jpg" alt="Corredor" title="Jogo" />
     </div>
+    <div class="col-md-4">
+        @if (Model.PerfilHeroi == "BlackMamba")
+        {
+            <img src="~/css/UmaThurman.png" alt="Black Mamba" title="Black Mamba" />
+        }
+        else if (Model.PerfilHeroi == "Cottonmouth")
+        {
+            <img src="~/css/cottonmouth.png" alt="Cottonmouth" title="Cottonmouth" />
+        }
+        else
+        {
+            <img src="~/css/copperhead.png" alt="Copperhead" title="Copperhead" />
+        }
+    </div>
 </div>
+
+
 

@@ -36,7 +36,21 @@
         </form>
         <strong>Contexto: </strong>Chave Encontrada! Cada vez mais perto de salvar o Quentin!
     </div>
-    <div class="col-md-8">
+    <div class="col-md-4">
         <img src="~/css/Corredor.jpg" alt="Corredor" title="Jogo" />
+    </div>
+    <div class="col-md-4">
+        @if (Model.PerfilHeroi == "BlackMamba")
+        {
+            <img src="~/css/UmaThurman.png" alt="Black Mamba" title="Black Mamba" />
+        }
+        else if (Model.PerfilHeroi == "Cottonmouth")
+        {
+            <img src="~/css/cottonmouth.png" alt="Cottonmouth" title="Cottonmouth" />
+        }
+        else
+        {
+            <img src="~/css/copperhead.png" alt="Copperhead" title="Copperhead" />
+        }
     </div>
 </div>
