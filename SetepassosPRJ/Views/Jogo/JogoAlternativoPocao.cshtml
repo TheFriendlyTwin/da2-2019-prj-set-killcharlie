@@ -1,12 +1,16 @@
 ﻿@model SetepassosPRJ.Models.Jogo;
+
+
 @{
-    ViewData["Title"] = "7 Passos";
+    ViewData["Title"] = "Jogo Alternativo com Poção";
+
 }
+
 
 <div class="row">
     <div class="col-md-12">
         <div class="jumbotron text-center">
-            <h1 class="titulo">7 Passos</h1>
+            <h1 class="titulo">7 Passos - Jogo Alternativo com poção</h1>
         </div>
     </div>
 </div>
@@ -17,7 +21,7 @@
         <strong>Pontos de vida: </strong>@Model.PontosVida<br />
         <strong>Pontos de ataque: </strong>@Model.PontosAtaque<br />
         <strong>Pontos de sorte: </strong>@Model.PontosSorte<br />
-        <strong>Poções de vida: </strong>@Model.PocoesVida<br />
+        <strong>Poções de vida: </strong>@Model.PocoesVida <br /> <!--incrementar em +1 (html, a um model)-->
         <strong>Posse de chave: </strong>@if (Model.Chave)
         {
             @:Chave encontrada!
@@ -28,7 +32,7 @@
         }
         <br />
         <strong>Posição do herói: </strong>@Model.PosicaoHeroi<br />
-        <strong>Área de jogo: </strong>Livre! Não existe nenhum inimigo nesta área!<br />
+        <strong>Área de jogo: </strong>Sem inimigos à vista!<br />
         <form asp-action="NovoJogo" method="post">
             <div>
                 <label asp-for="Controlo">Ações: </label> <br />
@@ -40,31 +44,10 @@
                 </select> <br />
             </div>
         </form>
-        <strong>Contexto: </strong>Por enquanto ainda tens pontos de vida suficientes, continua assim!
+        <strong>Contexto: </strong>Acabas-te de encontrar uma poção!
     </div>
-    <div class="col-md-4">
+    <div class="col-md-8">
         <img src="~/css/Corredor.jpg" alt="Corredor" title="Jogo" />
     </div>
-    <div class="col-md-4">
-        @if (Model.PerfilHeroi == "BlackMamba")
-        {
-        <img src="~/css/UmaThurman.png" alt="Black Mamba" title="Black Mamba" />
-        }
-        else if (Model.PerfilHeroi == "Cottonmouth")
-        {
-        <img src="~/css/cottonmouth.png" alt="Cottonmouth" title="Cottonmouth" />
-        }
-        else
-        {
-        <img src="~/css/copperhead.png" alt="Copperhead" title="Copperhead" />
-        }
-    </div>
 </div>
-
-<a asp-controller="Jogo" asp-action="JogoAlternativoInimigo" class="btn btn-danger">Versão com inimigo!</a>
-
-<a asp-controller="Jogo" asp-action="JogoAlternativoPocao" class="btn btn-success">Versão com poção!</a>
-
-<a asp-controller="Jogo" asp-action="JogoAlternativoChave" class="btn btn-info">Versão com chave encontrada!</a>
-
 

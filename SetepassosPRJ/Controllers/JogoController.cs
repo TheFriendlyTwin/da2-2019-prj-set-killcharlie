@@ -40,6 +40,31 @@ namespace SetepassosPRJ.Controllers
                  return View("Jogo");
          }
 
+
+        public IActionResult JogoAlternativoPocao()
+        {
+            if (ModelState.IsValid)
+            {
+                List<Jogo> jogos = Repositorio.Jogo;
+                Jogo jogoAlternativo = jogos[jogos.Count - 1]; //Devolve o último elemento guardado na lista
+                return View("JogoAlternativoPocao", jogoAlternativo);
+            }
+            else
+                return View("Jogo");
+        }
+
+        public IActionResult JogoAlternativoChave()
+        {
+            if (ModelState.IsValid)
+            {
+                List<Jogo> jogos = Repositorio.Jogo;
+                Jogo jogoAlternativo = jogos[jogos.Count - 1]; //Devolve o último elemento guardado na lista
+                return View("JogoAlternativoChave", jogoAlternativo);
+            }
+            else
+                return View("Jogo");
+        }
+
         public IActionResult HighScore()
         {
             return View();
