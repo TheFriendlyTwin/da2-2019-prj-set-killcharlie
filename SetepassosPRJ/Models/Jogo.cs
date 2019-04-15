@@ -8,108 +8,47 @@ namespace SetepassosPRJ.Models
 {
     public class Jogo:NovoJogo
     {
-        public int PontosVida {
-            set
-            {
-                if (PerfilHeroi == "BlackMamba")
-                {
-                    PontosVida = 4;
-                }
-                else
-                    PontosVida = 3;
-            }
-            get
-            {
-                return PontosVida;
-            }
-        }
+        public int PontosVida { get; set; }
 
-        public int PontosAtaque
-        {
-            set
-            {
-                if (PerfilHeroi == "Copperhead")
-                {
-                    PontosAtaque = 2;
-                }
-                else
-                    PontosVida = 3;
-            }
-            get
-            {
-                return PontosAtaque;
-            }
-        }
+        public int PontosAtaque { get; set; }
 
-        public int PontosSorte
-        {
-            set
-            {
-                if(PerfilHeroi == "BlackMamba")
-                {
-                    PontosSorte = 2;
-                }
-                if (PerfilHeroi == "Cottonmouth")
-                {
-                    PontosSorte = 3;
-                }
-                else
-                    PontosSorte = 4;
-            }
-            get
-            {
-                return PontosSorte;
-            }
-        }
+        public int PontosSorte { get; set; }
 
-        public int PocoesVida
-        {
-            set
-            {
-                PocoesVida = 1;
-            }
-            get
-            {
-                return PocoesVida;
-            }
-        }
+        public int PocoesVida { get; set; }
 
-        public bool Chave
-        {
-            set
-            {
-                Chave = false;
-            }
-            get
-            {
-                return Chave;
-            }
-        }
+        public bool Chave { get; set; }
 
-        public int PosicaoHeroi
-        {
-            set
-            {
-                PosicaoHeroi = 1;
-            }
-            get
-            {
-                return PosicaoHeroi;
-            }
-        }
-
-        public bool AreaJogo
-        {
-            set
-            {
-                AreaJogo = true;
-            }
-            get
-            {
-                return AreaJogo;
-            }
-        }
+        public int PosicaoHeroi { get; set; }
 
         public string Controlo { get; set; }
+
+        public Jogo(string utilizador, string perfilHeroi)
+        {
+            PerfilHeroi = perfilHeroi;
+            Utilizador = utilizador;
+            if(perfilHeroi == "BlackMamba")
+            {
+                PontosVida = 4;
+                PontosAtaque = 3;
+                PontosSorte = 2;
+            }
+            else if(perfilHeroi == "Cottonmouth")
+            {
+                PontosVida = 3;
+                PontosAtaque = 3;
+                PontosSorte = 3;
+            }
+            else
+            {
+                PontosVida = 3;
+                PontosAtaque = 2;
+                PontosSorte = 4;
+            }
+
+            PocoesVida = 1;
+            Chave = false;
+            PosicaoHeroi = 1;
+            AreaLivre = true;
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model SetepassosPRJ.Models.NovoJogo;
+﻿@model SetepassosPRJ.Models.Jogo;
 @{
     ViewData["Title"] = "7 Passos";
 }
@@ -14,33 +14,24 @@
     <div class="col-md-4" id="elementos">
         <strong>Nome do Jogador:</strong>@Model.Utilizador <br />
         <strong>Perfil de herói:</strong>@Model.PerfilHeroi <br />
-        <strong>Pontos de vida:</strong>...<br />
-        <strong>Pontos de ataque:</strong>...<br />
-        <strong>Pontos de sorte:</strong>...<br />
-        <strong>Poções de vida:</strong>...<br />
-        <strong>Posse de chave:</strong>...<br />
-        <strong>Posição do herói:</strong>...<br />
-        <strong>Área de jogo:</strong>...<br />
-        <!--<form asp-action="NovoJogo" method="post">
+        <strong>Pontos de vida:</strong>@Model.PontosVida<br />
+        <strong>Pontos de ataque:</strong>@Model.PontosAtaque<br />
+        <strong>Pontos de sorte:</strong>@Model.PontosSorte<br />
+        <strong>Poções de vida:</strong>@Model.PocoesVida<br />
+        <strong>Posse de chave:</strong>@Model.Chave<br />
+        <strong>Posição do herói:</strong>@Model.PosicaoHeroi<br />
+        <strong>Área de jogo:</strong>Livre! Não existe nenhum inimigo nesta área!<br />
+        <form asp-action="NovoJogo" method="post">
         <div>
             <label asp-for="Controlo">Controlo</label> <br />
-            <select asp-for="Controlo">
-                if (Model.AreaJogo)
-                {
+                <select asp-for="Controlo">
                     <option value="PassoFrente">Dar um passo em frente</option>
                     <option value="PassoAtras">Dar um passo atrás</option>
                     <option value="ExaminarArea">Examinar Area</option>
                     <option value="BeberPocaoVida">Beber uma poção de vida</option>
-                }
-                else
-                {
-                    <option value="AtacarInimigo">Atacar inimigo</option>
-                    <option value="Fugir">Fugir, evitando combate</option>
-                    <option value="BeberPocaoVida">Beber uma poção de vida</option>
-                }
-            </select> <br />
+                </select> <br />
         </div>
-    </form> -->
+    </form>
         <strong>Contexto:</strong>
     </div>
     <div class="col-md-8">

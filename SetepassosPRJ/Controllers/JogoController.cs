@@ -20,7 +20,8 @@ namespace SetepassosPRJ.Controllers
         {
             if (ModelState.IsValid)
             {
-                return View("Jogo", jogo);
+                Jogo primeiroJogo = new Jogo(jogo.Utilizador, jogo.PerfilHeroi);
+                return View("Jogo", primeiroJogo);
             }
             else
                 return View();
