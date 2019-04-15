@@ -48,7 +48,6 @@ namespace SetepassosPRJ.Models
             PocoesVida = 1;
             Chave = false;
             PosicaoHeroi = 1;
-            AreaLivre = true;
         }
     }
 }

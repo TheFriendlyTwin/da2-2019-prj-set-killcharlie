@@ -27,6 +27,17 @@ namespace SetepassosPRJ.Controllers
                 return View();
         }
 
+        /* [HttpPost]
+         public IActionResult JogoAlternativoInimigo(Jogo jogoAlternativo)
+         {
+             if (ModelState.IsValid)
+             {
+                 return View("JogoAlternativoInimigo", jogoAlternativo);
+             }
+             else
+                 return View();
+         }*/
+
         public IActionResult HighScore()
         {
             return View();

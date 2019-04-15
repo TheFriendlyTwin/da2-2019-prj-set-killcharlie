@@ -3,6 +3,8 @@
     ViewData["Title"] = "7 Passos";
 }
 
+<h2>Jogo Alternativo Inimigo</h2>
+
 <div class="row">
     <div class="col-md-12">
         <div class="jumbotron text-center">
@@ -19,23 +21,22 @@
         <strong>Pontos de sorte: </strong>@Model.PontosSorte<br />
         <strong>Poções de vida: </strong>@Model.PocoesVida<br />
         <strong>Posse de chave: </strong>@if (Model.Chave)
-        {
-            @:Chave encontrada!
-        }
-        else
-        {
-            @:Ainda não encontras-te a chave!
-        }
+                                        {
+                                            @:Chave encontrada!
+                                        }
+                                        else
+                                        {
+                                            @:Ainda não encontras-te a chave!
+                                        }
         <br />
         <strong>Posição do herói: </strong>@Model.PosicaoHeroi<br />
-        <strong>Área de jogo: </strong>Livre! Não existe nenhum inimigo nesta área!<br />
+        <strong>Área de jogo: </strong>Cuidado! O salto alto das anjos de Charlie é ponteagudo!<br />
         <form asp-action="NovoJogo" method="post">
             <div>
                 <label asp-for="Controlo">Ações: </label> <br />
                 <select asp-for="Controlo">
-                    <option value="PassoFrente">Dar um passo em frente</option>
-                    <option value="PassoAtras">Dar um passo atrás</option>
-                    <option value="ExaminarArea">Examinar Area</option>
+                    <option value="AtacarInimigo">Atacar o inimigo</option>
+                    <option value="Fugir">Fugir, evitando o combate</option>
                     <option value="BeberPocaoVida">Beber uma poção de vida</option>
                 </select> <br />
             </div>
@@ -47,4 +48,3 @@
     </div>
 </div>
 
-<!--<a asp-controller="Jogo" asp-action="JogoAlternativoInimigo" class="btn btn-danger">Versão com inimigo!</a>-->
