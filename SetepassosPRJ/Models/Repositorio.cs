@@ -18,6 +18,7 @@ namespace SetepassosPRJ.Models
             }
          }
 
+        //Adiciona o jogo à lista de jogos
         public static void AdicionarJogo(Jogo novoJogo)
         {
             jogos.Add(novoJogo);
