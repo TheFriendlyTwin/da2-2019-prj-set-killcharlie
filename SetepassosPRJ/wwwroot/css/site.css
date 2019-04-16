@@ -21,7 +21,8 @@ body {
     background-color: black;
 }*/
 
-.HomoPage {
+.HomePage {
+    width:100%;
     background-image: url("../images/killBillGif.gif");
     background-repeat: no-repeat;
     background-position: top;
@@ -101,12 +102,11 @@ footer {
     font-weight:bolder;
 }
 
-/*Jumbotron fica transparente*/
 .jumbotron {
-    background-color: transparent !important;
-    font-family:Georgia, 'Times New Roman', Times, serif;
-    font-weight:bolder;
-    color:whitesmoke;
+    background-color: transparent !important; /*Jumbotron fica transparente*/
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bolder;
+    color: whitesmoke;
 }
 
 /*Posição do conteúdo do body da página Home Page*/
@@ -118,7 +118,7 @@ footer {
 
 /*Estilo da Tabela de high scores*/
 #HighScore {
-    background-image: url("../images/Fire.gif");
+    background-image: url("../images/Fire.gif") !important;
     background-repeat: no-repeat;
     background-size: cover;
     color: azure;
