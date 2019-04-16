@@ -10,10 +10,20 @@ body {
     background-color: black;
 }
 
-/*BATOTA!*/
+/*BATOTA!
 .HomePage {
     padding-top: 70px;
     padding-bottom: 20px;
+    background-image: url("../images/killBillGif.gif");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+    background-color: black;
+}*/
+
+.HomoPage {
+    height:100%;
+    margin:0;
     background-image: url("../images/killBillGif.gif");
     background-repeat: no-repeat;
     background-position: top;
@@ -110,7 +120,7 @@ footer {
 
 /*Estilo da Tabela de high scores*/
 #HighScore{
-    background-image:url(Fire.gif);
+    background-image:url("../images/Fire.gif");
     background-repeat:no-repeat;
     background-size:cover;
     color:azure;
