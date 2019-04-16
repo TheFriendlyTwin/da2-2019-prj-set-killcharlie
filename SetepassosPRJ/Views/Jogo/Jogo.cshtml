@@ -11,35 +11,37 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-4" id="elementos">
-        <strong>Nome do Jogador: </strong>@Model.Utilizador <br />
-        <strong>Perfil de herói: </strong>@Model.PerfilHeroi <br />
-        <strong>Pontos de vida: </strong>@Model.PontosVida<br />
-        <strong>Pontos de ataque: </strong>@Model.PontosAtaque<br />
-        <strong>Pontos de sorte: </strong>@Model.PontosSorte<br />
-        <strong>Poções de vida: </strong>@Model.PocoesVida<br />
-        <strong>Posse de chave: </strong>@if (Model.Chave)
-        {
-            @:Chave encontrada!
-        }
-        else
-        {
-            @:Ainda não encontras-te a chave!
-        }
-        <br />
-        <strong>Posição do herói: </strong>@Model.PosicaoHeroi<br />
-        <strong>Área de jogo: </strong>Livre! Não existe nenhum inimigo nesta área!<br />
-        <form asp-action="NovoJogo" method="post">
-            <div>
-                <label asp-for="Controlo">Ações: </label> <br />
-                <select asp-for="Controlo">
-                    <option value="PassoFrente">Dar um passo em frente</option>
-                    <option value="ExaminarArea">Examinar Area</option>
-                    <option value="BeberPocaoVida">Beber uma poção de vida</option>
-                </select> <br /> <!--Mudar para botões-->
-            </div>
-        </form>
-        <strong>Contexto: </strong>Por enquanto ainda tens pontos de vida suficientes, continua assim!
+    <div class="col-md-4">
+        <div class="jumbotron text-left" id="elementos">
+            <strong>Nome do Jogador: </strong>@Model.Utilizador <br />
+            <strong>Perfil de herói: </strong>@Model.PerfilHeroi <br />
+            <strong>Pontos de vida: </strong>@Model.PontosVida<br />
+            <strong>Pontos de ataque: </strong>@Model.PontosAtaque<br />
+            <strong>Pontos de sorte: </strong>@Model.PontosSorte<br />
+            <strong>Poções de vida: </strong>@Model.PocoesVida<br />
+            <strong>Posse de chave: </strong>@if (Model.Chave)
+                                            {
+                                                @:Chave encontrada!
+                                            }
+                                            else
+                                            {
+                                                @:Ainda não encontras-te a chave!
+                                            }
+            <br />
+            <strong>Posição do herói: </strong>@Model.PosicaoHeroi<br />
+            <strong>Área de jogo: </strong>Livre! Não existe nenhum inimigo nesta área!<br />
+            <form asp-action="NovoJogo" method="post">
+                <div>
+                    <label asp-for="Controlo">Ações: </label> <br />
+                    <select asp-for="Controlo">
+                        <option value="PassoFrente">Dar um passo em frente</option>
+                        <option value="ExaminarArea">Examinar Area</option>
+                        <option value="BeberPocaoVida">Beber uma poção de vida</option>
+                    </select> <br /> <!--Mudar para botões-->
+                </div>
+            </form>
+            <strong>Contexto: </strong>Por enquanto ainda tens pontos de vida suficientes, continua assim!
+        </div>
     </div>
     <div class="col-md-4">
         <img src="~/images/Corredor.jpg" alt="Corredor" title="Jogo" />

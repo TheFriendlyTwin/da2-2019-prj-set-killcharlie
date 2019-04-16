@@ -22,8 +22,6 @@ body {
 }*/
 
 .HomoPage {
-    height:100%;
-    margin:0;
     background-image: url("../images/killBillGif.gif");
     background-repeat: no-repeat;
     background-position: top;
@@ -108,7 +106,6 @@ footer {
     background-color: transparent !important;
     font-family:Georgia, 'Times New Roman', Times, serif;
     font-weight:bolder;
-    font-size:100px;
     color:whitesmoke;
 }
 
@@ -116,15 +113,16 @@ footer {
 #index {
     position: relative;
     top: 180px;
+    font-size:100px;
 }
 
 /*Estilo da Tabela de high scores*/
-#HighScore{
-    background-image:url("../images/Fire.gif");
-    background-repeat:no-repeat;
-    background-size:cover;
-    color:azure;
-    font-weight:bolder;
+#HighScore {
+    background-image: url("../images/Fire.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: azure;
+    font-weight: bolder;
 }
 
 /*Estilo de todas as page-header*/
@@ -136,7 +134,11 @@ footer {
 
 /*Moldura para os elementos do Jogo*/
 #elementos {
-    border:5px solid black;
+    border-width:5px;
+    border-style: ridge;
+    color:darkred;
+    font-family:'Book Antiqua';
+    color:darkred;
 }
 
 
