@@ -3,7 +3,7 @@ for details on configuring this project to bundle and minify static web assets. 
 body {
     padding-top: 70px;
     padding-bottom: 20px;
-    background-image: url("KillBillYellow.jpg");
+    background-image: url("../images/KillBillYellow.jpg");
     background-repeat: no-repeat;
     background-position: top;
     background-size:cover;
@@ -14,7 +14,7 @@ body {
 .HomePage {
     padding-top: 70px;
     padding-bottom: 20px;
-    background-image: url("killBillGif.gif");
+    background-image: url("../images/killBillGif.gif");
     background-repeat: no-repeat;
     background-position: top;
     background-size: cover;
