@@ -50,7 +50,8 @@ namespace SetepassosPRJ.Models
             PocoesVida = 1;
             Chave = false;
             PosicaoHeroi = 1;
-            
+
+            Random inimigo = new Random();
 
         }
     }
