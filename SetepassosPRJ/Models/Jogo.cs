@@ -51,6 +51,7 @@ namespace SetepassosPRJ.Models
             Chave = false;
             PosicaoHeroi = 1;
             
+
         }
     }
 }
