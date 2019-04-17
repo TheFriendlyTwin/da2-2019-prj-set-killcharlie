@@ -6,26 +6,26 @@
 <h3 class="titulo">7 Passos</h3>
 <div class="row">
     <div class="col-md-8">
-        <img src="~/images/corredor.jpg" alt="Corredor" title="Jogo" />
+        <img src="~/images/corredor.jpg" alt="Corredor" title="Corredor" class="corredor"/>
     </div>
     <div class="col-md-2">
         @if (Model.PerfilHeroi == "BlackMamba")
         {
-            <img src="~/images/mediumblackmamba.png" alt="Black Mamba" title="Black Mamba" />
+            <img src="~/images/mediumblackmamba.png" alt="Black Mamba" title="Black Mamba" class="heroi"/>
         }
         else if (Model.PerfilHeroi == "Cottonmouth")
         {
-            <img src="~/images/mediumcottonmouth.png" alt="Cottonmouth" title="Cottonmouth" />
+            <img src="~/images/mediumcottonmouth.png" alt="Cottonmouth" title="Cottonmouth" class="heroi"/>
         }
         else
         {
-            <img src="~/images/mediumgogoyarubi.png" alt="GogoYurabi" title="Gogo Yurabi" />
+            <img src="~/images/mediumgogoyarubi.png" alt="GogoYurabi" title="Gogo Yurabi" class="heroi"/>
         }
     </div>
     <div class="col-md-2">
         @if (Model.Inimigo)
         {
-            <img src="~/images/minicharlieangels.png" alt="AnjosCharlie" title="Anjos de Charlie" />
+            <img src="~/images/minicharlieangels.png" alt="AnjosCharlie" title="Anjos de Charlie" class="inimigo" />
         }
     </div>
 </div>

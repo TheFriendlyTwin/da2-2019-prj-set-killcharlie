@@ -152,3 +152,19 @@ footer {
     font-size: 20px;
 }
 
+.corredor{
+    position:relative;
+    z-index:1;
+}
+
+.heroi{
+    position:relative;
+    right:25px;
+    z-index:2;
+}
+
+.inimigo{
+    position:relative;
+    left:25px;
+    z-index:3;
+}
