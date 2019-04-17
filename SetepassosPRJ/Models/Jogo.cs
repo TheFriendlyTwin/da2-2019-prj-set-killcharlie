@@ -22,6 +22,10 @@ namespace SetepassosPRJ.Models
 
         public bool Inimigo { get; set; }
 
+        public bool PocaoEncontrada { get; set; }
+
+        public int MoedasOuro { get; set; }
+
         public Jogo(string utilizador, string perfilHeroi)
         {
             PerfilHeroi = perfilHeroi;
@@ -48,6 +52,7 @@ namespace SetepassosPRJ.Models
             PocoesVida = 1;
             Chave = false;
             PosicaoHeroi = 1;
+            MoedasOuro = 0;
         }
     }
 }

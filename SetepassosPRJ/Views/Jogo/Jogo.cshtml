@@ -20,16 +20,28 @@
             <strong>Pontos de sorte: </strong>@Model.PontosSorte<br />
             <strong>Poções de vida: </strong>@Model.PocoesVida<br />
             <strong>Posse de chave: </strong>@if (Model.Chave)
-                                            {
-                                                @:Chave encontrada!
-                                            }
-                                            else
-                                            {
-                                                @:Ainda não encontras-te a chave!
-                                            }
+            {
+                @:Chave encontrada!
+            }
+            else
+            {
+                @:Ainda não encontras-te a chave!
+            }
             <br />
             <strong>Posição do herói: </strong>@Model.PosicaoHeroi<br />
-            <strong>Área de jogo: </strong>Livre! Não existe nenhum inimigo nesta área!<br />
+            <strong>Área de jogo: </strong>@if (Model.Inimigo)
+            {
+                @:Cuidado! O salto alto das anjos de Charlie é ponteagudo!
+            }
+            else
+            {
+                @:Sem inimigos à vista!
+            }
+            @if (Model.PocaoEncontrada)
+            {
+                @:Acabas-te de encontrar uma poção!
+            }
+            <br />
             <div>
                 <strong>Controlos: </strong>
                 @if (Model.Inimigo)
@@ -45,7 +57,8 @@
                     <button type="submit" class="btn btn-success">Beber um poção de vida</button>
                 }
             </div>
-            <strong>Contexto: </strong>Por enquanto ainda tens pontos de vida suficientes, continua assim!
+            <strong>Moedas de Ouro: </strong>@Model.MoedasOuro<br />
+            <strong>Contexto: </strong><!--COLOCAR CONDIÇÕES-->
         </div>
     </div>
     <div class="col-md-4">
@@ -66,21 +79,3 @@
         }
     </div>
 </div>
-
-<a asp-controller="Jogo" asp-action="JogoAlternativoInimigo" class="btn btn-danger">Versão com inimigo!</a>
-
-<a asp-controller="Jogo" asp-action="JogoAlternativoPocao" class="btn btn-success">Versão com poção!</a>
-
-<a asp-controller="Jogo" asp-action="JogoAlternativoChave" class="btn btn-info">Versão com chave encontrada!</a>
-
-
-<!--<form asp-action="NovoJogo" method="post">
-    <div>
-        <label asp-for="Controlo">Ações: </label> <br />
-        <select asp-for="Controlo">
-            <option value="PassoFrente">Dar um passo em frente</option>
-            <option value="ExaminarArea">Examinar Area</option>
-            <option value="BeberPocaoVida">Beber uma poção de vida</option>
-        </select> <br />
-    </div>
-</form>-->
