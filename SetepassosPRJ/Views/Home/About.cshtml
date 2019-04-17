@@ -1,65 +1,86 @@
 ﻿@{
     ViewData["Title"] = "Sobre";
 }
-<h2>Sobre nós!</h2>
 
-<p>Conhece um pouco da nossa história:</p>
 
-    <div class="jumbotron" text-center>
-        <div id="KillCharliecarousel" class="carousel slide" data-ride="carousel">
-            <!--Indicators – Um <li> por cada slide com o slide-to diferente -->
-            <ol class="carousel-indicators">
-                <li data-target="#KillCharliecarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#KillCharliecarousel" data-slide-to="1" class="active"></li>
-                <li data-target="#KillCharliecarousel" data-slide-to="2" class="active"></li>
-                <li data-target="#KillCharliecarousel" data-slide-to="3" class="active"></li>
-            </ol>
-            <!--Slides: um <div> com a classe “item” por cada slide -->
-            <div class="carousel-inner">
-                <div class="item active">
-                    <!--imagem-->
-                    <img src="~/images/Alexandra.jpg" class="img-responsive center-block">
-                    <div class="carousel-caption">
-                        <h1>Alexandra Viegas</h1>
-                        <h4>Estudante de Gestão de Sistemas de Informação. 22 anos.</h4>
+<!--Indice das zonas:-->
 
-                    </div>
-                </div>
-                <div class="item">
-                    <!--imagem-->
-                    <img src="~/images/MafaldaSousa.jpg" class="img-responsive center-block">
-                    <div class="carousel-caption">
-                        <h1>Mafalda Sousa</h1>
-                        <h4>Estudante de Gestão de Sistemas de Informação. 20 anos.</h4>
-                    </div>
-                </div>
-                <div class="item">
-                    <!--imagem-->
-                    <img src="~/images/MartaRodSousa.jpeg" class="img-responsive center-block">
-                    <div class="carousel-caption">
-                        <h1>Marta Sousa</h1>
-                        <h4>Estudante de Gestão de Sistemas de Informação. 20 anos.</h4>
-                    </div>
-                </div>
-                <div class="item">
-                    <!--imagem-->
-                    <img src="~/images/killcharliewall.jpg" class="img-responsive center-block">
-                    <div class="carousel-caption">
-                        <h1>Kill Charlie</h1>
-                    </div>
-                </div>
+<div id="Indice">
+    <h2>Sobre nós!</h2>
+    <p>Conhece um pouco da nossa história:</p>
+        <p><span class="glyphicon glyphicon-star"></span><a href="#MembrosDeEquipa">Membros De Equipa</a></p>
+        <p><span class="glyphicon glyphicon-star"></span><a href="#Equipa">Equipa</a></p>
+        <p><span class="glyphicon glyphicon-star"></span><a href="#Projeto">Projeto</a></p>
+</div>
 
-                <!-- Controls -->
-                <a class="left carousel-control" href="#KillCharliecarousel" role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#KillCharliecarousel" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right"></span>
-                </a>
+<div class="jumbotron" text-center>
+    <div id="MembrosDeEquipa" class="carousel slide" data-ride="carousel">
+        <!--Indicators – Um <li> por cada slide com o slide-to diferente -->
+        <ol class="carousel-indicators">
+            <li data-target="#MembrosDeEquipa" data-slide-to="0" class="active"></li>
+            <li data-target="#MembrosDeEquipa" data-slide-to="1" class="active"></li>
+            <li data-target="#MembrosDeEquipa" data-slide-to="2" class="active"></li>
+            <li data-target="#MembrosDeEquipa" data-slide-to="3" class="active"></li>
+        </ol>
+        <!--Slides: um <div> com a classe “item” por cada slide -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <!--imagem-->
+                <img src="~/images/Alexandra.jpg" class="img-responsive center-block">
+                <div class="carousel-caption">
+                    <h1>Alexandra Viegas</h1>
+                    <h4>Estudante de Gestão de Sistemas de Informação. 21 anos.</h4>
+
+                </div>
             </div>
-        </div>
+            <div class="item">
+                <!--imagem-->
+                <img src="~/images/MafaldaSousa.jpg" class="img-responsive center-block">
+                <div class="carousel-caption">
+                    <h1>Mafalda Sousa</h1>
+                    <h4>Estudante de Gestão de Sistemas de Informação. 19 anos.</h4>
+                </div>
+            </div>
+            <div class="item">
+                <!--imagem-->
+                <img src="~/images/MartaRodSousa.jpeg" class="img-responsive center-block">
+                <div class="carousel-caption">
+                    <h1>Marta Sousa</h1>
+                    <h4>Estudante de Gestão de Sistemas de Informação. 19 anos.</h4>
+                </div>
+            </div>
+            <div class="item">
+                <!--imagem-->
+                <img src="~/images/killcharliewall.jpg" class="img-responsive center-block">
+                <div class="carousel-caption">
+                    <h1>Kill Charlie</h1>
+                    <h4></h4>
+                </div>
+            </div>
 
+            <!-- Controls -->
+            <a class="left carousel-control" href="#MembrosDeEquipa" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#MembrosDeEquipa" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+        </div>
+        <p><a href="#Indice"><span class="glyphicon glyphicon-hand-up"></span></a></p>
     </div>
 
+</div>
 
+<div id="Equipa">
+    <h1>Kill Charlie</h1>
+    <p>O tema do nosso jogo é ao fim e ao cabo uma conjugação de dois filmes clássicos conhecidos como 'Kill Bill' de Quentin Tarantino e 'Anjos Charlie' de McG.</p>
+    <p>O nosso objetivo é, portanto, proporcionar ao jogador uma experiência de adrenalina ao entrar nesta missão, na qual terá de ajudar a Kill Bill, a Cottonmouth e a Gogo Yurabi a salvar o Quentin Tarantino das, não tão temíveis, mas imbatíveis Anjos Charlie</p>
+    <p><a href="#Indice"><span class="glyphicon glyphicon-hand-up"></span></a></p>
+</div>
+
+<div id="Projeto">
+    <h1>Projeto</h1>
+    <p>Este projeto foi desenvolvido no âmbito da Unidade Curricular de Desenvolvimento de Aplicações II.</p>
+    <p><a href="#Indice"><span class="glyphicon glyphicon-hand-up"></span></a></p>
+</div>

@@ -131,3 +131,19 @@ footer {
     color:darkred;
 }
 
+/*Indice da página about*/
+#Indice {
+    color:darkred;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+#Equipa {
+    font-family:'Times New Roman', Times, serif;
+    font-size:20px;
+}
+
+#Projeto {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+
