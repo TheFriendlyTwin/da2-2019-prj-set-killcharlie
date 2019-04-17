@@ -53,6 +53,22 @@ namespace SetepassosPRJ.Models
             Chave = false;
             PosicaoHeroi = 1;
             MoedasOuro = 0;
+
+            //Apenas para a milestone 1
+            Random encontrado = new Random();
+            int numeroAleatorio = encontrado.Next(0, 2);
+            if (numeroAleatorio==0)
+            {
+                Inimigo = true;
+                PocaoEncontrada = true;
+            }
+            else
+            {
+                Inimigo = false;
+                PocaoEncontrada = false;
+            }
+
+
         }
     }
 }
