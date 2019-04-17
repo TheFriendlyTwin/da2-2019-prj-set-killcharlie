@@ -11,6 +11,25 @@
     </div>
 </div>
 <div class="row">
+    <div class="col-md-8">
+        <img src="~/images/Corredor.jpg" alt="Corredor" title="Jogo" />
+    </div>
+    <div class="col-md-4">
+        @if (Model.PerfilHeroi == "BlackMamba")
+        {
+            <img src="~/images/BlackMambaSkin.png" alt="Black Mamba" title="Black Mamba" />
+        }
+        else if (Model.PerfilHeroi == "Cottonmouth")
+        {
+            <img src="~/images/cottonmouthSkin.png" alt="Cottonmouth" title="Cottonmouth" />
+        }
+        else
+        {
+            <img src="~/images/GogoYurabiSkin.png" alt="GogoYurabi" title="GogoYurabi" />
+        }
+    </div>
+</div>
+<div class="row">
     <div class="col-md-4">
         <div class="jumbotron text-left" id="elementos">
             <strong>Nome do Jogador: </strong>@Model.Utilizador <br />
@@ -26,7 +45,7 @@
             }
             else
             {
-                @:Ainda tens pontos de vida suficientes! Continua assim <br />
+                @:Ainda tens pontos de vida suficientes! Continua assim! <br />
             }
             <strong>Pontos de ataque: </strong>@for (int espadas = 0; espadas < Model.PontosAtaque; espadas++)
             {
@@ -37,14 +56,17 @@
                 <img src="~/images/minitrevo.png" alt="PontosSorte" title="Pontos de sorte" />
             }
             <br />
-            <strong>Poções de vida: </strong>@Model.PocoesVida<br />
+            <strong>Poções de vida: </strong>@for (int pocoes = 0; pocoes < Model.PocoesVida; pocoes++)
+            {
+                <img src="~/images/minipotion.png" alt="PontosSorte" title="Pontos de sorte" /> <br />
+            }
             @if (Model.PocaoEncontrada)
             {
                 @:Acabas-te de encontrar uma poção!
             }
             else
             {
-                @:Nesta área não há poções!
+                @:Nesta área não há poções! <br />
             }
             <strong>Posse de chave: </strong>@if (Model.Chave)
             {
@@ -68,6 +90,7 @@
                 }
                 else
                 {
+                    <strong>Não há inimigos nesta área! Escolhe o que fazer:</strong> <br />
                     <button type="submit" class="btn btn-warning">Dar um passo em frente!</button>
                     <button type="submit" class="btn btn-info">Examinar Área</button>
                     <button type="submit" class="btn btn-success">Beber um poção de vida</button>
@@ -75,22 +98,5 @@
             </div>
             <strong>Moedas de Ouro: </strong>@Model.MoedasOuro<br />
         </div>
-    </div>
-    <div class="col-md-4">
-        <img src="~/images/Corredor.jpg" alt="Corredor" title="Jogo" />
-    </div>
-    <div class="col-md-4">
-        @if (Model.PerfilHeroi == "BlackMamba")
-        {
-            <img src="~/images/BlackMambaSkin.png" alt="Black Mamba" title="Black Mamba" /> 
-        }
-        else if (Model.PerfilHeroi == "Cottonmouth")
-        {
-            <img src="~/images/cottonmouthSkin.png" alt="Cottonmouth" title="Cottonmouth" />
-        }
-        else
-        {
-            <img src="~/images/GogoYurabiSkin.png" alt="GogoYurabi" title="GogoYurabi" />
-        }
     </div>
 </div>
