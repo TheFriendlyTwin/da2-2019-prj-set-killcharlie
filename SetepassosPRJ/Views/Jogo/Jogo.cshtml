@@ -16,36 +16,41 @@
             <strong>Nome do Jogador: </strong>@Model.Utilizador <br />
             <strong>Perfil de herói: </strong>@Model.PerfilHeroi <br />
             <strong>Pontos de vida: </strong>@Model.PontosVida<br />
+            @if (Model.PontosVida < 2)
+            {
+                @:Estás com poucos pontos de vida! Atenção à tua cabeça! <br />
+            }
+            else
+            {
+                @:Ainda tens pontos de vida suficientes! Continua assim <br />
+            }
             <strong>Pontos de ataque: </strong>@Model.PontosAtaque<br />
             <strong>Pontos de sorte: </strong>@Model.PontosSorte<br />
             <strong>Poções de vida: </strong>@Model.PocoesVida<br />
-            <strong>Posse de chave: </strong>@if (Model.Chave)
-            {
-                @:Chave encontrada!
-            }
-            else
-            {
-                @:Ainda não encontras-te a chave!
-            }
-            <br />
-            <strong>Posição do herói: </strong>@Model.PosicaoHeroi<br />
-            <strong>Área de jogo: </strong>@if (Model.Inimigo)
-            {
-                @:Cuidado! O salto alto das anjos de Charlie é ponteagudo!
-            }
-            else
-            {
-                @:Sem inimigos à vista!
-            }
             @if (Model.PocaoEncontrada)
             {
                 @:Acabas-te de encontrar uma poção!
             }
+            else
+            {
+                @:Nesta área não há poções!
+            }
+            <strong>Posse de chave: </strong>@if (Model.Chave)
+            {
+                @:CHAVE! A chave está mesmo debaixo do teu nariz!
+            }
+            else
+            {
+                @:Caramba! A chave não está nesta área!
+            }
+            <br />
+            <strong>Posição do herói: </strong>@Model.PosicaoHeroi<br />
             <br />
             <div>
                 <strong>Controlos: </strong>
                 @if (Model.Inimigo)
                 {
+                    <strong>Cuidado! O salto alto das anjos de Charlie é ponteagudo! Escolhe o que fazer já:</strong> <br />
                     <button type="submit" class="btn btn-danger">Atacar o inimigo!</button>
                     <button type="submit" class="btn btn-info">Fugir!</button>
                     <button type="submit" class="btn btn-success">Beber um poção de vida</button>
@@ -58,7 +63,6 @@
                 }
             </div>
             <strong>Moedas de Ouro: </strong>@Model.MoedasOuro<br />
-            <strong>Contexto: </strong><!--COLOCAR CONDIÇÕES-->
         </div>
     </div>
     <div class="col-md-4">
@@ -67,7 +71,7 @@
     <div class="col-md-4">
         @if (Model.PerfilHeroi == "BlackMamba")
         {
-            <img src="~/images/BlackMambaSkin.png" alt="Black Mamba" title="Black Mamba" /> <!-- TRANSPARÊNCIAS -->
+            <img src="~/images/BlackMambaSkin.png" alt="Black Mamba" title="Black Mamba" /> 
         }
         else if (Model.PerfilHeroi == "Cottonmouth")
         {

@@ -67,8 +67,6 @@ namespace SetepassosPRJ.Models
                 Inimigo = false;
                 PocaoEncontrada = false;
             }
-
-
         }
     }
 }
