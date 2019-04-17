@@ -23,17 +23,21 @@
         <strong>Posse de chave: </strong>Chave encontrada!<br />
         <strong>Posição do herói: </strong>@Model.PosicaoHeroi<br />
         <strong>Área de jogo: </strong>Parabéns! Encontraste a chave!<br />
-        <form asp-action="NovoJogo" method="post">
-            <div>
-                <label asp-for="Controlo">Ações: </label> <br />
-                <select asp-for="Controlo">
-                    <option value="PassoFrente">Dar um passo em frente</option>
-                    <option value="PassoAtras">Dar um passo atrás</option>
-                    <option value="ExaminarArea">Examinar Area</option>
-                    <option value="BeberPocaoVida">Beber uma poção de vida</option>
-                </select> <br />
-            </div>
-        </form>
+        <div>
+            <strong>Controlos: </strong>
+            @if (Model.Inimigo)
+            {
+                <button type="submit" class="btn btn-danger">Atacar o inimigo!</button>
+                <button type="submit" class="btn btn-info">Fugir!</button>
+                <button type="submit" class="btn btn-success">Beber um poção de vida</button>
+            }
+            else
+            {
+                <button type="submit" class="btn btn-warning">Dar um passo em frente!</button>
+                <button type="submit" class="btn btn-info">Examinar Área</button>
+                <button type="submit" class="btn btn-success">Beber um poção de vida</button>
+            }
+        </div>
         <strong>Contexto: </strong>Chave Encontrada! Cada vez mais perto de salvar o Quentin!
     </div>
     <div class="col-md-4">
