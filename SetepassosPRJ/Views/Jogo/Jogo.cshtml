@@ -8,7 +8,7 @@
     <div class="col-md-8">
         <img src="~/images/corredor.jpg" alt="Corredor" title="Jogo" />
     </div>
-    <div class="col-md-4">
+    <div class="col-md-2">
         @if (Model.PerfilHeroi == "BlackMamba")
         {
             <img src="~/images/mediumblackmamba.png" alt="Black Mamba" title="Black Mamba" />
@@ -19,78 +19,85 @@
         }
         else
         {
-            <img src="~/images/mediumgogoyarubi.png" alt="GogoYurabi" title="GogoYurabi" />
+            <img src="~/images/mediumgogoyarubi.png" alt="GogoYurabi" title="Gogo Yurabi" />
+        }
+    </div>
+    <div class="col-md-2">
+        @if (Model.Inimigo)
+        {
+            <img src="~/images/minicharlieangels.png" alt="AnjosCharlie" title="Anjos de Charlie" />
         }
     </div>
 </div>
 <div class="row">
     <div class="col-md-4">
-        <div class="jumbotron text-left" id="elementos">
-            <strong>Nome do Jogador: </strong>@Model.Utilizador <br />
-            <strong>Perfil de herói: </strong>@Model.PerfilHeroi <br />
-            <strong>Pontos de vida: </strong>@for (int coracaos = 0; coracaos < Model.PontosVida; coracaos++)
+        <strong>Nome do Jogador: </strong>@Model.Utilizador <br />
+        <strong>Perfil de herói: </strong>@Model.PerfilHeroi <br />
+        <strong>Pontos de vida: </strong>@for (int coracoes = 0; coracoes < Model.PontosVida; coracoes++)
+        {
+            <img src="~/images/miniheart.png" alt="PontosVida" title="Pontos de vida" />
+        }
+        <br />
+        @if (Model.PontosVida < 2)
+        {
+            @:Estás com poucos pontos de vida! Atenção à tua cabeça! <br />
+        }
+        else
+        {
+            @:Ainda tens pontos de vida suficientes! Continua assim! <br />
+        }
+        <strong>Pontos de ataque: </strong>@for (int espadas = 0; espadas < Model.PontosAtaque; espadas++)
+        {
+            <img src="~/images/minisword.png" alt="PontosAtaque" title="Pontos de ataque" />
+        }<br />
+        <strong>Pontos de sorte: </strong>@for (int trevos = 0; trevos < Model.PontosSorte; trevos++)
+        {
+            <img src="~/images/minitrevo.png" alt="PontosSorte" title="Pontos de sorte" />
+        }
+    </div>
+    <div class="col-md-4">
+        <strong>Poções de vida: </strong>@for (int pocoes = 0; pocoes < Model.PocoesVida; pocoes++)
+        {
+            <img src="~/images/minipotion.png" alt="Pocao" title="Poção de vida" /> <br />
+        }
+        @if (Model.PocaoEncontrada)
+        {
+            @:Acabas-te de encontrar uma poção!
+        }
+        else
+        {
+            @:Nesta área não há poções!
+        }
+        <br /><strong>Posse de chave: </strong>@if (Model.Chave)
+        {
+            @:CHAVE! A chave está mesmo debaixo do teu nariz!
+        }
+        else
+        {
+            @:Caramba! A chave não está nesta área!
+        }
+        <br />
+        <strong>Moedas de Ouro: </strong>@Model.MoedasOuro<br />
+        <br />
+        <strong>Posição do herói: </strong>@Model.PosicaoHeroi<br />
+    </div>
+    <div class="col-md-4">
+        <div>
+            @if (Model.Inimigo)
             {
-                <img src="~/images/miniheart.png" alt="PontosVida" title="Pontos de vida" />
-            }
-            <br />
-            @if (Model.PontosVida < 2)
-            {
-                @:Estás com poucos pontos de vida! Atenção à tua cabeça! <br />
+                <strong class="alert-danger">Cuidado! O salto alto das anjos de Charlie é ponteagudo! Escolhe o que fazer já:</strong> <br />
+                <button type="submit" class="btn btn-danger">Atacar o inimigo!</button> <br />
+                <button type="submit" class="btn btn-info">Fugir!</button> <br />
+                <button type="submit" class="btn btn-success">Beber um poção de vida</button>
             }
             else
             {
-                @:Ainda tens pontos de vida suficientes! Continua assim! <br />
+                <strong>Não há inimigos nesta área! Escolhe o que fazer:</strong> <br />
+                <button type="submit" class="btn btn-warning">Dar um passo em frente!</button> <br />
+                <button type="submit" class="btn btn-info">Examinar Área</button> <br />
+                <button type="submit" class="btn btn-success">Beber um poção de vida</button>
             }
-            <strong>Pontos de ataque: </strong>@for (int espadas = 0; espadas < Model.PontosAtaque; espadas++)
-            {
-                <img src="~/images/minisword.png" alt="PontosAtaque" title="Pontos de ataque" />
-            }<br />
-            <strong>Pontos de sorte: </strong>@for (int trevos = 0; trevos < Model.PontosSorte; trevos++)
-            {
-                <img src="~/images/minitrevo.png" alt="PontosSorte" title="Pontos de sorte" />
-            }
-            <br />
-            <strong>Poções de vida: </strong>@for (int pocoes = 0; pocoes < Model.PocoesVida; pocoes++)
-            {
-                <img src="~/images/minipotion.png" alt="PontosSorte" title="Pontos de sorte" /> <br />
-            }
-            @if (Model.PocaoEncontrada)
-            {
-                @:Acabas-te de encontrar uma poção!
-            }
-            else
-            {
-                @:Nesta área não há poções! <br />
-            }
-            <strong>Posse de chave: </strong>@if (Model.Chave)
-            {
-                @:CHAVE! A chave está mesmo debaixo do teu nariz!
-            }
-            else
-            {
-                @:Caramba! A chave não está nesta área!
-            }
-            <br />
-            <strong>Posição do herói: </strong>@Model.PosicaoHeroi<br />
-            <br />
-            <div>
-                <strong>Controlos: </strong>
-                @if (Model.Inimigo)
-                {
-                    <strong>Cuidado! O salto alto das anjos de Charlie é ponteagudo! Escolhe o que fazer já:</strong> <br />
-                    <button type="submit" class="btn btn-danger">Atacar o inimigo!</button>
-                    <button type="submit" class="btn btn-info">Fugir!</button>
-                    <button type="submit" class="btn btn-success">Beber um poção de vida</button>
-                }
-                else
-                {
-                    <strong>Não há inimigos nesta área! Escolhe o que fazer:</strong> <br />
-                    <button type="submit" class="btn btn-warning">Dar um passo em frente!</button>
-                    <button type="submit" class="btn btn-info">Examinar Área</button>
-                    <button type="submit" class="btn btn-success">Beber um poção de vida</button>
-                }
-            </div>
-            <strong>Moedas de Ouro: </strong>@Model.MoedasOuro<br />
         </div>
     </div>
 </div>
+
