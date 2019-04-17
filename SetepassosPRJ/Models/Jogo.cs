@@ -55,16 +55,26 @@ namespace SetepassosPRJ.Models
             MoedasOuro = 0;
 
             //Apenas para a milestone 1
-            Random encontrado = new Random();
-            int numeroAleatorio = encontrado.Next(0, 2);
+            Random inimigoEncontrado = new Random();
+            int numeroAleatorio = inimigoEncontrado.Next(0, 2);
             if (numeroAleatorio==0)
             {
                 Inimigo = true;
-                PocaoEncontrada = true;
             }
             else
             {
                 Inimigo = false;
+            }
+
+            //Apenas para a milestone 1
+            Random pocaoEncontrada = new Random();
+            int num = pocaoEncontrada.Next(0, 2);
+            if (num == 0)
+            {
+                PocaoEncontrada = true;
+            }
+            else
+            {
                 PocaoEncontrada = false;
             }
         }

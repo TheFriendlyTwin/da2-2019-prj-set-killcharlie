@@ -63,7 +63,6 @@ footer {
     color:white;
 }
 
-
 /* controlo do formulário destacados a vermelho*/
 .field-validation-error {
     color: #f00;
@@ -121,7 +120,6 @@ footer {
     font-weight:bolder;
 }
 
-
 #elementos{
     border-width: 5px;
     border-style: ridge;
@@ -131,8 +129,6 @@ footer {
     background-repeat: no-repeat;
     background-size: cover;
 }
-
-
 
 /*Indice da página about*/
 #Indice {
