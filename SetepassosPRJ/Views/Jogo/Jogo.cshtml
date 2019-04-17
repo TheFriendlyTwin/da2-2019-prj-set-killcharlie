@@ -15,7 +15,11 @@
         <div class="jumbotron text-left" id="elementos">
             <strong>Nome do Jogador: </strong>@Model.Utilizador <br />
             <strong>Perfil de herói: </strong>@Model.PerfilHeroi <br />
-            <strong>Pontos de vida: </strong>@Model.PontosVida<br />
+            <strong>Pontos de vida: </strong>@for (int coracaos = 0; coracaos < Model.PontosVida; coracaos++)
+            {
+                <img src="~/images/miniheart.png" alt="PontosVida" title="Pontos de vida" />
+            }
+            <br />
             @if (Model.PontosVida < 2)
             {
                 @:Estás com poucos pontos de vida! Atenção à tua cabeça! <br />
@@ -24,8 +28,15 @@
             {
                 @:Ainda tens pontos de vida suficientes! Continua assim <br />
             }
-            <strong>Pontos de ataque: </strong>@Model.PontosAtaque<br />
-            <strong>Pontos de sorte: </strong>@Model.PontosSorte<br />
+            <strong>Pontos de ataque: </strong>@for (int espadas = 0; espadas < Model.PontosAtaque; espadas++)
+            {
+                <img src="~/images/minisword.png" alt="PontosAtaque" title="Pontos de ataque" />
+            }<br />
+            <strong>Pontos de sorte: </strong>@for (int trevos = 0; trevos < Model.PontosSorte; trevos++)
+            {
+                <img src="~/images/minitrevo.png" alt="PontosSorte" title="Pontos de sorte" />
+            }
+            <br />
             <strong>Poções de vida: </strong>@Model.PocoesVida<br />
             @if (Model.PocaoEncontrada)
             {
