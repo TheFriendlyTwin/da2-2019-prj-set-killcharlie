@@ -23,6 +23,7 @@ body {
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
+    font-family:Georgia, 'Times New Roman', Times, serif;
     padding-left: 15px;
     padding-right: 15px;
     color: darkred;
@@ -94,7 +95,6 @@ footer {
 
 .jumbotron {
     background-color: transparent !important; /*Jumbotron fica transparente*/
-    font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: bolder;
     color: whitesmoke;
 }
@@ -118,7 +118,6 @@ footer {
 /*Estilo de todas as page-header*/
 .page-header{
     color:darkred;
-    font-family:Georgia, 'Times New Roman', Times, serif;
     font-weight:bolder;
 }
 
@@ -138,17 +137,14 @@ footer {
 /*Indice da página about*/
 #Indice {
     color:darkred;
-    font-family:Georgia, 'Times New Roman', Times, serif;
 }
 
 
 #Equipa {
-    font-family: 'Times New Roman', Times, serif;
     font-size: 20px;
 }
 
 #Projeto {
-    font-family: 'Times New Roman', Times, serif;
     font-size: 20px;
 }
 
