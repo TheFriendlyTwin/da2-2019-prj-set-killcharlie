@@ -50,7 +50,6 @@ namespace SetepassosPRJ.Models
             }
 
             PocoesVida = 1;
-            Chave = false;
             PosicaoHeroi = 1;
             MoedasOuro = 0;
 
@@ -76,6 +75,18 @@ namespace SetepassosPRJ.Models
             else
             {
                 PocaoEncontrada = false;
+            }
+
+            //Apenas para a milestone 1
+            Random chaveEncontrada = new Random();
+            int numero = chaveEncontrada.Next(0, 2);
+            if (num == 0)
+            {
+                Chave = true;
+            }
+            else
+            {
+                Chave = false;
             }
         }
     }
