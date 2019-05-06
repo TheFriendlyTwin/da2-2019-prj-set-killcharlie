@@ -145,18 +145,6 @@ footer {
 }
 
 .corredor{
-    position:relative;
-    z-index:1;
+    background-image:url("../images/Corredor.jpg");
 }
 
-.heroi{
-    position:relative;
-    right:25px;
-    z-index:2;
-}
-
-.inimigo{
-    position:relative;
-    left:50px;
-    z-index:3;
-}
