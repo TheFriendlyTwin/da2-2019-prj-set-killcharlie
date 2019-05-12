@@ -20,6 +20,8 @@ namespace SetepassosPRJ.Models
 
         public int PosicaoHeroi { get; set; }
 
+        public int DistanciaPorta { get; set; } //propriedade acrescentada, que retorna os número de passos restantes para alcançar a porta
+
         public bool Inimigo { get; set; }
 
         public bool PocaoEncontrada { get; set; }
@@ -51,6 +53,7 @@ namespace SetepassosPRJ.Models
 
             PocoesVida = 1;
             PosicaoHeroi = 1;
+            DistanciaPorta = 7 - PosicaoHeroi;
             MoedasOuro = 0;
 
             //Apenas para a milestone 1
