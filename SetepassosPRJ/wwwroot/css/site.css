@@ -144,7 +144,9 @@ footer {
     font-size: 20px;
 }
 
-.corredor{
-    background-image:url("../images/Corredor.jpg");
+.corredor {
+    background-image: url("../images/Corredor.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 

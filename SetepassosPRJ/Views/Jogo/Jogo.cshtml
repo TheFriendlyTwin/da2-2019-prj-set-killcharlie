@@ -7,6 +7,10 @@
 <p>Salva o Quentin!</p>
 <div class="row">
     <div class="col-md-12 corredor">
+        @if (Model.Inimigo)
+        {
+            <img src="~/images/minicharlieangels.png" alt="AnjosCharlie" title="Anjos de Charlie" class="inimigo" />
+        }
         @if (Model.PerfilHeroi == "BlackMamba")
         {
             <img src="~/images/mediumblackmamba.png" alt="Black Mamba" title="Black Mamba" class="heroi" />
@@ -19,10 +23,7 @@
         {
             <img src="~/images/mediumgogoyarubi.png" alt="GogoYurabi" title="Gogo Yurabi" class="heroi" />
         }
-        @if (Model.Inimigo)
-        {
-            <img src="~/images/minicharlieangels.png" alt="AnjosCharlie" title="Anjos de Charlie" class="inimigo" />
-        }
+
     </div>
 </div>
 <div class="row" id="elementos">
