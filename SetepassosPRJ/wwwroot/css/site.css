@@ -114,6 +114,15 @@ footer {
     font-weight: bolder;
 }
 
+tr:hover td{
+    background-color:orangered;
+}
+
+tr:hover th {
+    background-color: black;
+}
+
+
 /*Estilo de todas as page-header*/
 .page-header{
     color:darkred;
