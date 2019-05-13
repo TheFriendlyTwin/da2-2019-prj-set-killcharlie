@@ -6,7 +6,7 @@ body {
     background-image: url("../images/KillBillYellow.jpg");
     background-repeat: no-repeat;
     background-position: top;
-    background-size:cover;
+    background-size: cover;
     background-color: black;
 }
 
@@ -120,7 +120,7 @@ footer {
     font-weight:bolder;
 }
 
-#elementos{
+.elementos{
     border-width: 5px;
     border-style: ridge;
     font-family: 'Book Antiqua';
@@ -135,7 +135,6 @@ footer {
     color:darkred;
 }
 
-
 #Equipa {
     font-size: 20px;
 }
@@ -149,4 +148,3 @@ footer {
     background-repeat: no-repeat;
     background-size: cover;
 }
-

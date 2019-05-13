@@ -81,9 +81,9 @@ namespace SetepassosPRJ.Models
             }
 
             //Apenas para a milestone 1
-            Random chaveEncontrada = new Random();
-            int numero = chaveEncontrada.Next(0, 2);
-            if (num == 0)
+            Random posseChave = new Random();
+            int numero = posseChave.Next(0, 2);
+            if (numero == 0)
             {
                 Chave = true;
             }

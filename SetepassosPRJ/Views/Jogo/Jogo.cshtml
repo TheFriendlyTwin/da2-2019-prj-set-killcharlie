@@ -5,6 +5,7 @@
 
 <h3 class="titulo">7 Passos</h3>
 <p>Salva o Quentin!</p>
+
 <div class="row">
     <div class="col-md-12 corredor">
         @if (Model.Inimigo)
@@ -23,10 +24,10 @@
         {
             <img src="~/images/mediumgogoyarubi.png" alt="GogoYurabi" title="Gogo Yurabi" class="heroi" />
         }
-
     </div>
 </div>
-<div class="row" id="elementos">
+
+<div class="row elementos">
     <div class="col-md-4">
         <strong>Nome do Jogador: </strong>@Model.Utilizador <br />
         <strong>Perfil de herói: </strong>@Model.PerfilHeroi <br />
@@ -67,17 +68,18 @@
         }
         <br /><strong>Posse de chave: </strong>@if (Model.Chave)
         {
-            @:CHAVE! A chave está mesmo debaixo do teu nariz!
+            <img src="~/images/miniKey.png" alt="Chave" title="Chave!" />
         }
         else
         {
-            @:Caramba! A chave não está nesta área!
+            @:Tens de encontrar a chave!
         }
         <br />
-        <strong>Moedas de ouro: </strong>@Model.MoedasOuro<br />
+        <strong>Moedas de ouro: </strong>@Model.MoedasOuro
         <br />
-        <strong>Posição do herói: </strong>@Model.PosicaoHeroi<br />
-        <strong>Distância que te resta: </strong>faltam apenas <strong>@Model.DistanciaPorta</strong> passos até ao Quentin!
+        <strong>Posição do herói: </strong><strong class="alert-info">@Model.PosicaoHeroi</strong>
+        <br />
+        <strong>Distância que te resta: </strong>faltam apenas <strong class="alert-info">@Model.DistanciaPorta</strong> passos até ao Quentin!
     </div>
     <div class="col-md-4"> 
         <div>
