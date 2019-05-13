@@ -114,10 +114,12 @@ footer {
     font-weight: bolder;
 }
 
+/*Mouseover da tabela highscore*/
 tr:hover td{
     background-color:orangered;
 }
 
+/*De forma a que o th não "tenha" mouseover*/
 tr:hover th {
     background-color: black;
 }
@@ -129,6 +131,7 @@ tr:hover th {
     font-weight:bolder;
 }
 
+/*Estilo dos elementos do jogo*/
 .elementos{
     border-width: 5px;
     border-style: ridge;
