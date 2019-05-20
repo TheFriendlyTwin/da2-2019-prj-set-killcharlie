@@ -5,18 +5,18 @@ using System.Threading.Tasks;
 
 namespace SetepassosPRJ.Models
 {
-    public class NewGameRequest
+    public class GameRequest
     {
         public string PlayerName { get; set; }
         public string PlayerClass { get; set; }
-        public string Teamkey { get; set; }
+        public string TeamKey { get; set; }
 
     
-        public NewGameRequest(string playerName, string playerClass, string teamkey)
+        public GameRequest(string playerName, string playerClass, string teamKey)
         {
         PlayerName = playerName;
         PlayerClass = playerClass;
-        Teamkey = teamkey;
+        TeamKey = teamKey;
          }
     }
    

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using SetepassosPRJ.Models;
 
 namespace SetepassosPRJ.Controllers
@@ -16,16 +18,33 @@ namespace SetepassosPRJ.Controllers
         }
 
         [HttpPost]
-        public IActionResult NovoJogo(NovoJogo jogo)
+        public async Task<IActionResult> NovoJogo(string playerName, string playerClass, string teamKey)
         {
-            if (ModelState.IsValid)
+            HttpClient client = MyGameHTTPClient.Client;
+            string path = "/api/NewGame";
+
+            GameRequest req = new GameRequest(playerName,playerClass, teamKey);
+            string json = JsonConvert.SerializeObject(req);
+
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, path);
+            request.Content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = await client.SendAsync(request);
+
+            if (!response.IsSuccessStatusCode)
             {
-                Jogo primeiroJogo = new Jogo(jogo.Utilizador, jogo.PerfilHeroi);
-                Repositorio.AdicionarJogo(primeiroJogo);
-                return View("Jogo", primeiroJogo);
+                return Redirect("NovoJogo");
             }
-            else
-                return View();
+
+            string json_r = await response.Content.ReadAsStringAsync();
+
+            GameResponse gr = JsonConvert.DeserializeObject<GameResponse>(json_r);
+            
+            Jogo novoJogo = new Jogo(playerName, playerClass);
+            novoJogo.EstadoJogo = gr; //gr, que foi convertido para o formato Json é o nosso gameState. 2 linhas acima
+            Repositorio.AdicionarJogo(novoJogo);
+
+            return View("Jogo", gr);
         }
 
         public IActionResult HighScore()

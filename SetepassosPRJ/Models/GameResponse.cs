@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 
 namespace SetepassosPRJ.Models
 {
-    public class NewGameResponse
+    public class GameResponse
     {
         public int GameID { get; set; }
         public int RoundNumber { get; set; }
         public int Action { get; set; }
         public int Result { get; set; }
-        public bool FoundNumber { get; set; }
+        public bool FoundEnemy { get; set; }
         public bool FoundItem { get; set; }
         public bool FoundKey { get; set; }
         public bool FoundPotion { get; set; }
@@ -24,8 +24,8 @@ namespace SetepassosPRJ.Models
         public int ItemAttackEffect { get; set; }
         public int ItemLuckEffect { get; set; }
 
-        public NewGameResponse(int gameID, int roundNumber, int action, int result,
-            bool foundNumber, bool foundItem, bool foundKey, bool foundPotion, int goldFound, int enemyDamageSuffered,
+        public GameResponse(int gameID, int roundNumber, int action, int result,
+            bool foundEnemy, bool foundItem, bool foundKey, bool foundPotion, int goldFound, int enemyDamageSuffered,
             int enemyHealthPoints, int enemyAttackPoints, int enemyLuckPoints,
             int itemHealthEffect, int itemAttackEffect, int itemLuckEffect)
         {
@@ -33,7 +33,7 @@ namespace SetepassosPRJ.Models
             RoundNumber = roundNumber;
             Action = action;
             Result = result;
-            FoundNumber = foundNumber;
+            FoundEnemy = foundEnemy;
             FoundItem = foundItem;
             FoundKey = foundKey;
             FoundPotion = foundPotion;
@@ -45,7 +45,6 @@ namespace SetepassosPRJ.Models
             ItemHealthEffect = itemHealthEffect;
             ItemAttackEffect = itemAttackEffect;
             ItemLuckEffect = itemLuckEffect;
-
         }
 
             

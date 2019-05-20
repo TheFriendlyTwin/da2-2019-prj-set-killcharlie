@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SetepassosPRJ.Models
 {
-    public class Jogo:NovoJogo
+    public class Jogo : NovoJogo
     {
         public int PontosVida { get; set; }
 
@@ -28,17 +28,20 @@ namespace SetepassosPRJ.Models
 
         public int MoedasOuro { get; set; }
 
+        public GameResponse EstadoJogo { get; set; }
+
+        
         public Jogo(string utilizador, string perfilHeroi)
         {
             PerfilHeroi = perfilHeroi;
             Utilizador = utilizador;
-            if(perfilHeroi == "BlackMamba")
+            if (perfilHeroi == "S")
             {
                 PontosVida = 4;
                 PontosAtaque = 3;
                 PontosSorte = 2;
             }
-            else if(perfilHeroi == "Cottonmouth")
+            else if (perfilHeroi == "W")
             {
                 PontosVida = 3;
                 PontosAtaque = 3;
@@ -59,7 +62,7 @@ namespace SetepassosPRJ.Models
             //Apenas para a milestone 1
             Random inimigoEncontrado = new Random();
             int numeroAleatorio = inimigoEncontrado.Next(0, 2);
-            if (numeroAleatorio==0)
+            if (numeroAleatorio == 0)
             {
                 Inimigo = true;
             }
