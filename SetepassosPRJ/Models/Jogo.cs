@@ -13,12 +13,12 @@ namespace SetepassosPRJ.Models
         public int PontosAtaque { get; set; }
         public int PontosSorte { get; set; }
         public int PocoesVida { get; set; }
-        public bool Chave { get; set; }
+        //public bool Chave { get; set; } MILESTONE 1
         public int PosicaoHeroi { get; set; }
         public int DistanciaPorta { get; set; } //propriedade acrescentada, que retorna os número de passos restantes para alcançar a porta
-        public bool Inimigo { get; set; }
-        public bool PocaoEncontrada { get; set; }
-        public int MoedasOuro { get; set; }
+        //public bool Inimigo { get; set; } MILESTOE 1
+        //public bool PocaoEncontrada { get; set; } MILESTONE 1
+        //public int MoedasOuro { get; set; } MILESTONE 1
         public GameResponse EstadoJogo { get; set; }
         #endregion
 
@@ -49,43 +49,43 @@ namespace SetepassosPRJ.Models
             PocoesVida = 1;
             PosicaoHeroi = 1;
             DistanciaPorta = 7 - PosicaoHeroi;
-            MoedasOuro = 0;
+            //MoedasOuro = 0;
 
             //Apenas para a milestone 1
-            Random inimigoEncontrado = new Random();
-            int numeroAleatorio = inimigoEncontrado.Next(0, 2);
-            if (numeroAleatorio == 0)
-            {
-                Inimigo = true;
-            }
-            else
-            {
-                Inimigo = false;
-            }
+            //Random inimigoEncontrado = new Random();
+            //int numeroAleatorio = inimigoEncontrado.Next(0, 2);
+            //if (numeroAleatorio == 0)
+            //{
+            //    Inimigo = true;
+            //}
+            //else
+            //{
+            //    Inimigo = false;
+            //}
 
-            //Apenas para a milestone 1
-            Random pocaoEncontrada = new Random();
-            int num = pocaoEncontrada.Next(0, 2);
-            if (num == 0)
-            {
-                PocaoEncontrada = true;
-            }
-            else
-            {
-                PocaoEncontrada = false;
-            }
+            ////Apenas para a milestone 1
+            //Random pocaoEncontrada = new Random();
+            //int num = pocaoEncontrada.Next(0, 2);
+            //if (num == 0)
+            //{
+            //    PocaoEncontrada = true;
+            //}
+            //else
+            //{
+            //    PocaoEncontrada = false;
+            //}
 
-            //Apenas para a milestone 1
-            Random posseChave = new Random();
-            int numero = posseChave.Next(0, 2);
-            if (numero == 0)
-            {
-                Chave = true;
-            }
-            else
-            {
-                Chave = false;
-            }
+            ////Apenas para a milestone 1
+            //Random posseChave = new Random();
+            //int numero = posseChave.Next(0, 2);
+            //if (numero == 0)
+            //{
+            //    Chave = true;
+            //}
+            //else
+            //{
+            //    Chave = false;
+            //}
         }
         #endregion
     }
