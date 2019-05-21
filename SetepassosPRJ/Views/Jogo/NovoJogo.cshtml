@@ -1,4 +1,4 @@
-﻿@model SetepassosPRJ.Models.NovoJogo
+﻿@model GameRequest
 @{
     ViewData["Title"] = "Novo Jogo";
 }
@@ -7,24 +7,25 @@
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="NovoJogo" method="post">
+        @using (Html.BeginForm("NovoJogo", "Jogo"))
+        {
             <div asp-validation-summary="All"></div>
             <div class="form-group">
-                <label asp-for="Utilizador">Utilizador:</label> <br />
-                <input asp-for="Utilizador" class="form-control"/>
+                <label>Utilizador:</label>
+                <input name="playerName" value="" class="form-control" />
             </div>
             <div class="form-group">
-                <label asp-for="PerfilHeroi">Perfil</label> <br />
-                <select asp-for="PerfilHeroi" class="form-control">
-                    <option value="S">Black Mamba</option>
+                <label>Perfil de Herói:</label>
+                <select name="playerClass" class="form-control">
+                    <option value="S" selected="selected">Black Mamba</option>
                     <option value="W">Cottonmouth</option>
                     <option value="B">Gogo Yurabi</option>
-                </select> <br />
+                </select>
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-danger form-control">Iniciar Jogo</button>
             </div>
-        </form>
+        }
     </div>
 </div>
 

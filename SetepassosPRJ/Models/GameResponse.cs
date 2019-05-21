@@ -17,8 +17,8 @@ namespace SetepassosPRJ.Models
         public bool FoundKey { get; set; }
         public bool FoundPotion { get; set; }
         public int GoldFound { get; set; }
-        public int EnemyDamageSuffered { get; set; }
-        public int EnemyHealthPoints { get; set; }
+        public double EnemyDamageSuffered { get; set; }
+        public double EnemyHealthPoints { get; set; }
         public int EnemyAttackPoints { get; set; }
         public int EnemyLuckPoints { get; set; }
         public int ItemHealthEffect { get; set; }

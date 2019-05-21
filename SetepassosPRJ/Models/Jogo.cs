@@ -16,24 +16,23 @@ namespace SetepassosPRJ.Models
         //public bool Chave { get; set; } MILESTONE 1
         public int PosicaoHeroi { get; set; }
         public int DistanciaPorta { get; set; } //propriedade acrescentada, que retorna os número de passos restantes para alcançar a porta
-        //public bool Inimigo { get; set; } MILESTOE 1
+        //public bool Inimigo { get; set; } MILESTONE 1
         //public bool PocaoEncontrada { get; set; } MILESTONE 1
         //public int MoedasOuro { get; set; } MILESTONE 1
         public GameResponse EstadoJogo { get; set; }
+        public GameRequest DadosJogo { get; set; }
         #endregion
 
         #region Construtor
-        public Jogo(string utilizador, string perfilHeroi)
+        public Jogo()
         {
-            PerfilHeroi = perfilHeroi;
-            Utilizador = utilizador;
-            if (perfilHeroi == "S")
+            if (DadosJogo.PlayerClass == "S")
             {
                 PontosVida = 4;
                 PontosAtaque = 3;
                 PontosSorte = 2;
             }
-            else if (perfilHeroi == "W")
+            else if (DadosJogo.PlayerClass == "W")
             {
                 PontosVida = 3;
                 PontosAtaque = 3;
