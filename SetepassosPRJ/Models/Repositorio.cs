@@ -9,11 +9,11 @@ namespace SetepassosPRJ.Models
     public static class Repositorio
     {
         #region Listas
-        public static List<Jogo> jogos = new List<Jogo>();
+        public static List<GameApiResponse> jogos = new List<GameApiResponse>();
         #endregion
 
         #region Propriedades
-        public static List<Jogo> Jogo
+        public static List<GameApiResponse> Jogo
         {
            get
             {
@@ -24,7 +24,7 @@ namespace SetepassosPRJ.Models
 
         #region Métodos
         //Adiciona o jogo à lista de jogos
-        public static void AdicionarJogo(Jogo novoJogo)
+        public static void AdicionarJogo(GameApiResponse novoJogo)
         {
             jogos.Add(novoJogo);
         }

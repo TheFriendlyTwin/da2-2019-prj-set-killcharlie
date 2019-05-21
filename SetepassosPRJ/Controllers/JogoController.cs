@@ -18,12 +18,12 @@ namespace SetepassosPRJ.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> NovoJogo(string playerName, string playerClass, string teamKey)
+        public async Task<IActionResult> NovoJogo(string playerName, string playerClass)
         {
             HttpClient client = MyGameHTTPClient.Client;
             string path = "/api/NewGame";
 
-            GameRequest req = new GameRequest(playerName,playerClass, "757153521a8f474da578fd7ce77dfadc");
+            GameApiRequest req = new GameApiRequest(playerName,playerClass);
             string json = JsonConvert.SerializeObject(req);
 
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, path);
@@ -38,11 +38,11 @@ namespace SetepassosPRJ.Controllers
 
             string json_r = await response.Content.ReadAsStringAsync();
 
-            GameResponse gr = JsonConvert.DeserializeObject<GameResponse>(json_r);
+            GameApiResponse gr = JsonConvert.DeserializeObject<GameApiResponse>(json_r);
             
-            Jogo novoJogo = new Jogo();
-            novoJogo.EstadoJogo = gr; //gr, que foi convertido para o formato Json é o nosso gameState. 2 linhas acima
-            Repositorio.AdicionarJogo(novoJogo);
+            //Jogo novoJogo = new Jogo(playerName, playerClass);
+            //novoJogo.EstadoJogo = gr; //gr, que foi convertido para o formato Json é o nosso gameState. 2 linhas acima
+            Repositorio.AdicionarJogo(gr);
 
             return View("Jogo", gr);
         }

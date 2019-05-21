@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SetepassosPRJ.Models
 {
-    public class GameRequest
+    public class GameApiRequest
     {
         #region Propriedades
         [Required(ErrorMessage = "Por favor introduza um nome para o seu utilizador!")]
@@ -16,11 +16,11 @@ namespace SetepassosPRJ.Models
         #endregion
 
         #region Construtor
-        public GameRequest(string playerName, string playerClass, string teamKey)
+        public GameApiRequest(string playerName, string playerClass)
         {
             PlayerName = playerName;
             PlayerClass = playerClass;
-            TeamKey = teamKey;
+            TeamKey = "757153521a8f474da578fd7ce77dfadc";
         }
         #endregion
     }

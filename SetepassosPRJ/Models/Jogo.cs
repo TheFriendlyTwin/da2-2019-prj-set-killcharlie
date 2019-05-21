@@ -19,13 +19,16 @@ namespace SetepassosPRJ.Models
         //public bool Inimigo { get; set; } MILESTONE 1
         //public bool PocaoEncontrada { get; set; } MILESTONE 1
         //public int MoedasOuro { get; set; } MILESTONE 1
-        public GameResponse EstadoJogo { get; set; }
-        public GameRequest DadosJogo { get; set; }
+        public GameApiResponse EstadoJogo { get; set; }
+        public GameApiRequest DadosJogo { get; set; }
         #endregion
 
         #region Construtor
-        public Jogo()
+        public Jogo(string utilizador, string perfil)
         {
+            DadosJogo.PlayerName = utilizador;
+            DadosJogo.PlayerClass = perfil;
+
             if (DadosJogo.PlayerClass == "B")
             {
                 PontosVida = 4;
