@@ -8,29 +8,21 @@ namespace SetepassosPRJ.Models
 {
     public class Jogo : NovoJogo
     {
+        #region Propriedades
         public int PontosVida { get; set; }
-
         public int PontosAtaque { get; set; }
-
         public int PontosSorte { get; set; }
-
         public int PocoesVida { get; set; }
-
         public bool Chave { get; set; }
-
         public int PosicaoHeroi { get; set; }
-
         public int DistanciaPorta { get; set; } //propriedade acrescentada, que retorna os número de passos restantes para alcançar a porta
-
         public bool Inimigo { get; set; }
-
         public bool PocaoEncontrada { get; set; }
-
         public int MoedasOuro { get; set; }
-
         public GameResponse EstadoJogo { get; set; }
+        #endregion
 
-        
+        #region Construtor
         public Jogo(string utilizador, string perfilHeroi)
         {
             PerfilHeroi = perfilHeroi;
@@ -95,5 +87,6 @@ namespace SetepassosPRJ.Models
                 Chave = false;
             }
         }
+        #endregion
     }
 }

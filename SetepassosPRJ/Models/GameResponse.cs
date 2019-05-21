@@ -7,6 +7,7 @@ namespace SetepassosPRJ.Models
 {
     public class GameResponse
     {
+        #region Propriedades
         public int GameID { get; set; }
         public int RoundNumber { get; set; }
         public int Action { get; set; }
@@ -23,7 +24,9 @@ namespace SetepassosPRJ.Models
         public int ItemHealthEffect { get; set; }
         public int ItemAttackEffect { get; set; }
         public int ItemLuckEffect { get; set; }
+        #endregion
 
+        #region Construtor
         public GameResponse(int gameID, int roundNumber, int action, int result,
             bool foundEnemy, bool foundItem, bool foundKey, bool foundPotion, int goldFound, int enemyDamageSuffered,
             int enemyHealthPoints, int enemyAttackPoints, int enemyLuckPoints,
@@ -46,8 +49,6 @@ namespace SetepassosPRJ.Models
             ItemAttackEffect = itemAttackEffect;
             ItemLuckEffect = itemLuckEffect;
         }
-
-            
-
+        #endregion
     }
 }
