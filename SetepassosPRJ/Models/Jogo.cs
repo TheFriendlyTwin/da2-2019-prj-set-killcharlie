@@ -26,13 +26,13 @@ namespace SetepassosPRJ.Models
         #region Construtor
         public Jogo()
         {
-            if (DadosJogo.PlayerClass == "S")
+            if (DadosJogo.PlayerClass == "B")
             {
                 PontosVida = 4;
                 PontosAtaque = 3;
                 PontosSorte = 2;
             }
-            else if (DadosJogo.PlayerClass == "W")
+            else if (DadosJogo.PlayerClass == "S")
             {
                 PontosVida = 3;
                 PontosAtaque = 3;
