@@ -28,6 +28,20 @@ namespace SetepassosPRJ.Models
         {
             jogos.Add(novoJogo);
         }
+
+        //Devolve o jogo dado um certo game id
+        public static Jogo DevolverJogo(int gameID)
+        {
+            int indice = 0;
+            for(int i = 0; i < Jogo.Count; i++)
+            {
+                if(Jogo[i].ID == gameID)
+                {
+                    indice = i;
+                }
+            }
+            return Jogo[indice];
+        }
         #endregion
     }
 }

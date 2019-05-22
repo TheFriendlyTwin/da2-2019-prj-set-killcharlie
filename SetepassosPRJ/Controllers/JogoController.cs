@@ -47,6 +47,36 @@ namespace SetepassosPRJ.Controllers
             return View("Jogo", novoJogo);
         }
 
+        [HttpGet]
+        public IActionResult Jogo()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Jogo(int id, string key, PlayerAction playeraction)
+        {
+            HttpClient client = MyGameHTTPClient.Client;
+            string path = "/api/Play";
+
+            Jogo jogo = Repositorio.DevolverJogo(id); //Devolve o jogo Atual
+
+            PlayApiRequest req = new PlayApiRequest(id, key, playeraction);
+            string json = JsonConvert.SerializeObject(req);
+
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, path);
+            request.Content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = await client.SendAsync(request);
+
+            string json_r = await response.Content.ReadAsStringAsync();
+
+
+
+            return View();
+        }
+
         public IActionResult HighScore()
         {
             return View();
