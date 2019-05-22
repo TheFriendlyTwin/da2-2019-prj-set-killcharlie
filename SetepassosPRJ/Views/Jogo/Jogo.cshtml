@@ -56,24 +56,25 @@
     </div>
     <div class="col-md-4"> 
         <div>
-            @if (Model.Inimigo)
-            {
             <form asp-action="Jogo" method="post">
-                <strong class="alert-danger">Cuidado! O salto alto das anjos de Charlie é pontiagudo! Escolhe o que fazer já:</strong> <br />
-                <button type="button" class="btn btn-danger" name="4">Atacar o inimigo!</button> <br />
-                <button type="submit" class="btn btn-info" name="5">Fugir!</button> <br />
-                <button type="submit" class="btn btn-success" name="3">Beber um poção de vida</button>
+                @if (Model.Inimigo)
+                {
+                    <strong class="alert-danger">Cuidado! O salto alto das anjos de Charlie é pontiagudo! Escolhe o que fazer já:</strong> <br />
+                    <button type="button" class="btn btn-danger" name="playerAction" value="4">Atacar o inimigo!</button> <br />
+                    <button type="submit" class="btn btn-info" name="playerAction" value="5">Fugir!</button> <br />
+                    <button type="submit" class="btn btn-success" name="playerAction" value="3">Beber um poção de vida</button>
+
+                }
+                else
+                {
+                    <strong>Não há inimigos nesta área! Escolhe o que fazer:</strong> <br />
+                    <button type="submit" class="btn btn-warning" name="playerAction" value="0">Dar um passo em frente!</button> <br />
+                    <button type="submit" class="btn btn-warning" name="playerAction" value="1">Dar um passo atrás!</button> <br /> <!--Dúvida-->
+                    <button type="submit" class="btn btn-info" name="playerAction" value="2">Examinar Área</button> <br />
+                    <button type="submit" class="btn btn-success" name="playerAction" value="3">Beber um poção de vida</button>
+
+                }
             </form>
-            }
-            else
-            {
-            <form asp-action="Jogo" method="post">
-                <strong>Não há inimigos nesta área! Escolhe o que fazer:</strong> <br />
-                <button type="submit" class="btn btn-warning">Dar um passo em frente!</button> <br />
-                <button type="submit" class="btn btn-info">Examinar Área</button> <br />
-                <button type="submit" class="btn btn-success">Beber um poção de vida</button>
-            </form>
-            }
         </div>
     </div>
 </div>
