@@ -11,6 +11,8 @@ namespace SetepassosPRJ.Models
         public string Key { get; set; }
         public int Playerastion { get; set; }
 
+        public enum PlayerAction { GoForward, GoBack, SearchArea, DrinkPotion, Attack, Flee, Quit}
+
         public PlayApiRequest(int id, string key,int playeraction)
             {
                 Id = id;
