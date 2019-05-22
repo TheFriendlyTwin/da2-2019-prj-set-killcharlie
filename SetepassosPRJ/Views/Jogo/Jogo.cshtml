@@ -1,4 +1,4 @@
-﻿@model GameApiResponse;
+﻿@model SetepassosPRJ.Models.Jogo
 @{
     ViewData["Title"] = "7 Passos";
 }
@@ -8,15 +8,15 @@
 
 <div class="row">
     <div class="col-md-12 corredor">
-        @if (Model.FoundEnemy)
+        @if (Model.EstadoJogo.FoundEnemy)
         {
             <img src="~/images/minicharlieangels.png" alt="AnjosCharlie" title="Anjos de Charlie" class="inimigo" />
         }
-        @if (Model.PlayerClass == "S")
+        @if (Model.DadosJogo.PlayerClass == "S")
         {
             <img src="~/images/mediumblackmamba.png" alt="Black Mamba" title="Black Mamba" class="heroi" />
         }
-        else if (Model.PlayerClass == "W")
+        else if (Model.DadosJogo.PlayerClass == "W")
         {
             <img src="~/images/mediumcottonmouth.png" alt="Cottonmouth" title="Cottonmouth" class="heroi" />
         }
@@ -29,8 +29,8 @@
 
 <div class="row elementos">
     <div class="col-md-4">
-        <strong><u>@Model.PlayerName</u>  -  </strong>
-        <strong><u> @Model.PlayerClass</u> <br /></strong>
+        <strong><u>@Model.DadosJogo.PlayerName</u>  -  </strong>
+        <strong><u> @Model.DadosJogo.PlayerClass</u> <br /></strong>
         @*@for (int coracoes = 0; coracoes < Model.PontosVida; coracoes++)
         {
             <img src="~/images/miniheart.png" alt="PontosVida" title="Pontos de vida" />
@@ -68,7 +68,7 @@
     </div>
     <div class="col-md-4">
       
-        <br />@if (Model.FoundKey)
+        <br />@if (Model.EstadoJogo.FoundKey)
         {
             <img src="~/images/miniKey.png" alt="Chave" title="Chave!" />
         }
@@ -77,7 +77,7 @@
             @:Tens de encontrar a chave!
         }
         <br />
-        <strong>Moedas de ouro: </strong>@Model.GoldFound
+        <strong>Moedas de ouro: </strong>@Model.EstadoJogo.GoldFound
         <br />
         <strong>Posição do herói: </strong><strong class="alert-info">@Model.PosicaoHeroi</strong>
         <br />
@@ -85,7 +85,7 @@
     </div>
     <div class="col-md-4"> 
         <div>
-            @if (Model.FoundEnemy)
+            @if (Model.EstadoJogo.FoundEnemy)
             {
                 <strong class="alert-danger">Cuidado! O salto alto das anjos de Charlie é pontiagudo! Escolhe o que fazer já:</strong> <br />
                 <button type="submit" class="btn btn-danger">Atacar o inimigo!</button> <br />
