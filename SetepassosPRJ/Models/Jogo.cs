@@ -47,14 +47,13 @@ namespace SetepassosPRJ.Models
             }
 
             PocoesVida = 1;
-            PosicaoHeroi = 1;
+            PosicaoHeroi = 0;
             DistanciaPorta = 7 - PosicaoHeroi;
             MoedasOuro = 0;
         }
         #endregion
 
         #region Métodos
-
         public void AtualizarJogo(GameApiResponse resposta, string utilizador, string perfil)
         {
             ID = resposta.GameID;
@@ -63,6 +62,10 @@ namespace SetepassosPRJ.Models
             {
                 PocoesVida++;
             }
+            if(resposta.Action == PlayerAction.DrinkPotion)
+            {
+                PocoesVida--;
+            }
 
             PocaoEncontrada = resposta.FoundPotion;
             MoedasOuro += resposta.GoldFound;
@@ -70,17 +73,24 @@ namespace SetepassosPRJ.Models
             Chave = resposta.FoundKey;
             Utilizador = utilizador;
             Perfil = perfil;
-            
-            if(resposta.Action == PlayerAction.GoForward)
+
+            if (resposta.Action == PlayerAction.GoForward)
             {
                 PosicaoHeroi++;
             }
-            else if(resposta.Action == PlayerAction.GoBack)
+            else if (resposta.Action == PlayerAction.GoBack)
             {
                 PosicaoHeroi--;
             }
+
+
+            if (resposta.Action == PlayerAction.GoForward && PosicaoHeroi >= 6 || 
+                resposta.Action == PlayerAction.GoBack && PosicaoHeroi == 0 || 
+                resposta.Action ==PlayerAction.DrinkPotion && PocoesVida == 0)
+                {
+                    resposta.Result = RoundResult.InvalidAction;
+                }
         }
-        
         #endregion
     }
 }
