@@ -55,14 +55,14 @@ namespace SetepassosPRJ.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Jogo(int id, string key, PlayerAction playeraction)
+        public async Task<IActionResult> Jogo(int id, string key, PlayerAction playerAction)
         {
             HttpClient client = MyGameHTTPClient.Client;
             string path = "/api/Play";
 
             Jogo jogo = Repositorio.DevolverJogo(id); //Devolve o jogo Atual
 
-            PlayApiRequest req = new PlayApiRequest(id, key, playeraction);
+            PlayApiRequest req = new PlayApiRequest(id, key, playerAction);
             string json = JsonConvert.SerializeObject(req);
 
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, path);
@@ -72,7 +72,7 @@ namespace SetepassosPRJ.Controllers
 
             string json_r = await response.Content.ReadAsStringAsync();
 
-
+            
 
             return View();
         }
