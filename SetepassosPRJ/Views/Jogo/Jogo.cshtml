@@ -8,15 +8,15 @@
 
 <div class="row">
     <div class="col-md-12 corredor">
-        @if (Model.EstadoJogo.FoundEnemy)
+        @if (Model.Inimigo)
         {
             <img src="~/images/minicharlieangels.png" alt="AnjosCharlie" title="Anjos de Charlie" class="inimigo" />
         }
-        @if (Model.DadosJogo.PlayerClass == "S")
+        @if (Model.Perfil == "S")
         {
             <img src="~/images/mediumblackmamba.png" alt="Black Mamba" title="Black Mamba" class="heroi" />
         }
-        else if (Model.DadosJogo.PlayerClass == "W")
+        else if (Model.Perfil == "W")
         {
             <img src="~/images/mediumcottonmouth.png" alt="Cottonmouth" title="Cottonmouth" class="heroi" />
         }
@@ -29,46 +29,17 @@
 
 <div class="row elementos">
     <div class="col-md-4">
-        <strong><u>@Model.DadosJogo.PlayerName</u>  -  </strong>
-        <strong><u> @Model.DadosJogo.PlayerClass</u> <br /></strong>
-        @*@for (int coracoes = 0; coracoes < Model.PontosVida; coracoes++)
-        {
-            <img src="~/images/miniheart.png" alt="PontosVida" title="Pontos de vida" />
-        }
-        <br />
-        @if (Model.PontosVida < 2)
-        {
-            @:Estás com poucos pontos de vida! Atenção à tua cabeça! <br />
-        }
-        else
-        {
-            @:Ainda tens pontos de vida suficientes! Continua assim! <br />
-        }
-        @for (int espadas = 0; espadas < Model.PontosAtaque; espadas++)
-        {
-            <img src="~/images/minisword.png" alt="PontosAtaque" title="Pontos de ataque" />
-        }<br />
-        @for (int trevos = 0; trevos < Model.PontosSorte; trevos++)
-        {
-            <img src="~/images/minitrevo.png" alt="PontosSorte" title="Pontos de sorte" />
-        } <br />
-
-        @for (int pocoes = 0; pocoes < Model.PocoesVida; pocoes++)
+        <strong><u>@Model.Utilizador</u>  -  </strong>
+        <strong><u> @Model.Perfil</u> <br /></strong>
+        <br />@((Model.PontosVida*100)/5)% <img src="~/images/miniheart.png" alt="PontosVida" title="Pontos de vida" />
+        <br />@((Model.PontosAtaque*100)/5)% <img src="~/images/minisword.png" alt="PontosAtaque" title="Pontos de ataque" />
+        <br />@for (int pocoes = 0; pocoes < Model.PocoesVida; pocoes++)
         {
             <img src="~/images/minipotion.png" alt="Pocao" title="Poção de vida" />
         }
-        @if (Model.FoundPotion)
-        {
-            @:Acabaste de encontrar uma poção!
-        }
-        else
-        {
-            @:Nesta área não há poções!
-        }*@
     </div>
     <div class="col-md-4">
-      
-        <br />@if (Model.EstadoJogo.FoundKey)
+        @if (Model.Chave)
         {
             <img src="~/images/miniKey.png" alt="Chave" title="Chave!" />
         }
@@ -77,7 +48,7 @@
             @:Tens de encontrar a chave!
         }
         <br />
-        <strong>Moedas de ouro: </strong>@Model.EstadoJogo.GoldFound
+        <strong>Moedas de ouro: </strong>@Model.MoedasOuro
         <br />
         <strong>Posição do herói: </strong><strong class="alert-info">@Model.PosicaoHeroi</strong>
         <br />
@@ -85,7 +56,7 @@
     </div>
     <div class="col-md-4"> 
         <div>
-            @if (Model.EstadoJogo.FoundEnemy)
+            @if (Model.Inimigo)
             {
                 <strong class="alert-danger">Cuidado! O salto alto das anjos de Charlie é pontiagudo! Escolhe o que fazer já:</strong> <br />
                 <button type="submit" class="btn btn-danger">Atacar o inimigo!</button> <br />

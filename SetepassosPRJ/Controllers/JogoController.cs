@@ -41,10 +41,10 @@ namespace SetepassosPRJ.Controllers
             GameApiResponse gr = JsonConvert.DeserializeObject<GameApiResponse>(json_r);
 
             Jogo novoJogo = new Jogo(playerName, playerClass);
-            novoJogo.EstadoJogo = gr; //gr, que foi convertido para o formato Json é o nosso gameState. 2 linhas acima
+            novoJogo.AtualizarJogo(gr, playerName, playerClass);
             Repositorio.AdicionarJogo(novoJogo);
 
-            return View("Jogo", gr);
+            return View("Jogo", novoJogo);
         }
 
         public IActionResult HighScore()
