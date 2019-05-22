@@ -42,6 +42,11 @@ namespace SetepassosPRJ.Models
             }
             return Jogo[indice];
         }
+
+        public static Jogo UltimoJogo()
+        {
+            return Jogo[jogos.Count - 1];
+        }
         #endregion
     }
 }

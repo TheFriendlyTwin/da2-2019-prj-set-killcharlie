@@ -41,7 +41,7 @@ namespace SetepassosPRJ.Controllers
             GameApiResponse gr = JsonConvert.DeserializeObject<GameApiResponse>(json_r);
 
             Jogo novoJogo = new Jogo(playerName, playerClass);
-            novoJogo.AtualizarJogo(gr, playerName, playerClass);
+            novoJogo.AtualizarJogo(gr);
             Repositorio.AdicionarJogo(novoJogo);
 
             return View("Jogo", novoJogo);
@@ -52,17 +52,18 @@ namespace SetepassosPRJ.Controllers
         {
             return View();
         }
-
-
+        
         [HttpPost]
-        public async Task<IActionResult> Jogo(int id, string key, PlayerAction playerAction)
+        public async Task<IActionResult> Jogo(PlayerAction playerAction)
         {
             HttpClient client = MyGameHTTPClient.Client;
             string path = "/api/Play";
 
-            Jogo jogo = Repositorio.DevolverJogo(id); //Devolve o jogo Atual
+            //Jogo jogo = Repositorio.DevolverJogo(id); //Devolve o jogo Atual
 
-            PlayApiRequest req = new PlayApiRequest(id, key, playerAction);
+            Jogo jogo = Repositorio.UltimoJogo();
+
+            PlayApiRequest req = new PlayApiRequest(jogo.ID, playerAction);
             string json = JsonConvert.SerializeObject(req);
 
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, path);
@@ -70,11 +71,18 @@ namespace SetepassosPRJ.Controllers
 
             HttpResponseMessage response = await client.SendAsync(request);
 
+            if (!response.IsSuccessStatusCode)
+            {
+                return Redirect("/");
+            }
+
             string json_r = await response.Content.ReadAsStringAsync();
-
             
+            GameApiResponse resposta = JsonConvert.DeserializeObject<GameApiResponse>(json_r);
 
-            return View();
+            jogo.AtualizarJogo(resposta);
+
+            return View(jogo);
         }
 
         public IActionResult HighScore()

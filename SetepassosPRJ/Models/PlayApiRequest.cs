@@ -17,7 +17,7 @@ namespace SetepassosPRJ.Models
         #endregion
         
         #region Construtor
-        public PlayApiRequest(int id, string key,PlayerAction playeraction)
+        public PlayApiRequest(int id, PlayerAction playeraction)
         {
             Id = id;
             Key = "757153521a8f474da578fd7ce77dfadc";

@@ -12,9 +12,9 @@ namespace SetepassosPRJ.Models
         public int ID { get; set; }
         public string Utilizador { get; set; }
         public string Perfil { get; set; }
-        public int PontosVida { get; set; }
-        public int PontosAtaque { get; set; }
-        public int PontosSorte { get; set; }
+        public double PontosVida { get; set; }
+        public double PontosAtaque { get; set; }
+        public double PontosSorte { get; set; }
         public int PocoesVida { get; set; }
         public bool Chave { get; set; }
         public int PosicaoHeroi { get; set; }
@@ -22,11 +22,15 @@ namespace SetepassosPRJ.Models
         public bool Inimigo { get; set; }
         public bool PocaoEncontrada { get; set; }
         public int MoedasOuro { get; set; }
+        public int NumeroJogadas { get; set; } //propriedade acrescentada para contar quantas jogadas já foram efetuadas
         #endregion
 
         #region Construtor
         public Jogo(string utilizador, string perfil)
         {
+            Utilizador = utilizador;
+            Perfil = perfil;
+
             if (perfil == "B")
             {
                 PontosVida = 4;
@@ -47,14 +51,15 @@ namespace SetepassosPRJ.Models
             }
 
             PocoesVida = 1;
-            PosicaoHeroi = 0;
+            PosicaoHeroi = 0; //Temos que começar no 0 porque GameApiResponse, por default, devolve a Action 0, i.e., a action GoForward
             DistanciaPorta = 7 - PosicaoHeroi;
             MoedasOuro = 0;
+            NumeroJogadas = 7;
         }
         #endregion
 
         #region Métodos
-        public void AtualizarJogo(GameApiResponse resposta, string utilizador, string perfil)
+        public void AtualizarJogo(GameApiResponse resposta)
         {
             ID = resposta.GameID;
 
@@ -62,36 +67,49 @@ namespace SetepassosPRJ.Models
             {
                 PocoesVida++;
             }
-            if(resposta.Action == PlayerAction.DrinkPotion)
-            {
-                PocoesVida--;
-            }
-
+            
+            PontosVida -= resposta.EnemyDamageSuffered;
             PocaoEncontrada = resposta.FoundPotion;
             MoedasOuro += resposta.GoldFound;
             Inimigo = resposta.FoundEnemy;
             Chave = resposta.FoundKey;
-            Utilizador = utilizador;
-            Perfil = perfil;
+            DistanciaPorta = 7 - PosicaoHeroi;
+            NumeroJogadas = 7 - resposta.RoundNumber;
+        }
 
-            if (resposta.Action == PlayerAction.GoForward)
+        public void Jogar(GameApiResponse resposta, string perfil)
+        {
+            if (resposta.Action == PlayerAction.DrinkPotion && resposta.Result == RoundResult.Success)
+            {
+                PocoesVida--;
+                if (perfil == "B")
+                {
+                    PontosVida = 4;
+                }
+                else if (perfil == "S")
+                {
+                    PontosVida = 3;
+                }
+                else
+                {
+                    PontosVida = 3;
+                }
+            }
+            else if ((resposta.Action == PlayerAction.GoForward || resposta.Action == PlayerAction.Flee)
+                && resposta.Result == RoundResult.Success)
             {
                 PosicaoHeroi++;
             }
-            else if (resposta.Action == PlayerAction.GoBack)
+            else if (resposta.Action == PlayerAction.GoBack && resposta.Result == RoundResult.Success)
             {
                 PosicaoHeroi--;
             }
-
-
-            if (resposta.Action == PlayerAction.GoForward && PosicaoHeroi >= 6 || 
-                resposta.Action == PlayerAction.GoBack && PosicaoHeroi == 0 || 
-                resposta.Action ==PlayerAction.DrinkPotion && PocoesVida == 0)
-                {
-                    resposta.Result = RoundResult.InvalidAction;
-                }
-
+            else if(resposta.Action == PlayerAction.Attack && resposta.Result == RoundResult.NoResult)
+            {
+               PontosVida -= resposta.EnemyDamageSuffered;
+            }
         }
         #endregion
     }
 }
+
