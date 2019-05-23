@@ -65,7 +65,10 @@
                 {
                     <strong class="alert-danger">Cuidado! O salto alto das anjos de Charlie é pontiagudo!</strong> <br />
                     <button type="button" class="btn btn-danger" name="playerAction" value="4">Atacar o inimigo!</button> <br />
-                    <button type="submit" class="btn btn-info" name="playerAction" value="5">Fugir!</button> <br />
+                    if (Model.PosicaoHeroi < 7 || (Model.PosicaoHeroi == 7 && Model.Chave == true))
+                    {
+                        <button type="submit" class="btn btn-info" name="playerAction" value="5">Fugir!</button> <br />
+                    }
                     if (Model.PocoesVida > 0)
                     {
                         <button type="submit" class="btn btn-success" name="playerAction" value="3">Beber um poção de vida</button>
@@ -74,11 +77,7 @@
                 else
                 {
                     <strong>Não há inimigos nesta área! Escolhe o que fazer:</strong> <br />
-                    @if (Model.PosicaoHeroi < 7)
-                    {
-                        <button type="submit" class="btn btn-warning" name="playerAction" value="0">Dar um passo em frente!</button> <br />
-                    }
-                    @if (Model.PosicaoHeroi == 7 && Model.Chave == true)
+                    @if (Model.PosicaoHeroi < 7 || (Model.PosicaoHeroi == 7 && Model.Chave == true))
                     {
                         <button type="submit" class="btn btn-warning" name="playerAction" value="0">Dar um passo em frente!</button> <br />
                     }
