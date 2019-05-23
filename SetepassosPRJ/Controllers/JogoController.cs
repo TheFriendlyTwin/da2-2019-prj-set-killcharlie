@@ -82,7 +82,18 @@ namespace SetepassosPRJ.Controllers
 
             jogo.AtualizarJogo(resposta);
 
-            return View(jogo);
+            if (resposta.Result==RoundResult.GameHasEnded)
+            {
+                return View("GameOver");
+            }
+            else if (resposta.Result==RoundResult.SuccessVictory)
+            {
+                return View("VictoryGame");
+            }
+            else
+            {
+                return View(jogo);
+            }
         }
 
         public IActionResult HighScore()
