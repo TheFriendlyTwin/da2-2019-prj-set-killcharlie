@@ -96,18 +96,17 @@ namespace SetepassosPRJ.Models
 
         public void AtualizarPosicao(GameApiResponse resposta)
         {
-            
-                if ((resposta.Action == PlayerAction.GoForward || resposta.Action == PlayerAction.Flee)
-                && resposta.Result == RoundResult.Success)
-                {
-                    PosicaoHeroi++;
-                }
-                else if (resposta.Action == PlayerAction.GoBack && resposta.Result == RoundResult.Success)
-                {
-                    PosicaoHeroi--;
-                }
+            if ((resposta.Action == PlayerAction.GoForward || resposta.Action == PlayerAction.Flee)
+            && resposta.Result == RoundResult.Success && PosicaoHeroi <7)
+            {
+                PosicaoHeroi++;
+            }
+            else if (resposta.Action == PlayerAction.GoBack && resposta.Result == RoundResult.Success && PosicaoHeroi > 1)
+            {
+                PosicaoHeroi--;
+            }
 
-                DistanciaPorta = 7 - PosicaoHeroi;
+            DistanciaPorta = 7 - PosicaoHeroi;
             
         }
         #endregion
