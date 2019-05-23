@@ -13,8 +13,8 @@ namespace SetepassosPRJ.Models
         public string Utilizador { get; set; }
         public string Perfil { get; set; }
         public double PontosVida { get; set; }
-        public double PontosAtaque { get; set; }
-        public double PontosSorte { get; set; }
+        public int PontosAtaque { get; set; }
+        public int PontosSorte { get; set; }
         public int PocoesVida { get; set; }
         public bool Chave { get; set; }
         public int PosicaoHeroi { get; set; }
@@ -23,6 +23,10 @@ namespace SetepassosPRJ.Models
         public bool PocaoEncontrada { get; set; }
         public int MoedasOuro { get; set; }
         public int NumeroJogadas { get; set; } //propriedade acrescentada para contar quantas jogadas já foram efetuadas
+        public double PontosVidaInimigo { get; set; }
+        public int PontosSorteInimigo { get; set; }
+        public int PontosAtaqueInimigo { get; set; }
+        public bool Item { get; set; }
         #endregion
 
         #region Construtor
@@ -85,7 +89,12 @@ namespace SetepassosPRJ.Models
                 }
             }
 
-            PontosVida -= resposta.EnemyDamageSuffered;
+            Item = resposta.FoundItem;
+
+            PontosVida -= resposta.EnemyDamageSuffered; 
+            PontosVida += resposta.ItemHealthEffect; //Veneno e Mini Poção
+            PontosSorte += resposta.ItemLuckEffect; // Amuleto
+            PontosAtaque += resposta.ItemAttackEffect; // Arma
             PocaoEncontrada = resposta.FoundPotion;
             MoedasOuro += resposta.GoldFound;
             Inimigo = resposta.FoundEnemy;

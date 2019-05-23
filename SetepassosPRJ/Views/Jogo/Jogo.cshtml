@@ -31,13 +31,32 @@
     <div class="col-md-4">
         <strong><u>@Model.Utilizador</u>  -  </strong>
         <strong><u> @Model.Perfil</u> <br /></strong>
-        <br />@((Model.PontosVida*100)/5)% <img src="~/images/miniheart.png" alt="PontosVida" title="Pontos de vida" />
-        <br />@((Model.PontosAtaque*100)/5)% <img src="~/images/minisword.png" alt="PontosAtaque" title="Pontos de ataque" />
-        <br />@((Model.PontosSorte*100)/5)% <img src="~/images/minitrevo.png" alt="PontosSorte" title="Pontos de sorte" />
+        <br />@((Model.PontosVida * 100) / 5)% <img src="~/images/miniheart.png" alt="PontosVida" title="Pontos de vida" />
         <br />@for (int pocoes = 0; pocoes < Model.PocoesVida; pocoes++)
+
         {
             <img src="~/images/minipotion.png" alt="Pocao" title="Poção de vida" />
         }
+
+        <br />@for (int sorte = 0; sorte < Model.PontosSorte; sorte++)
+
+        {
+            <img src="~/images/minitrevo.png" alt="Sorte" title="Sorte" />
+        }
+
+        <br />@for (int ataque = 0; ataque < Model.PontosAtaque; ataque++)
+
+        {
+            <img src="~/images/minisword.png" alt="Ataque" title="Ataque" />
+        }
+
+       <br /> @if (Model.Item)
+        {
+            @:Item Surpresa
+        }
+       
+
+
     </div>
     <div class="col-md-4">
         @if (Model.Chave)
@@ -52,7 +71,17 @@
         Faltam apenas <strong class="alert-info">@Model.DistanciaPorta</strong> passos até ao Quentin!
         <br />
         Efetuaste @Model.NumeroJogadas jogadas!
-    </div>
+
+        <br />@if (Model.Inimigo)
+        {
+        <br />@: Pontos de Vida do Inimigo: @Model.PontosVidaInimigo
+        <br /> @: Pontos de Sorte do Inimigo: @Model.PontosSorteInimigo
+        <br /> @: Pontos de Ataque do Inimigo: @Model.PontosAtaqueInimigo
+
+       }
+
+
+        </div>
     <div class="col-md-4"> 
         <div>
             <form asp-action="Jogo" method="post">
