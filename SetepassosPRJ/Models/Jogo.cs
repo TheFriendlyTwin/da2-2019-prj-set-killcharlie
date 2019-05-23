@@ -89,7 +89,7 @@ namespace SetepassosPRJ.Models
             MoedasOuro += resposta.GoldFound;
             Inimigo = resposta.FoundEnemy;
             Chave = resposta.FoundKey;
-            NumeroJogadas = 7 - resposta.RoundNumber;
+            NumeroJogadas = resposta.RoundNumber;
 
             AtualizarPosicao(resposta);
         }

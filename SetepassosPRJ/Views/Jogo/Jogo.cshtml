@@ -44,10 +44,6 @@
         {
             <img src="~/images/miniKey.png" alt="Chave" title="Chave!" />
         }
-        else
-        {
-            @:Tens de encontrar a chave!
-        }
         <br />
         <strong>Moedas de ouro: </strong>@Model.MoedasOuro
         <br />
@@ -55,7 +51,7 @@
         <br />
         Faltam apenas <strong class="alert-info">@Model.DistanciaPorta</strong> passos até ao Quentin!
         <br />
-        Restam-te @Model.NumeroJogadas jogadas!
+        Efetuaste @Model.NumeroJogadas jogadas!
     </div>
     <div class="col-md-4"> 
         <div>
@@ -64,7 +60,7 @@
                 @if (Model.Inimigo)
                 {
                     <strong class="alert-danger">Cuidado! O salto alto das anjos de Charlie é pontiagudo!</strong> <br />
-                    <button type="button" class="btn btn-danger" name="playerAction" value="4">Atacar o inimigo!</button> <br />
+                    <button type="submit" class="btn btn-danger" name="playerAction" value="4">Atacar o inimigo!</button> <br />
                     if (Model.PosicaoHeroi < 7 || (Model.PosicaoHeroi == 7 && Model.Chave == true))
                     {
                         <button type="submit" class="btn btn-info" name="playerAction" value="5">Fugir!</button> <br />
