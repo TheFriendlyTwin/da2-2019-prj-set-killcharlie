@@ -27,6 +27,13 @@ namespace SetepassosPRJ.Models
         public int PontosSorteInimigo { get; set; }
         public int PontosAtaqueInimigo { get; set; }
         public bool Item { get; set; }
+        public int Score { get; set; }
+        public int NrInimigosVencidos { get; set; }
+        public int NrItensEncontrados { get; set; }
+        public int NrRecuos { get; set; }
+        public int NrAtaques { get; set; }
+        public int NrPocoesUsadas { get; set; }
+
         #endregion
 
         #region Construtor
@@ -75,6 +82,8 @@ namespace SetepassosPRJ.Models
             if (resposta.Action == PlayerAction.DrinkPotion && resposta.Result == RoundResult.Success)
             {
                 PocoesVida--;
+                NrPocoesUsadas++;
+
                 if (Perfil == "B")
                 {
                     PontosVida = 4;
@@ -100,8 +109,12 @@ namespace SetepassosPRJ.Models
             Inimigo = resposta.FoundEnemy;
             Chave = resposta.FoundKey; //DUVIDA
             NumeroJogadas = resposta.RoundNumber;
-
+            NrInimigosVencidos = InimigosVencidos(resposta);
+            NrItensEncontrados = ItensEncontrados(resposta);
+            NrRecuos = Recuos(resposta);
+            NrAtaques = Ataques(resposta);
             AtualizarPosicao(resposta);
+            Score = ScoreJogo(resposta);
         }
 
         //Método que atualiza a posição do herói
@@ -119,6 +132,68 @@ namespace SetepassosPRJ.Models
 
             DistanciaPorta = 7 - PosicaoHeroi;
         }
+
+
+        public int InimigosVencidos (GameApiResponse resposta)
+        {
+            int inimigosvencidos = 0;
+            if (resposta.Action == PlayerAction.Attack && resposta.Result == RoundResult.Success)
+                inimigosvencidos++;
+            return inimigosvencidos;
+        }
+
+        public int ItensEncontrados(GameApiResponse resposta)
+        {
+            int itensencontrados = 0;
+            if (resposta.FoundItem)
+                itensencontrados++;
+            return itensencontrados;
+        }
+
+        public int Recuos(GameApiResponse resposta)
+        {
+            int recuos = 0;
+            if (resposta.Action == PlayerAction.GoBack)
+                recuos++;
+            return recuos;
+        }
+
+        public int Ataques(GameApiResponse resposta)
+        {
+            int ataques = 0;
+            if (resposta.Action == PlayerAction.Attack)
+               ataques++;
+            return ataques;
+        }
+
+        public int ScoreJogo(GameApiResponse resposta)
+        
+        {
+            int moedas = MoedasOuro;
+            if (resposta.Result == RoundResult.SuccessVictory)
+            {
+                moedas += 3000 + 1000;
+            }
+            if (PontosVida < 0.5)
+             {
+                moedas += 999;
+            }
+            if (NrRecuos == 0)
+            {
+                moedas += 400;
+            }
+            if (NrAtaques == 0)
+            {
+                moedas += 800;
+            }
+
+            moedas += PocoesVida * 750;
+            moedas += NrInimigosVencidos * 300;
+            moedas += NrItensEncontrados * 100;
+            return moedas;
+
+        }
+        
         #endregion
     }
 }

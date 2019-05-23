@@ -1,0 +1,47 @@
+﻿@model SetepassosPRJ.Models.Jogo
+@{
+    ViewData["Title"] = "Score";
+}
+
+<table>
+    <tr>
+        <th> Nome do Jogador</th>
+        <th>Chave</th>
+        <th>Nrº Inimigos Derrotados</th>
+        <th>Nrº Fugas do Inimigo</th>
+        <th>Nrº Investigações na área</th>
+        <th>Nrº Itens Encontrados</th>
+        <th>Nrº Poções Usadas/Totais</th>
+        <th>Nrº de Recuos</th>
+        <th>Nrº de Ataques</th>
+        <th>Pontos de vida</th>
+        <th>Pontuação</th>
+        <th>Resultado Final</th>
+    </tr>
+    <tr>
+        <td>@Model.Utilizador</td>
+        <td>@Model.Chave</td>
+        <td>@Model.NrInimigosVencidos</td>
+        <td>NR FUGAS</td>
+        <td>NR INVESTIGAÇOES</td>
+        <td>@Model.NrItensEncontrados</td>
+        <td>@Model.NrPocoesUsadas/@Model.PocoesVida</td>
+        <td>@Model.NrRecuos</td>
+        <td>@Model.NrAtaques</td>
+        <td> 
+            @if (Model.PontosVida < 0.5)
+        { @:999;
+        }
+        else
+        {
+            @: 0 
+        }
+        </td>
+        <td>@Model.Score </td>
+        <td>
+      RESULTADO VENCEUOUNÃO
+        </td>
+    </tr>
+
+</table>
+

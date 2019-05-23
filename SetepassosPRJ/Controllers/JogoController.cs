@@ -100,5 +100,13 @@ namespace SetepassosPRJ.Controllers
         {
             return View();
         }
+
+        public IActionResult Score()
+        {
+            Jogo jogo = Repositorio.UltimoJogo();
+            return View(jogo);
+        }
+
+
     }
 }
