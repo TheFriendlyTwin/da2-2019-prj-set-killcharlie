@@ -62,31 +62,20 @@ namespace SetepassosPRJ.Models
         public void AtualizarJogo(GameApiResponse resposta)
         {
             ID = resposta.GameID;
+            AtualizarPosicao(resposta);
 
             if (resposta.FoundPotion)
             {
                 PocoesVida++;
             }
-            
-            PontosVida -= resposta.EnemyDamageSuffered;
-            PocaoEncontrada = resposta.FoundPotion;
-            MoedasOuro += resposta.GoldFound;
-            Inimigo = resposta.FoundEnemy;
-            Chave = resposta.FoundKey;
-            DistanciaPorta = 7 - PosicaoHeroi;
-            NumeroJogadas = 7 - resposta.RoundNumber;
-        }
-
-        public void Jogar(GameApiResponse resposta, string perfil)
-        {
             if (resposta.Action == PlayerAction.DrinkPotion && resposta.Result == RoundResult.Success)
             {
                 PocoesVida--;
-                if (perfil == "B")
+                if (Perfil == "B")
                 {
                     PontosVida = 4;
                 }
-                else if (perfil == "S")
+                else if (Perfil == "S")
                 {
                     PontosVida = 3;
                 }
@@ -95,7 +84,18 @@ namespace SetepassosPRJ.Models
                     PontosVida = 3;
                 }
             }
-            else if ((resposta.Action == PlayerAction.GoForward || resposta.Action == PlayerAction.Flee)
+
+            PontosVida -= resposta.EnemyDamageSuffered;
+            PocaoEncontrada = resposta.FoundPotion;
+            MoedasOuro += resposta.GoldFound;
+            Inimigo = resposta.FoundEnemy;
+            Chave = resposta.FoundKey;
+            NumeroJogadas = 7 - resposta.RoundNumber;
+        }
+
+        public void AtualizarPosicao(GameApiResponse resposta)
+        {
+            if ((resposta.Action == PlayerAction.GoForward || resposta.Action == PlayerAction.Flee)
                 && resposta.Result == RoundResult.Success)
             {
                 PosicaoHeroi++;
@@ -104,10 +104,8 @@ namespace SetepassosPRJ.Models
             {
                 PosicaoHeroi--;
             }
-            else if(resposta.Action == PlayerAction.Attack && resposta.Result == RoundResult.NoResult)
-            {
-               PontosVida -= resposta.EnemyDamageSuffered;
-            }
+
+            DistanciaPorta = 7 - PosicaoHeroi;
         }
         #endregion
     }

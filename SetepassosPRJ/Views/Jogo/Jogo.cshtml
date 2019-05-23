@@ -33,6 +33,7 @@
         <strong><u> @Model.Perfil</u> <br /></strong>
         <br />@((Model.PontosVida*100)/5)% <img src="~/images/miniheart.png" alt="PontosVida" title="Pontos de vida" />
         <br />@((Model.PontosAtaque*100)/5)% <img src="~/images/minisword.png" alt="PontosAtaque" title="Pontos de ataque" />
+        <br />@((Model.PontosSorte*100)/5)% <img src="~/images/minitrevo.png" alt="PontosSorte" title="Pontos de sorte" />
         <br />@for (int pocoes = 0; pocoes < Model.PocoesVida; pocoes++)
         {
             <img src="~/images/minipotion.png" alt="Pocao" title="Poção de vida" />
