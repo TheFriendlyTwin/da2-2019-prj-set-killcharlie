@@ -59,6 +59,7 @@ namespace SetepassosPRJ.Models
         #endregion
 
         #region Métodos
+        //Método que atualiza o dados do jogo
         public void AtualizarJogo(GameApiResponse resposta)
         {
             ID = resposta.GameID;
@@ -88,12 +89,13 @@ namespace SetepassosPRJ.Models
             PocaoEncontrada = resposta.FoundPotion;
             MoedasOuro += resposta.GoldFound;
             Inimigo = resposta.FoundEnemy;
-            Chave = resposta.FoundKey;
+            Chave = resposta.FoundKey; //DUVIDA
             NumeroJogadas = resposta.RoundNumber;
 
             AtualizarPosicao(resposta);
         }
 
+        //Método que atualiza a posição do herói
         public void AtualizarPosicao(GameApiResponse resposta)
         {
             if ((resposta.Action == PlayerAction.GoForward || resposta.Action == PlayerAction.Flee)
@@ -107,7 +109,6 @@ namespace SetepassosPRJ.Models
             }
 
             DistanciaPorta = 7 - PosicaoHeroi;
-            
         }
         #endregion
     }
