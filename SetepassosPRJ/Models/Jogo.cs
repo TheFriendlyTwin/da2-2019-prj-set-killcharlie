@@ -100,8 +100,14 @@ namespace SetepassosPRJ.Models
 
             Item = resposta.FoundItem;
 
-            PontosVida -= resposta.EnemyDamageSuffered; 
-            PontosVida += resposta.ItemHealthEffect; //Veneno e Mini Poção
+
+            if (PontosVida > 0)
+            {
+                PontosVida -= resposta.EnemyDamageSuffered;
+                PontosVida += resposta.ItemHealthEffect;
+            }
+            
+            
             PontosSorte += resposta.ItemLuckEffect; // Amuleto
             PontosAtaque += resposta.ItemAttackEffect; // Arma
             PocaoEncontrada = resposta.FoundPotion;
