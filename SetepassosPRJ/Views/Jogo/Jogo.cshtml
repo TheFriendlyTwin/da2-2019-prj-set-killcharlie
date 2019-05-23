@@ -78,6 +78,10 @@
                     {
                         <button type="submit" class="btn btn-warning" name="playerAction" value="0">Dar um passo em frente!</button> <br />
                     }
+                    @if (Model.PosicaoHeroi == 7 && Model.Chave == true)
+                    {
+                        <button type="submit" class="btn btn-warning" name="playerAction" value="0">Dar um passo em frente!</button> <br />
+                    }
                     @if (Model.PosicaoHeroi > 1)
                     {
                         <button type="submit" class="btn btn-warning" name="playerAction" value="1">Dar um passo atrás!</button> <br />

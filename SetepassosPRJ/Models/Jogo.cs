@@ -62,8 +62,7 @@ namespace SetepassosPRJ.Models
         public void AtualizarJogo(GameApiResponse resposta)
         {
             ID = resposta.GameID;
-            AtualizarPosicao(resposta);
-
+            
             if (resposta.FoundPotion)
             {
                 PocoesVida++;
@@ -91,6 +90,8 @@ namespace SetepassosPRJ.Models
             Inimigo = resposta.FoundEnemy;
             Chave = resposta.FoundKey;
             NumeroJogadas = 7 - resposta.RoundNumber;
+
+            AtualizarPosicao(resposta);
         }
 
         public void AtualizarPosicao(GameApiResponse resposta)
