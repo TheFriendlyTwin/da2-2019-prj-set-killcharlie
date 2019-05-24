@@ -65,7 +65,7 @@ namespace SetepassosPRJ.Models
             PosicaoHeroi = 0; //Temos que começar no 0 porque GameApiResponse, por default, devolve a Action 0, i.e., a action GoForward
             DistanciaPorta = 7 - PosicaoHeroi;
             MoedasOuro = 0;
-            NumeroJogadas = 7;
+            NumeroJogadas = 0;
         }
         #endregion
 
@@ -100,19 +100,28 @@ namespace SetepassosPRJ.Models
 
             Item = resposta.FoundItem;
 
-
-            if (PontosVida > 0)
+            if (resposta.RoundNumber > 7 && PontosVida > 0)
             {
-                PontosVida -= resposta.EnemyDamageSuffered;
-                PontosVida += resposta.ItemHealthEffect;
+                PontosVida -= 0.5;
             }
-            
+            if (PontosVida > 0 && PontosVida < 5)
+            {
+                PontosVida -= resposta.EnemyDamageSuffered; //Dano causado pelo inimigo
+                PontosVida += resposta.ItemHealthEffect; //Mini poção ou veneno
+            }
+            if(PontosVida < 0)
+            {
+                PontosVida = 0;
+            }
             
             PontosSorte += resposta.ItemLuckEffect; // Amuleto
             PontosAtaque += resposta.ItemAttackEffect; // Arma
             PocaoEncontrada = resposta.FoundPotion;
             MoedasOuro += resposta.GoldFound;
             Inimigo = resposta.FoundEnemy;
+            PontosVidaInimigo = resposta.EnemyHealthPoints;
+            PontosSorteInimigo = resposta.EnemyLuckPoints;
+            PontosAtaqueInimigo = resposta.EnemyAttackPoints;
             Chave = resposta.FoundKey; //DUVIDA
             NumeroJogadas = resposta.RoundNumber;
             NrInimigosVencidos = InimigosVencidos(resposta);
@@ -139,7 +148,7 @@ namespace SetepassosPRJ.Models
             DistanciaPorta = 7 - PosicaoHeroi;
         }
 
-
+        //Conta quantos inimigos foram vencidos
         public int InimigosVencidos (GameApiResponse resposta)
         {
             int inimigosvencidos = 0;
@@ -148,6 +157,7 @@ namespace SetepassosPRJ.Models
             return inimigosvencidos;
         }
 
+        //Conta quantos intens foram encontrados
         public int ItensEncontrados(GameApiResponse resposta)
         {
             int itensencontrados = 0;
@@ -156,6 +166,7 @@ namespace SetepassosPRJ.Models
             return itensencontrados;
         }
 
+        //Conta quantos vezes o herói recuou
         public int Recuos(GameApiResponse resposta)
         {
             int recuos = 0;
@@ -164,6 +175,7 @@ namespace SetepassosPRJ.Models
             return recuos;
         }
 
+        //Conta quantas vezes o herói atacou
         public int Ataques(GameApiResponse resposta)
         {
             int ataques = 0;
@@ -172,6 +184,7 @@ namespace SetepassosPRJ.Models
             return ataques;
         }
 
+        //Calcula o Score do herói
         public int ScoreJogo(GameApiResponse resposta)
         
         {
@@ -197,9 +210,7 @@ namespace SetepassosPRJ.Models
             moedas += NrInimigosVencidos * 300;
             moedas += NrItensEncontrados * 100;
             return moedas;
-
         }
-        
         #endregion
     }
 }

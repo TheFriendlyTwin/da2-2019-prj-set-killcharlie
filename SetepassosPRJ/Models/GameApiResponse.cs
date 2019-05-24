@@ -24,7 +24,6 @@ namespace SetepassosPRJ.Models
         public int ItemHealthEffect { get; set; }
         public int ItemAttackEffect { get; set; }
         public int ItemLuckEffect { get; set; }
-
         #endregion
     }
 }
