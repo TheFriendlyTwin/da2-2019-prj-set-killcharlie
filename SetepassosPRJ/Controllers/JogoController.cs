@@ -100,6 +100,7 @@ namespace SetepassosPRJ.Controllers
         {
             List<Jogo> jogos = Repositorio.Jogos;
             jogos.Sort();
+            jogos.Reverse();
             return View(jogos);
         }
 
@@ -108,7 +109,5 @@ namespace SetepassosPRJ.Controllers
             Jogo jogo = Repositorio.UltimoJogo();
             return View(jogo);
         }
-
-
     }
 }

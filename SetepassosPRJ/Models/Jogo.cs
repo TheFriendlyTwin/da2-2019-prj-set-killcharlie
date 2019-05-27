@@ -40,7 +40,6 @@ namespace SetepassosPRJ.Models
         public int NrRecuos { get; set; }
         public int NrAtaques { get; set; }
         public int NrPocoesUsadas { get; set; }
-
         #endregion
 
         #region Construtor
@@ -134,8 +133,8 @@ namespace SetepassosPRJ.Models
             NumeroJogadas = resposta.RoundNumber;
             InimigosVencidos(resposta);
             ItensEncontrados(resposta);
-           Recuos(resposta);
-           Ataques(resposta);
+            Recuos(resposta);
+            Ataques(resposta);
             AtualizarPosicao(resposta);
             Score = ScoreJogo(resposta);
         }
@@ -166,28 +165,22 @@ namespace SetepassosPRJ.Models
         //Conta quantos intens foram encontrados
         public void ItensEncontrados(GameApiResponse resposta)
         {
-            
             if (resposta.FoundItem)
                 NrItensEncontrados++;
-           
         }
 
         //Conta quantos vezes o herói recuou
         public void Recuos(GameApiResponse resposta)
         {
-            
             if (resposta.Action == PlayerAction.GoBack)
-                NrRecuos++;
-           
+                NrRecuos++; 
         }
 
         //Conta quantas vezes o herói atacou
         public void Ataques(GameApiResponse resposta)
         {
-            
             if (resposta.Action == PlayerAction.Attack)
-               NrAtaques++;
-            
+               NrAtaques++; 
         }
 
         //Calcula o Score do herói
@@ -217,8 +210,6 @@ namespace SetepassosPRJ.Models
             moedas += NrItensEncontrados * 100;
             return moedas;
         }
-
-        
         #endregion
     }
 }
