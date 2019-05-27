@@ -6,8 +6,15 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SetepassosPRJ.Models
 {
-    public class Jogo
+    public class Jogo:IComparable
+       
     {
+        public int CompareTo(object obj)
+        {
+            Jogo j = (Jogo)obj;
+            return Score.CompareTo(j.Score);
+        }
+
         #region Propriedades
         public int ID { get; set; }
         public string Utilizador { get; set; }
@@ -152,7 +159,7 @@ namespace SetepassosPRJ.Models
         //Conta quantos inimigos foram vencidos
         public void InimigosVencidos (GameApiResponse resposta)
         {
-   if (resposta.Action == PlayerAction.Attack && resposta.Result == RoundResult.Success)
+            if (resposta.Action == PlayerAction.Attack && resposta.Result == RoundResult.Success)
                 NrInimigosVencidos++;
         }
 
@@ -210,6 +217,8 @@ namespace SetepassosPRJ.Models
             moedas += NrItensEncontrados * 100;
             return moedas;
         }
+
+        
         #endregion
     }
 }

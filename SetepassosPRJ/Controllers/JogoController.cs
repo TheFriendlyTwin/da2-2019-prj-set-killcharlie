@@ -98,7 +98,9 @@ namespace SetepassosPRJ.Controllers
 
         public IActionResult HighScore()
         {
-            return View();
+            List<Jogo> jogos = Repositorio.Jogos;
+            jogos.Sort();
+            return View(jogos);
         }
 
         public IActionResult Score()

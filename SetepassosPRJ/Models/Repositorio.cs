@@ -13,7 +13,7 @@ namespace SetepassosPRJ.Models
         #endregion
 
         #region Propriedades
-        public static List<Jogo> Jogo
+        public static List<Jogo> Jogos
         {
            get
             {
@@ -33,19 +33,19 @@ namespace SetepassosPRJ.Models
         public static Jogo DevolverJogo(int gameID)
         {
             int indice = 0;
-            for(int i = 0; i < Jogo.Count; i++)
+            for(int i = 0; i < Jogos.Count; i++)
             {
-                if(Jogo[i].ID == gameID)
+                if(Jogos[i].ID == gameID)
                 {
                     indice = i;
                 }
             }
-            return Jogo[indice];
+            return Jogos[indice];
         }
 
         public static Jogo UltimoJogo()
         {
-            return Jogo[jogos.Count - 1];
+            return Jogos[jogos.Count - 1];
         }
         #endregion
     }
