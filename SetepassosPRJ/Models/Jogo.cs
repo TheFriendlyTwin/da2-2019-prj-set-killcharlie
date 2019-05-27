@@ -69,6 +69,7 @@ namespace SetepassosPRJ.Models
         }
         #endregion
 
+        
         #region Métodos
         //Método que atualiza o dados do jogo
         public void AtualizarJogo(GameApiResponse resposta)
@@ -124,10 +125,10 @@ namespace SetepassosPRJ.Models
             PontosAtaqueInimigo = resposta.EnemyAttackPoints;
             Chave = resposta.FoundKey; //DUVIDA
             NumeroJogadas = resposta.RoundNumber;
-            NrInimigosVencidos = InimigosVencidos(resposta);
-            NrItensEncontrados = ItensEncontrados(resposta);
-            NrRecuos = Recuos(resposta);
-            NrAtaques = Ataques(resposta);
+            InimigosVencidos(resposta);
+            ItensEncontrados(resposta);
+           Recuos(resposta);
+           Ataques(resposta);
             AtualizarPosicao(resposta);
             Score = ScoreJogo(resposta);
         }
@@ -149,39 +150,37 @@ namespace SetepassosPRJ.Models
         }
 
         //Conta quantos inimigos foram vencidos
-        public int InimigosVencidos (GameApiResponse resposta)
+        public void InimigosVencidos (GameApiResponse resposta)
         {
-            int inimigosvencidos = 0;
-            if (resposta.Action == PlayerAction.Attack && resposta.Result == RoundResult.Success)
-                inimigosvencidos++;
-            return inimigosvencidos;
+   if (resposta.Action == PlayerAction.Attack && resposta.Result == RoundResult.Success)
+                NrInimigosVencidos++;
         }
 
         //Conta quantos intens foram encontrados
-        public int ItensEncontrados(GameApiResponse resposta)
+        public void ItensEncontrados(GameApiResponse resposta)
         {
-            int itensencontrados = 0;
+            
             if (resposta.FoundItem)
-                itensencontrados++;
-            return itensencontrados;
+                NrItensEncontrados++;
+           
         }
 
         //Conta quantos vezes o herói recuou
-        public int Recuos(GameApiResponse resposta)
+        public void Recuos(GameApiResponse resposta)
         {
-            int recuos = 0;
+            
             if (resposta.Action == PlayerAction.GoBack)
-                recuos++;
-            return recuos;
+                NrRecuos++;
+           
         }
 
         //Conta quantas vezes o herói atacou
-        public int Ataques(GameApiResponse resposta)
+        public void Ataques(GameApiResponse resposta)
         {
-            int ataques = 0;
+            
             if (resposta.Action == PlayerAction.Attack)
-               ataques++;
-            return ataques;
+               NrAtaques++;
+            
         }
 
         //Calcula o Score do herói
