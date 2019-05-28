@@ -21,12 +21,12 @@ namespace SetepassosPRJ.Models
         #endregion
 
         #region Métodos
-        public void AtualizarPropriedades(Jogo jogo, GameApiResponse resposta)
+        public HighScore(Jogo jogo)
         {
             Nome = jogo.Utilizador;
             Score = jogo.Score;
-            ResultadoFinal = resposta.Result;
-            //Chave
+            ResultadoFinal = jogo.Resultado;
+            Chave = jogo.Chave; //MAL
             InimigosVencidos = jogo.NrInimigosVencidos;
             FugasInimigos = jogo.NrFugasInimigo;
             InvestigacoesArea = jogo.NrExaminacoesArea;

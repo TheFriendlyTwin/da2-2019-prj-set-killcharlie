@@ -20,19 +20,19 @@
             <th>Nrº Itens Encontrados</th>
             <th>Nrº Poções Usadas/Totais</th>
         </tr>
-        @for (int elemento = 0; elemento < 10; elemento++)
+        @foreach (SetepassosPRJ.Models.Jogo jogo in Model)
         {
             <tr>
-                <td>@elemento+1º</td>
-                <td>@Model[elemento].Utilizador</td>
-                <td>@Model[elemento].Score</td>
+                <td>@(Model.IndexOf(jogo)+1)º</td>
+                <td>@jogo.Utilizador</td>
+                <td>@jogo.Score</td>
+                <td>@jogo.Resultado</td>
                 <td>DUVIDA!</td>
-                <td>DUVIDA!</td>
-                <td>@Model[elemento].NrInimigosVencidos</td>
-                <td>POR FAZER!</td>
-                <td>POR FAZER</td>
-                <td>@Model[elemento].NrItensEncontrados</td>
-                <td>@Model[elemento].NrPocoesUsadas/@Model[elemento].PocoesVida</td>
+                <td>@jogo.NrInimigosVencidos</td>
+                <td>@jogo.NrFugasInimigo</td>
+                <td>@jogo.NrExaminacoesArea</td>
+                <td>@jogo.NrItensEncontrados</td>
+                <td>@jogo.NrPocoesUsadas/@jogo.PocoesVida</td>
             </tr>
         }
     </table>

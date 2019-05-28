@@ -54,14 +54,13 @@ namespace SetepassosPRJ.Controllers
         }
         
         [HttpPost]
-        public async Task<IActionResult> Jogo(PlayerAction playerAction)
+        public async Task<IActionResult> Jogo(PlayerAction playerAction, int id)
         {
             HttpClient client = MyGameHTTPClient.Client;
             string path = "/api/Play";
 
-            //Jogo jogo = Repositorio.DevolverJogo(id); //Devolve o jogo Atual
-
-            Jogo jogo = Repositorio.UltimoJogo();
+            Jogo jogo = Repositorio.DevolverJogo(id); //Devolve o jogo Atual
+            
 
             PlayApiRequest req = new PlayApiRequest(jogo.ID, playerAction);
             string json = JsonConvert.SerializeObject(req);
@@ -78,21 +77,24 @@ namespace SetepassosPRJ.Controllers
 
             string json_r = await response.Content.ReadAsStringAsync();
             
-            GameApiResponse resposta = JsonConvert.DeserializeObject<GameApiResponse>(json_r);
-
-            jogo.AtualizarJogo(resposta);
-
-            if (resposta.Result==RoundResult.GameHasEnded)
+            if(playerAction != PlayerAction.Quit)
             {
-                return View("GameOver");
-            }
-            else if (resposta.Result==RoundResult.SuccessVictory)
-            {
-                return View("VictoryGame");
+                GameApiResponse resposta = JsonConvert.DeserializeObject<GameApiResponse>(json_r);
+
+                jogo.AtualizarJogo(resposta);
+
+                if (resposta.Result == RoundResult.GameHasEnded || resposta.Result == RoundResult.SuccessVictory)
+                {
+                    return View("Score", jogo);
+                }
+                else
+                {
+                    return View(jogo);
+                }
             }
             else
             {
-                return View(jogo);
+                return View("Score", jogo);
             }
         }
 
@@ -101,13 +103,8 @@ namespace SetepassosPRJ.Controllers
             List<Jogo> jogos = Repositorio.Jogos;
             jogos.Sort();
             jogos.Reverse();
-            return View(jogos);
-        }
 
-        public IActionResult Score()
-        {
-            Jogo jogo = Repositorio.UltimoJogo();
-            return View(jogo);
+             return View(jogos);
         }
     }
 }

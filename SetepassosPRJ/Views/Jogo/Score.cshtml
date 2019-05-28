@@ -3,45 +3,86 @@
     ViewData["Title"] = "Score";
 }
 
-<table>
-    <tr>
-        <th> Nome do Jogador</th>
-        <th>Chave</th>
-        <th>Nrº Inimigos Derrotados</th>
-        <th>Nrº Fugas do Inimigo</th>
-        <th>Nrº Investigações na área</th>
-        <th>Nrº Itens Encontrados</th>
-        <th>Nrº Poções Usadas/Totais</th>
-        <th>Nrº de Recuos</th>
-        <th>Nrº de Ataques</th>
-        <th>Pontos de vida</th>
-        <th>Pontuação</th>
-        <th>Resultado Final</th>
-    </tr>
-    <tr>
-        <td>@Model.Utilizador</td>
-        <td>@Model.Chave</td>
-        <td>@Model.NrInimigosVencidos</td>
-        <td>NR FUGAS</td>
-        <td>NR INVESTIGAÇOES</td>
-        <td>@Model.NrItensEncontrados</td>
-        <td>@Model.NrPocoesUsadas/@Model.PocoesVida</td>
-        <td>@Model.NrRecuos</td>
-        <td>@Model.NrAtaques</td>
-        <td> 
-            @if (Model.PontosVida < 0.5)
-        { @:999
+<div class="row">
+    <div class="col-md-6">
+        <table class="table table-bordered table-hover table-condensed" id="HighScore">
+            <tr>
+                <th> Nome do Jogador</th>
+                <td>@Model.Utilizador</td>
+            </tr>
+            <tr>
+                <th>Chave</th>
+                <td>@if (@Model.Chave)
+                {
+                    @:Encontrada
+                }
+                else
+                {
+                    @:Não encontrada
+                }</td>
+            </tr>
+            <tr>
+                <th>Nrº Inimigos Derrotados</th>
+                <td>@Model.NrInimigosVencidos</td>
+            </tr>
+            <tr>
+                <th>Nrº Fugas do Inimigo</th>
+                <td>@Model.NrFugasInimigo</td>
+            </tr>
+            <tr>
+                <th>Nrº Investigações na área</th>
+                <td>@Model.NrExaminacoesArea</td>
+            </tr>
+            <tr>
+                <th>Nrº Itens Encontrados</th>
+                <td>@Model.NrItensEncontrados</td>
+            </tr>
+            <tr>
+                <th>Nrº Poções Usadas/Totais</th>
+                <td>@Model.NrPocoesUsadas/@Model.PocoesVida</td>
+            </tr>
+            <tr>
+                <th>Nrº de Recuos</th>
+                <td>@Model.NrRecuos</td>
+            </tr>
+            <tr>
+                <th>Nrº de Ataques</th>
+                <td>@Model.NrAtaques</td>
+            </tr>
+            <tr>
+                <th>Pontos de vida</th>
+                <td>@Model.PontosVida</td>
+            </tr>
+            <tr>
+                <th>Resultado Final</th>
+                <td>@if (Model.Resultado == RoundResult.SuccessVictory)
+                {
+                    @:Vitória
+                }
+                else
+                {
+                    @:Derrota
+                }
+                </td>
+            </tr>
+            <tr>
+                <th>Score</th>
+                <td>@Model.Score</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-6">
+        @if (Model.Resultado == RoundResult.GameHasEnded)
+        {
+            <img src="~/images/Game Over.gif" />
+        }
+        else if (Model.Resultado == RoundResult.SuccessVictory)
+        {
+            <img src="~/images/TarantinoCartoon.png" />
         }
         else
         {
-            @: 0 
+            <img src="~/images/chicken.gif" />
         }
-        </td>
-        <td>@Model.Score </td>
-        <td>
-      RESULTADO VENCEUOUNÃO
-        </td>
-    </tr>
-
-</table>
-
+    </div>
+</div>

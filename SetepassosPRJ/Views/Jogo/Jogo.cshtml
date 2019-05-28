@@ -45,7 +45,7 @@
                 }
             </u>
         </strong><br />
-        <br />@((Model.PontosVida * 100) / 5)% <img src="~/images/miniheart.png" alt="PontosVida" title="Pontos de vida" />
+        <br />@Model.PontosVida <img src="~/images/miniheart.png" alt="PontosVida" title="Pontos de vida" />
         <br />@for (int sorte = 0; sorte < Model.PontosSorte; sorte++)
 
                 {
@@ -88,6 +88,7 @@
     <div class="col-md-4"> 
         <div>
             <form asp-action="Jogo" method="post">
+                <input value="@Model.ID" name="id" hidden/>
                 <button type="submit" class="btn btn-default" name="playerAction" value="6">Desistir</button> <br />
                 @if (Model.Inimigo)
                 {
