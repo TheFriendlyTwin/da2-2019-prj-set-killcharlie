@@ -28,8 +28,8 @@ namespace SetepassosPRJ.Models
             ResultadoFinal = resposta.Result;
             //Chave
             InimigosVencidos = jogo.NrInimigosVencidos;
-            //Fugas Inimigos
-            //Investigacoes na area
+            FugasInimigos = jogo.NrFugasInimigo;
+            InvestigacoesArea = jogo.NrExaminacoesArea;
             IntensEcontrados = jogo.NrItensEncontrados;
             PocoesUsadas = jogo.NrPocoesUsadas;
             PocoesTotal = jogo.PocoesVida;

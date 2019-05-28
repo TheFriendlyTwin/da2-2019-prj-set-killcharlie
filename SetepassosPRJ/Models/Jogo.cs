@@ -35,11 +35,13 @@ namespace SetepassosPRJ.Models
         public int PontosAtaqueInimigo { get; set; }
         public bool Item { get; set; }
         public int Score { get; set; }
-        public int NrInimigosVencidos { get; set; }
+        public int NrInimigosVencidos { get; set; } 
         public int NrItensEncontrados { get; set; }
         public int NrRecuos { get; set; }
         public int NrAtaques { get; set; }
         public int NrPocoesUsadas { get; set; }
+        public int NrFugasInimigo { get; set; }
+        public int NrExaminacoesArea { get; set; }
         #endregion
 
         #region Construtor
@@ -81,7 +83,36 @@ namespace SetepassosPRJ.Models
         public void AtualizarJogo(GameApiResponse resposta)
         {
             ID = resposta.GameID;
+
+            AtualizarPocoes(resposta);
+
+            Item = resposta.FoundItem;
+
+            AtualizarPontosVida(resposta);
             
+            PontosSorte += resposta.ItemLuckEffect; // Amuleto
+            PontosAtaque += resposta.ItemAttackEffect; // Arma
+            PocaoEncontrada = resposta.FoundPotion;
+            MoedasOuro += resposta.GoldFound;
+            Inimigo = resposta.FoundEnemy;
+            PontosVidaInimigo = resposta.EnemyHealthPoints;
+            PontosSorteInimigo = resposta.EnemyLuckPoints;
+            PontosAtaqueInimigo = resposta.EnemyAttackPoints;
+            Chave = resposta.FoundKey; //DUVIDA
+            NumeroJogadas = resposta.RoundNumber;
+            AtualizarPosicao(resposta);
+            InimigosVencidos(resposta);
+            ItensEncontrados(resposta);
+            Recuos(resposta);
+            Ataques(resposta);
+            FugasInimigo(resposta);
+            ExaminarArea(resposta);
+            Score = ScoreJogo(resposta);
+        }
+
+        //Atualiza o número de poções e os pontos de vida quando se bebe poções
+        public void AtualizarPocoes(GameApiResponse resposta)
+        {
             if (resposta.FoundPotion)
             {
                 PocoesVida++;
@@ -104,9 +135,11 @@ namespace SetepassosPRJ.Models
                     PontosVida = 3;
                 }
             }
+        }
 
-            Item = resposta.FoundItem;
-
+        //Atualiza os pontos de vida do herói
+        public void AtualizarPontosVida(GameApiResponse resposta)
+        {
             if (resposta.RoundNumber > 7 && PontosVida > 0)
             {
                 PontosVida -= 0.5;
@@ -116,27 +149,10 @@ namespace SetepassosPRJ.Models
                 PontosVida -= resposta.EnemyDamageSuffered; //Dano causado pelo inimigo
                 PontosVida += resposta.ItemHealthEffect; //Mini poção ou veneno
             }
-            if(PontosVida < 0)
+            if (PontosVida < 0)
             {
                 PontosVida = 0;
             }
-            
-            PontosSorte += resposta.ItemLuckEffect; // Amuleto
-            PontosAtaque += resposta.ItemAttackEffect; // Arma
-            PocaoEncontrada = resposta.FoundPotion;
-            MoedasOuro += resposta.GoldFound;
-            Inimigo = resposta.FoundEnemy;
-            PontosVidaInimigo = resposta.EnemyHealthPoints;
-            PontosSorteInimigo = resposta.EnemyLuckPoints;
-            PontosAtaqueInimigo = resposta.EnemyAttackPoints;
-            Chave = resposta.FoundKey; //DUVIDA
-            NumeroJogadas = resposta.RoundNumber;
-            InimigosVencidos(resposta);
-            ItensEncontrados(resposta);
-            Recuos(resposta);
-            Ataques(resposta);
-            AtualizarPosicao(resposta);
-            Score = ScoreJogo(resposta);
         }
 
         //Método que atualiza a posição do herói
@@ -209,6 +225,24 @@ namespace SetepassosPRJ.Models
             moedas += NrInimigosVencidos * 300;
             moedas += NrItensEncontrados * 100;
             return moedas;
+        }
+
+        //Calcula o número de fugas do inimigo
+        public void FugasInimigo(GameApiResponse resposta)
+        {
+            if (resposta.Action==PlayerAction.Flee && resposta.Result==RoundResult.Success)
+            {
+                NrFugasInimigo++;
+            }
+        }
+
+        //Calcula o número de fugas do inimigo
+        public void ExaminarArea(GameApiResponse resposta)
+        {
+            if (resposta.Action == PlayerAction.SearchArea && resposta.Result == RoundResult.Success)
+            {
+                NrExaminacoesArea++;
+            }
         }
         #endregion
     }
