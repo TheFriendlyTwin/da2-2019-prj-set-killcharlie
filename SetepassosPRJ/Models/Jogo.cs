@@ -43,6 +43,10 @@ namespace SetepassosPRJ.Models
         public int NrPocoesUsadas { get; set; }
         public int NrFugasInimigo { get; set; }
         public int NrExaminacoesArea { get; set; }
+        public bool Veneno { get; set; }
+        public bool Arma { get; set; }
+        public bool MiniPocao { get; set; }
+        public bool Amuleto { get; set; }
         public RoundResult Resultado { get; set; } //Acrescentei esta propriedade para sabermos qual o resultado final
         #endregion
 
@@ -96,6 +100,7 @@ namespace SetepassosPRJ.Models
             PontosVidaInimigo = resposta.EnemyHealthPoints;
             PontosSorteInimigo = resposta.EnemyLuckPoints;
             PontosAtaqueInimigo = resposta.EnemyAttackPoints;
+            ItemSurpresa(resposta);
             Chave = resposta.FoundKey; //DUVIDA
             NumeroJogadas = resposta.RoundNumber;
             AtualizarPosicao(resposta);
@@ -250,6 +255,27 @@ namespace SetepassosPRJ.Models
             moedas += NrInimigosVencidos * 300;
             moedas += NrItensEncontrados * 100;
             return moedas;
+        }
+
+        //Método que retorna o item surpresa
+        public void ItemSurpresa(GameApiResponse resposta)
+        {
+            if (resposta.ItemHealthEffect==-2)
+            {
+                Veneno = true;
+            }
+            else if (resposta.ItemAttackEffect==1)
+            {
+                Arma = true;
+            }
+            else if (resposta.ItemLuckEffect==2)
+            {
+                Amuleto = true;
+            }
+            else if (resposta.ItemHealthEffect==1)
+            {
+                MiniPocao = true;
+            }
         }
         #endregion
     }
