@@ -91,8 +91,8 @@ namespace SetepassosPRJ.Models
             ID = resposta.GameID;
             AtualizarPocoes(resposta);
             AtualizarPontosVida(resposta);
-            PontosSorte += resposta.ItemLuckEffect; // Amuleto
-            PontosAtaque += resposta.ItemAttackEffect; // Arma
+            AtualizarPontosSorte(resposta);
+            AtualizarPontosAtaque(resposta);
             Item = resposta.FoundItem;
             PocaoEncontrada = resposta.FoundPotion;
             MoedasOuro += resposta.GoldFound;
@@ -159,6 +159,26 @@ namespace SetepassosPRJ.Models
             else if(PontosVida > 5)
             {
                 PontosVida = 5;
+            }
+        }
+
+        //Atualiza os pontos de sorte do herói
+        public void AtualizarPontosSorte(GameApiResponse resposta)
+        {
+            PontosSorte += resposta.ItemLuckEffect; // Amuleto
+            if(PontosSorte > 5)
+            {
+                PontosSorte = 5;
+            }
+        }
+
+        //Atualiza os pontos de ataque do herói
+        public void AtualizarPontosAtaque(GameApiResponse resposta)
+        {
+            PontosAtaque += resposta.ItemAttackEffect; // Arma
+            if(PontosAtaque > 5)
+            {
+                PontosAtaque = 5;
             }
         }
 
