@@ -59,9 +59,20 @@
                     <img src="~/images/minipotion.png" alt="Pocao" title="Poção de vida" />
                 }
         <br /> @if (Model.Item)
-                {
-                    @:Item Surpresa: 
-                }
+        {
+            if (Model.Veneno)
+            {
+                <img src="~/images/miniveneno.png" alt="Veneno" title="Veneno"/>
+            }
+            else if (Model.Arma)
+            {<img src="~/images/miniarma.png" alt="Arma" title="Arma" />}
+            else if (Model.Amuleto)
+            { <img src="~/images/miniamuleto.png" alt="Amuleto" title="Amuleto" />}
+            else if (Model.MiniPocao)
+            {
+                <<img src="~/images/minipocao.png" alt="MiniPocai" title="Mini Poção" />
+            }
+        }
     </div>
     <div class="col-md-4">
         @if (Model.Chave)
