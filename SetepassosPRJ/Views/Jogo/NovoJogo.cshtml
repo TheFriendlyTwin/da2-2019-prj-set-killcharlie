@@ -6,19 +6,87 @@
 <h1>Regista-te e joga!</h1>
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-10">
         @using (Html.BeginForm("NovoJogo", "Jogo"))
         {
             <div asp-validation-summary="All"></div>
             <div class="form-group">
-                <label>Utilizador:</label>
+                <label>Nome de utilizador:</label>
                 <input name="playerName" value="" class="form-control" />
             </div>
             <div class="form-group">
                 <label>Perfil de Herói:</label>
-                <input name="playerClass" type="radio" value="B" data-toggle="collapse" data-target="#collapseOne" /> Black Mamba
-                <input name="playerClass" type="radio" value="S" data-toggle="collapse" data-target="#collapseOne" checked /> Cottonmouth
-                <input name="playerClass" type="radio" value="W" data-toggle="collapse" data-target="#collapseOne" checked /> Gogo Yurabi
+                <input name="playerClass" type="radio" value="B" data-toggle="collapse" data-target="#blackMamba" checked /> Black Mamba
+                <input name="playerClass" type="radio" value="S" data-toggle="collapse" data-target="#cottonmouth" /> Cottonmouth
+                <input name="playerClass" type="radio" value="W" data-toggle="collapse" data-target="#gogoYurabi" /> Gogo Yurabi
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="collapse" id="blackMamba">
+                            <img src="~/images/miniblackmamba.png" />
+                            <ul>
+                                <li>
+                                    <img src="~/images/miniheart.png" class="text-left">
+                                    <img src="~/images/miniheart.png" class="text-left">
+                                    <img src="~/images/miniheart.png" class="text-left">
+                                    <img src="~/images/miniheart.png" class="text-left">
+                                </li>
+                                <li>
+                                    <img src="~/images/minisword.png" class="text-left">
+                                    <img src="~/images/minisword.png" class="text-left">
+                                    <img src="~/images/minisword.png" class="text-left">
+                                </li>
+                                <li>
+                                    <img src="~/images/minitrevo.png" class="text-left">
+                                    <img src="~/images/minitrevo.png" class="text-left">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="collapse" id="cottonmouth">
+                            <img src="~/images/minicottonmouth.png" />
+                            <ul>
+                                <li>
+                                    <img src="~/images/miniheart.png" class="text-left">
+                                    <img src="~/images/miniheart.png" class="text-left">
+                                    <img src="~/images/miniheart.png" class="text-left">
+                                </li>
+                                <li>
+                                    <img src="~/images/minisword.png" class="text-left">
+                                    <img src="~/images/minisword.png" class="text-left">
+                                    <img src="~/images/minisword.png" class="text-left">
+                                </li>
+                                <li>
+                                    <img src="~/images/minitrevo.png" class="text-left">
+                                    <img src="~/images/minitrevo.png" class="text-left">
+                                    <img src="~/images/minitrevo.png" class="text-left">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="collapse" id="gogoYurabi">
+                            <img src="~/images/minigogo.png" />
+                            <ul>
+                                <li>
+                                    <img src="~/images/miniheart.png" class="text-left">
+                                    <img src="~/images/miniheart.png" class="text-left">
+                                    <img src="~/images/miniheart.png" class="text-left">
+                                </li>
+                                <li>
+                                    <img src="~/images/minisword.png" class="text-left">
+                                    <img src="~/images/minisword.png" class="text-left">
+                                </li>
+                                <li>
+                                    <img src="~/images/minitrevo.png" class="text-left">
+                                    <img src="~/images/minitrevo.png" class="text-left">
+                                    <img src="~/images/minitrevo.png" class="text-left">
+                                    <img src="~/images/minitrevo.png" class="text-left">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-danger form-control">Iniciar Jogo</button>
