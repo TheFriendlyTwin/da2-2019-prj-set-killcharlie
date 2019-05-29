@@ -146,6 +146,7 @@ namespace SetepassosPRJ.Models
         //Atualiza os pontos de vida do herói
         public void AtualizarPontosVida(GameApiResponse resposta)
         {
+            //JUNTAR AS VARIÁVEIS NrAvancos, NrRecuos e NrFugasInimgigo numa só variável denominada NrPassos
             if (NrAtaques > 7 || NrAvancos > 7 || NrExaminacoesArea > 7 || NrPocoesUsadas > 7 || NrRecuos > 7 || NrFugasInimigo > 7)
             {
                 PontosVida -= 0.5;
