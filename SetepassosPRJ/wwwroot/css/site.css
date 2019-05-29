@@ -158,7 +158,7 @@ tr:hover th {
 .corredor {
     background-image: url("../images/Corredor.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
+    /*background-size:cover;*/
 }
 
 .regras {

@@ -24,10 +24,11 @@ namespace SetepassosPRJ.Models
         public int PontosSorte { get; set; }
         public int PocoesVida { get; set; }
         public bool Chave { get; set; }
+        public bool PosseChave { get; set; }
         public int PosicaoHeroi { get; set; }
         public int DistanciaPorta { get; set; } //propriedade acrescentada, que retorna os número de passos restantes para alcançar a porta
         public bool Inimigo { get; set; }
-        public bool PocaoEncontrada { get; set; }
+        public int PocoesTotais { get; set; }
         public int MoedasOuro { get; set; }
         public int NumeroJogadas { get; set; } //propriedade acrescentada para contar quantas jogadas já foram efetuadas
         public double PontosVidaInimigo { get; set; }
@@ -76,6 +77,7 @@ namespace SetepassosPRJ.Models
             }
 
             PocoesVida = 1;
+            PocoesTotais = PocoesVida;
             PosicaoHeroi = 0; //Temos que começar no 0 porque GameApiResponse, por default, devolve a Action 0, i.e., a action GoForward
             DistanciaPorta = 7 - PosicaoHeroi;
             MoedasOuro = 0;
@@ -94,14 +96,13 @@ namespace SetepassosPRJ.Models
             AtualizarPontosSorte(resposta);
             AtualizarPontosAtaque(resposta);
             Item = resposta.FoundItem;
-            PocaoEncontrada = resposta.FoundPotion;
             MoedasOuro += resposta.GoldFound;
             Inimigo = resposta.FoundEnemy;
             PontosVidaInimigo = resposta.EnemyHealthPoints;
             PontosSorteInimigo = resposta.EnemyLuckPoints;
             PontosAtaqueInimigo = resposta.EnemyAttackPoints;
             ItemSurpresa(resposta);
-            Chave = resposta.FoundKey; //DUVIDA
+            ChaveGuardada(resposta);
             NumeroJogadas = resposta.RoundNumber;
             AtualizarPosicao(resposta);
             InimigosVencidos(resposta);
@@ -120,6 +121,7 @@ namespace SetepassosPRJ.Models
             if (resposta.FoundPotion)
             {
                 PocoesVida++;
+                PocoesTotais++;
             }
             if (resposta.Action == PlayerAction.DrinkPotion && resposta.Result == RoundResult.Success)
             {
@@ -212,6 +214,14 @@ namespace SetepassosPRJ.Models
                 NrItensEncontrados++;
         }
 
+        public void ChaveGuardada(GameApiResponse resposta)
+        {
+            Chave = resposta.FoundKey; 
+            if (Chave)
+            {
+                PosseChave = true;
+            }
+        }
         //Conta quantos vezes o herói avançou
         public void Avancos(GameApiResponse resposta)
         {

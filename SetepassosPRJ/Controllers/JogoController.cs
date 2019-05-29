@@ -61,7 +61,6 @@ namespace SetepassosPRJ.Controllers
 
             Jogo jogo = Repositorio.DevolverJogo(id); //Devolve o jogo Atual
             
-
             PlayApiRequest req = new PlayApiRequest(jogo.ID, playerAction);
             string json = JsonConvert.SerializeObject(req);
 

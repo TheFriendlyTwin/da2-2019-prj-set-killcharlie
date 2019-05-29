@@ -12,7 +12,7 @@
             </tr>
             <tr>
                 <th>Chave</th>
-                <td>@if (@Model.Chave)
+                <td>@if (Model.PosseChave)
                 {
                     @:Encontrada
                 }
@@ -39,7 +39,7 @@
             </tr>
             <tr>
                 <th>Nrº Poções Usadas/Totais</th>
-                <td>@Model.NrPocoesUsadas/@Model.PocoesVida</td>
+                <td>@Model.NrPocoesUsadas/@Model.PocoesTotais</td>
             </tr>
             <tr>
                 <th>Nrº de Recuos</th>

@@ -13,15 +13,15 @@
         }
         @if (Model.Perfil == "S")
         {
-            <img src="~/images/mediumblackmamba.png" alt="Black Mamba" title="Black Mamba" class="heroi" />
+            <img src="~/images/mediumcottonmouth.png" alt="Cottonmouth" title="Cottonmouth" class="heroi" />
         }
         else if (Model.Perfil == "W")
         {
-            <img src="~/images/mediumcottonmouth.png" alt="Cottonmouth" title="Cottonmouth" class="heroi" />
+            <img src="~/images/mediumgogoyarubi.png" alt="Gogo Yurabi" title="Gogo Yurabi" class="heroi" />
         }
         else
         {
-            <img src="~/images/mediumgogoyarubi.png" alt="GogoYurabi" title="Gogo Yurabi" class="heroi" />
+            <img src="~/images/mediumblackmamba.png" alt="Black Mamba" title="Black Mamba" class="heroi" />
         }
     </div>
 </div>
@@ -32,15 +32,15 @@
             <u>
                 @if (Model.Perfil == "S")
                 {
-                    @:Black Mamba
+                    @:Cottonmouth
                 }
                 else if (Model.Perfil == "W")
                 {
-                    @:Cottonmouth
+                    @:Gogo Yurabi
                 }
                 else
                 {
-                    @:Gogo Yurabi
+                    @:Black Mamba
                 }
             </u>
         </strong><br />
@@ -79,7 +79,7 @@
         }
     </div>
     <div class="col-md-4">
-        @if (Model.Chave)
+        @if (Model.PosseChave)
         {
             <img src="~/images/miniKey.png" alt="Chave" title="Chave!" />
         }
@@ -108,7 +108,7 @@
                 {
                     <strong class="alert-danger">Cuidado! O salto alto das anjos de Charlie é pontiagudo!</strong> <br />
                     <button type="submit" class="btn btn-danger" name="playerAction" value="4">Atacar o inimigo!</button> <br />
-                    if (Model.PosicaoHeroi < 7 || (Model.PosicaoHeroi == 7 && Model.Chave == true))
+                    if (Model.PosicaoHeroi < 7 || (Model.PosicaoHeroi == 7 && Model.PosseChave == true))
                     {
                         <button type="submit" class="btn btn-info" name="playerAction" value="5">Fugir!</button> <br />
                     }
@@ -120,7 +120,7 @@
                 else
                 {
                     <strong>Não há inimigos nesta área! Escolhe o que fazer:</strong> <br />
-                    @if (Model.PosicaoHeroi < 7 || (Model.PosicaoHeroi == 7 && Model.Chave == true))
+                    @if (Model.PosicaoHeroi < 7 || (Model.PosicaoHeroi == 7 && Model.PosseChave == true))
                     {
                         <button type="submit" class="btn btn-warning" name="playerAction" value="0">Dar um passo em frente!</button> <br />
                     }
