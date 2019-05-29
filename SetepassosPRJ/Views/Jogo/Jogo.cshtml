@@ -71,7 +71,7 @@
             else if (Model.Amuleto)
             {
                 @:Amuleto Encontrado! <img src="~/images/miniamuleto.png" alt="Amuleto" title="Amuleto" />
-        }
+            }
             else if (Model.MiniPocao)
             {
                 @: Mini-Poção Encontrada! <img src="~/images/minipocao.png" alt="MiniPocai" title="Mini Poção" />
@@ -102,7 +102,7 @@
     <div class="col-md-4"> 
         <div>
             <form asp-action="Jogo" method="post">
-                <input value="@Model.ID" name="id" hidden/>
+                <input value="@Model.ID" name="id" hidden />
                 <button type="submit" class="btn btn-default" name="playerAction" value="6">Desistir</button> <br />
                 @if (Model.Inimigo)
                 {

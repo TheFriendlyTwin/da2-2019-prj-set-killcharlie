@@ -40,15 +40,17 @@ namespace SetepassosPRJ.Models
         public int NrItensEncontrados { get; set; }
         public int NrAvancos { get; set; }
         public int NrRecuos { get; set; }
+        public int NrFugasInimigo { get; set; }
+        public int NrPassos { get; set; }
         public int NrAtaques { get; set; }
         public int NrPocoesUsadas { get; set; }
-        public int NrFugasInimigo { get; set; }
         public int NrExaminacoesArea { get; set; }
         public bool Veneno { get; set; }
         public bool Arma { get; set; }
         public bool MiniPocao { get; set; }
         public bool Amuleto { get; set; }
         public RoundResult Resultado { get; set; } //Acrescentei esta propriedade para sabermos qual o resultado final
+        public PlayerAction Acao { get; set; }
         #endregion
 
         #region Construtor
@@ -91,10 +93,6 @@ namespace SetepassosPRJ.Models
         public void AtualizarJogo(GameApiResponse resposta)
         {
             ID = resposta.GameID;
-            AtualizarPocoes(resposta);
-            AtualizarPontosVida(resposta);
-            AtualizarPontosSorte(resposta);
-            AtualizarPontosAtaque(resposta);
             Item = resposta.FoundItem;
             MoedasOuro += resposta.GoldFound;
             Inimigo = resposta.FoundEnemy;
@@ -108,10 +106,16 @@ namespace SetepassosPRJ.Models
             InimigosVencidos(resposta);
             ItensEncontrados(resposta);
             Recuos(resposta);
-            Ataques(resposta);
             FugasInimigo(resposta);
+            NrPassos += NrRecuos + NrAvancos + NrFugasInimigo;
+            Ataques(resposta);
             ExaminarArea(resposta);
             Resultado = resposta.Result; //NOVO
+            Acao = resposta.Action; //NOVO - de forma a que o botão Examinar Área não apareça numa posição em que já foi examinada
+            AtualizarPontosVida(resposta);
+            AtualizarPocoes(resposta);
+            AtualizarPontosSorte(resposta);
+            AtualizarPontosAtaque(resposta);
             Score = ScoreJogo(resposta);
         }
 
@@ -146,8 +150,7 @@ namespace SetepassosPRJ.Models
         //Atualiza os pontos de vida do herói
         public void AtualizarPontosVida(GameApiResponse resposta)
         {
-            //JUNTAR AS VARIÁVEIS NrAvancos, NrRecuos e NrFugasInimgigo numa só variável denominada NrPassos
-            if (NrAtaques > 7 || NrAvancos > 7 || NrExaminacoesArea > 7 || NrPocoesUsadas > 7 || NrRecuos > 7 || NrFugasInimigo > 7)
+            if (NrAtaques > 7 || NrPassos > 7 || NrExaminacoesArea > 7 || NrPocoesUsadas > 7)
             {
                 PontosVida -= 0.5;
             }
@@ -197,7 +200,6 @@ namespace SetepassosPRJ.Models
             {
                 PosicaoHeroi--;
             }
-
             DistanciaPorta = 7 - PosicaoHeroi;
         }
 
@@ -294,18 +296,30 @@ namespace SetepassosPRJ.Models
             if (resposta.ItemHealthEffect==-2)
             {
                 Veneno = true;
+                MiniPocao = false;
             }
-            else if (resposta.ItemAttackEffect==1)
+            else if (resposta.ItemHealthEffect == 1)
+            {
+                MiniPocao = true;
+                Veneno = false;
+            }
+
+            if (resposta.ItemAttackEffect==1)
             {
                 Arma = true;
             }
-            else if (resposta.ItemLuckEffect==2)
+            else
+            {
+                Arma = false;
+            }
+
+            if (resposta.ItemLuckEffect==2)
             {
                 Amuleto = true;
             }
-            else if (resposta.ItemHealthEffect==1)
+            else
             {
-                MiniPocao = true;
+                Amuleto = false;
             }
         }
         #endregion
