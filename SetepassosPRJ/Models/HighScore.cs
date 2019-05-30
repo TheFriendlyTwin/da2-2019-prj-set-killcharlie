@@ -26,7 +26,7 @@ namespace SetepassosPRJ.Models
             Nome = jogo.Utilizador;
             Score = jogo.Score;
             ResultadoFinal = jogo.Resultado;
-            Chave = jogo.Chave; //MAL
+            Chave = jogo.PosseChave; //MAL
             InimigosVencidos = jogo.NrInimigosVencidos;
             FugasInimigos = jogo.NrFugasInimigo;
             InvestigacoesArea = jogo.NrExaminacoesArea;

@@ -10,8 +10,6 @@ namespace SetepassosPRJ.Models
     {
         #region Listas
         public static List<Jogo> jogos = new List<Jogo>();
-
-        public static List<HighScore> scores = new List<HighScore>();
         #endregion
 
         #region Propriedades
@@ -20,14 +18,6 @@ namespace SetepassosPRJ.Models
             get
             {
                 return jogos;
-            }
-        }
-
-        public static List<HighScore> Scores
-        {
-            get
-            {
-                return scores;
             }
         }
         #endregion
@@ -53,10 +43,20 @@ namespace SetepassosPRJ.Models
             return Jogos[indice];
         }
 
-        public static void AdicionarScore(Jogo jogo)
+        //Adiciona os 10 melhores elementos da lista de jogos na lista de scores
+        public static List<HighScore> ListaScores(List<Jogo> jogos)
         {
-            HighScore score = new HighScore(jogo);
-            scores.Add(score);
+            List<HighScore> scores = new List<HighScore>();
+            for(int i = 0; i < jogos.Count; i++)
+            {
+                if (scores.Count < 10)
+                {
+                    HighScore score = new HighScore(jogos[i]);
+                    scores.Add(score);
+                }
+                break;
+            }
+            return scores;
         }
         #endregion
     }

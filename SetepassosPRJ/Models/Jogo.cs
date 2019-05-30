@@ -270,20 +270,19 @@ namespace SetepassosPRJ.Models
             if (resposta.Result == RoundResult.SuccessVictory)
             {
                 moedas += 3000 + 1000;
+                if (PontosVida < 0.5)
+                {
+                    moedas += 999;
+                }
+                if (NrRecuos == 0)
+                {
+                    moedas += 400;
+                }
+                if (NrAtaques == 0)
+                {
+                    moedas += 800;
+                }
             }
-            if (PontosVida < 0.5)
-             {
-                moedas += 999;
-            }
-            if (NrRecuos == 0)
-            {
-                moedas += 400;
-            }
-            if (NrAtaques == 0)
-            {
-                moedas += 800;
-            }
-
             moedas += PocoesVida * 750;
             moedas += NrInimigosVencidos * 300;
             moedas += NrItensEncontrados * 100;

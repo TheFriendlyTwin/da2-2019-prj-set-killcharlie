@@ -23,6 +23,9 @@
         {
             <img src="~/images/mediumblackmamba.png" alt="Black Mamba" title="Black Mamba" class="heroi" />
         }
+            <div class="collapse" id="boom">
+                <img src="~/images/boom.png" />
+            </div>
     </div>
 </div>
 <div class="row elementos">
@@ -107,7 +110,7 @@
                 @if (Model.Inimigo)
                 {
                     <strong class="alert-danger">Cuidado! O salto alto das anjos de Charlie é pontiagudo!</strong> <br />
-                    <button type="submit" class="btn btn-danger" name="playerAction" value="4">Atacar o inimigo!</button> <br />
+                    <button type="submit" class="btn btn-danger" name="playerAction" value="4" data-toggle="collapse" data-target="#boom">Atacar o inimigo!</button> <br />
                     if (Model.PosicaoHeroi < 7 || (Model.PosicaoHeroi == 7 && Model.PosseChave == true))
                     {
                         <button type="submit" class="btn btn-info" name="playerAction" value="5">Fugir!</button> <br />

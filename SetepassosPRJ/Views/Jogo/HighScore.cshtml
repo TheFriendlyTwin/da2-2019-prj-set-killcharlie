@@ -1,4 +1,4 @@
-﻿@model List<SetepassosPRJ.Models.Jogo>
+﻿@model List<SetepassosPRJ.Models.HighScore>
 @{
     ViewData["Title"] = "High Score";
 }
@@ -20,14 +20,14 @@
             <th>Nrº Itens Encontrados</th>
             <th>Nrº Poções Usadas/Totais</th>
         </tr>
-        @foreach (SetepassosPRJ.Models.Jogo jogo in Model)
+        @foreach (SetepassosPRJ.Models.HighScore score in Model)
         {
             <tr>
-                <td>@(Model.IndexOf(jogo)+1)º</td>
-                <td>@jogo.Utilizador</td>
-                <td>@jogo.Score</td>
+                <td>@(Model.IndexOf(score)+1)º</td>
+                <td>@score.Nome</td>
+                <td>@score.Score</td>
                 <td>
-                    @if (jogo.Resultado == RoundResult.SuccessVictory)
+                    @if (score.ResultadoFinal == RoundResult.SuccessVictory)
                     {
                         @:Vitória
                     }
@@ -37,7 +37,7 @@
                     }
                 </td>
                 <td>
-                    @if (jogo.PosseChave)
+                    @if (score.Chave)
                     {
                         @:Encontrada
                     }
@@ -46,11 +46,11 @@
                         @:Não encontrada
                     }
                  </td>
-                <td>@jogo.NrInimigosVencidos</td>
-                <td>@jogo.NrFugasInimigo</td>
-                <td>@jogo.NrExaminacoesArea</td>
-                <td>@jogo.NrItensEncontrados</td>
-                <td>@jogo.NrPocoesUsadas/@jogo.PocoesTotais</td>
+                <td>@score.InimigosVencidos</td>
+                <td>@score.FugasInimigos</td>
+                <td>@score.InvestigacoesArea</td>
+                <td>@score.IntensEcontrados</td>
+                <td>@score.PocoesUsadas/@score.PocoesTotal</td>
             </tr>
         }
     </table>

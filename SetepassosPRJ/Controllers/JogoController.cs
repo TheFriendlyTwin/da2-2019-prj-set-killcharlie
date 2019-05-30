@@ -82,7 +82,7 @@ namespace SetepassosPRJ.Controllers
 
                 jogo.AtualizarJogo(resposta);
 
-                if (resposta.Result == RoundResult.GameHasEnded || resposta.Result == RoundResult.SuccessVictory)
+                if (jogo.PontosVida == 0 || resposta.Result == RoundResult.SuccessVictory)
                 {
                     return View("Score", jogo);
                 }
@@ -102,8 +102,9 @@ namespace SetepassosPRJ.Controllers
             List<Jogo> jogos = Repositorio.Jogos;
             jogos.Sort();
             jogos.Reverse();
-
-             return View(jogos);
+            
+            List<HighScore> scores = Repositorio.ListaScores(jogos);
+            return View(scores);
         }
     }
 }
