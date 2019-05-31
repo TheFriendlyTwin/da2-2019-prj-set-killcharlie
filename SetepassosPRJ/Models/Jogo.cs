@@ -6,8 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SetepassosPRJ.Models
 {
-    public class Jogo:IComparable
-       
+    public class Jogo:IComparable   
     {
         public int CompareTo(object obj)
         {

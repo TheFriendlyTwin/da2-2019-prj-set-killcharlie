@@ -131,7 +131,14 @@
                     {
                         <button type="submit" class="btn btn-warning" name="playerAction" value="1">Dar um passo atrás!</button> <br />
                     }
-                    <button type="submit" class="btn btn-info" name="playerAction" value="2">Examinar Área</button> <br />
+                    @if (Model.Acao == PlayerAction.SearchArea)
+                    {
+                        <button type="submit" class="btn btn-info" name="playerAction" value="2" disabled>Examinar Área</button> <br />
+                    }
+                    else
+                    {
+                        <button type="submit" class="btn btn-info" name="playerAction" value="2">Examinar Área</button> <br />
+                    }
                     if (Model.PocoesVida > 0)
                     {
                         <button type="submit" class="btn btn-success" name="playerAction" value="3">Beber um poção de vida</button>
