@@ -13,7 +13,7 @@ namespace SetepassosPRJ.Models
         {
             Jogo j = (Jogo)obj;
             return Score.CompareTo(j.Score);
-        }
+        }  
 
         #region Propriedades
         public int ID { get; set; }
