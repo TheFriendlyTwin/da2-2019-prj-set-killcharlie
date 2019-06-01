@@ -111,14 +111,14 @@
                 @if (Model.Inimigo)
                 {
                     <strong class="alert-danger">Cuidado! O salto alto das anjos de Charlie é pontiagudo!</strong> <br />
-                    <button type="submit" class="btn btn-danger" name="playerAction" value="4" data-toggle="collapse" data-target="#boom">Atacar o inimigo!</button> <br />
+                    <button type="submit" class="btn btn-danger" name="playerAction" value="4" data-toggle="collapse" data-target="#boom">BANG BANG!</button> <br />
                     if (Model.PosicaoHeroi < 7 || (Model.PosicaoHeroi == 7 && Model.PosseChave == true))
                     {
                         <button type="submit" class="btn btn-info" name="playerAction" value="5">Fugir!</button> <br />
                     }
                     if (Model.PocoesVida > 0)
                     {
-                        <button type="submit" class="btn btn-success" name="playerAction" value="3">Beber um poção de vida</button>
+                        <button type="submit" class="btn btn-success" name="playerAction" value="3">Beber Poção!</button>
                     }
                 }
                 else
@@ -126,23 +126,23 @@
                     <strong>Não há inimigos nesta área! Escolhe o que fazer:</strong> <br />
                     @if (Model.PosicaoHeroi < 7 || (Model.PosicaoHeroi == 7 && Model.PosseChave == true))
                     {
-                        <button type="submit" class="btn btn-warning" name="playerAction" value="0">Dar um passo em frente!</button> <br />
+                        <button type="submit" class="btn btn-warning" name="playerAction" value="0">Em Frente!</button> <br />
                     }
                     @if (Model.PosicaoHeroi > 1)
                     {
-                        <button type="submit" class="btn btn-warning" name="playerAction" value="1">Dar um passo atrás!</button> <br />
+                        <button type="submit" class="btn btn-warning" name="playerAction" value="1">Para Trás!</button> <br />
                     }
                     @if (Model.Acao == PlayerAction.SearchArea)
                     {
-                        <button type="submit" class="btn btn-info" name="playerAction" value="2" disabled>Examinar Área</button> <br />
+                        <button type="submit" class="btn btn-info" name="playerAction" value="2" disabled>Examinar Área!</button> <br />
                     }
                     else
                     {
-                        <button type="submit" class="btn btn-info" name="playerAction" value="2">Examinar Área</button> <br />
+                        <button type="submit" class="btn btn-info" name="playerAction" value="2">Examinar Área!</button> <br />
                     }
                     if (Model.PocoesVida > 0)
                     {
-                        <button type="submit" class="btn btn-success" name="playerAction" value="3">Beber um poção de vida</button>
+                        <button type="submit" class="btn btn-success" name="playerAction" value="3">Beber Poção!</button>
                     }
                 }
             </form>
