@@ -111,14 +111,14 @@
                 @if (Model.Inimigo)
                 {
                     <strong class="alert-danger">Cuidado! O salto alto das anjos de Charlie é pontiagudo!</strong> <br />
-                    <button type="submit" class="btn grad" name="playerAction" value="4" data-toggle="collapse" data-target="#boom">BANG BANG!</button> <br />
+                    <button type="submit" class="btn grad" name="playerAction" value="4" data-toggle="collapse" data-target="#boom">BANG BANG <img src="~/images/minipistol.png" /><img src="~/images/minicowboy.png" /><img src="~/images/minipistolmirror.png" /></button> <br />
                     if (Model.PosicaoHeroi < 7 || (Model.PosicaoHeroi == 7 && Model.PosseChave == true))
                     {
-                        <button type="submit"  class="btn grad1" name="playerAction" value="5">Fugir!</button> <br />
+                        <button type="submit" class="btn grad1" name="playerAction" value="5">Fugir! <img src="~/images/minirun.png" /></button> <br />
                     }
                     if (Model.PocoesVida > 0)
                     {
-                        <button type="submit" class="btn grad2" name="playerAction" value="3">Beber Poção!</button>
+                        <button type="submit" class="btn grad2" name="playerAction" value="3">Beber Poção! <img src="~/images/minipotion.png" /></button>
                     }
                 }
                 else
@@ -126,23 +126,22 @@
                     <strong>Não há inimigos nesta área! Escolhe o que fazer:</strong> <br />
                     @if (Model.PosicaoHeroi < 7 || (Model.PosicaoHeroi == 7 && Model.PosseChave == true))
                     {
-                        <button type="submit" class="btn grad3" name="playerAction" value="0">Em Frente!</button> <br />
+                        <button type="submit" class="btn grad3" name="playerAction" value="0">Em Frente! <img src="~/images/minifootprintmirror.png" /></button> <br />
                     }
                     @if (Model.PosicaoHeroi > 1)
                     {
-                        <button type="submit" class="btn grad" name="playerAction" value="1">Para Trás!</button> <br />
+                        <button type="submit" class="btn grad" name="playerAction" value="1"><img src="~/images/minifootprint.png" /> Para Trás!</button> <br />
                     }
                     @if (Model.Acao == PlayerAction.SearchArea)
                     {
-                        <button type="submit" class="btn grad1" name="playerAction" value="2" disabled>Examinar Área!</button> <br />
+                        <button type="submit" class="btn grad1" name="playerAction" value="2" disabled>Examinar Área! <img src="~/images/minidetective.png" /></button> <br />
                     }
                     else
                     {
-                        <button type="submit" class="btn grad1" name="playerAction" value="2">Examinar Área!</button> <br />
+                        <button type="submit" class="btn grad1" name="playerAction" value="2">Examinar Área! <img src="~/images/minidetective.png" /></button> <br />
                     }
                     if (Model.PocoesVida > 0)
-                    {
-                        <button type="submit" class="btn grad2" name="playerAction" value="3">Beber Poção!</button>
+                    {<button type="submit" class="btn grad2" name="playerAction" value="3">Beber Poção! <img src="~/images/minipotion.png" /></button>
                     }
                 }
             </form>
