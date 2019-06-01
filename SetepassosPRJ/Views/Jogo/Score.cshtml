@@ -16,14 +16,16 @@
             </tr>
             <tr>
                 <th>Chave</th>
-                <td>@if (Model.PosseChave)
-                {
-                    @:Encontrada
-                }
-                else
-                {
-                    @:Não encontrada
-                }</td>
+                <td>
+                    @if (Model.PosseChave)
+                    {
+                        @:Encontrada
+                    }
+                    else
+                    {
+                        @:Não encontrada
+                    }
+                </td>
             </tr>
             <tr>
                 <th>Nrº Inimigos Derrotados</th>
@@ -59,14 +61,15 @@
             </tr>
             <tr>
                 <th>Resultado Final</th>
-                <td>@if (Model.Resultado == RoundResult.SuccessVictory)
-                {
-                    @:Vitória
-                }
-                else
-                {
-                    @:Derrota
-                }
+                <td>
+                    @if (Model.Resultado == RoundResult.SuccessVictory)
+                    {
+                        @:Vitória
+                    }
+                    else
+                    {
+                        @:Derrota
+                    }
                 </td>
             </tr>
             <tr>
@@ -79,14 +82,24 @@
         @if (Model.PontosVida == 0)
         {
             <img src="~/images/Game Over.gif" />
+            <audio controls="controls" autoplay hidden loop>
+                <source src="~/music/Nancy-Sinatra-Bang-Bang-My-Baby-Shot-Me-Down.mp3" type="audio/mpeg" />
+            </audio>
+
         }
         else if (Model.Resultado == RoundResult.SuccessVictory)
         {
             <img src="~/images/TarantinoCartoon.png" />
+            <audio controls="controls" autoplay hidden loop>
+                <source src="~/music/Dick%20Dale%20-%20Misirlou.mp3" type="audio/mpeg" />
+            </audio>
         }
         else
         {
             <img src="~/images/chicken.gif" />
+            <audio controls="controls" autoplay hidden loop>
+                <source src="~/music/Nancy-Sinatra-Bang-Bang-My-Baby-Shot-Me-Down.mp3" type="audio/mpeg" />
+            </audio>
         }
     </div>
 </div>
@@ -94,3 +107,5 @@
 <a asp-action="NovoJogo" class="btn btn-danger">Novo Jogo</a>
 
 <a asp-action="HighScore" class="btn btn-info">High Score</a>
+
+
