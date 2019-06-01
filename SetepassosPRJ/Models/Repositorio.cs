@@ -32,15 +32,15 @@ namespace SetepassosPRJ.Models
         //Devolve o jogo dado um certo game id
         public static Jogo DevolverJogo(int gameID)
         {
-            int indice = 0;
+            Jogo jogo = null;
             for(int i = 0; i < Jogos.Count; i++)
             {
                 if(Jogos[i].ID == gameID)
                 {
-                    indice = i;
+                    jogo = Jogos[i];
                 }
             }
-            return Jogos[indice];
+            return jogo;
         }
 
         //Adiciona os 10 melhores elementos da lista de jogos na lista de scores
@@ -54,7 +54,6 @@ namespace SetepassosPRJ.Models
                     HighScore score = new HighScore(jogos[i]);
                     scores.Add(score);
                 }
-                break;
             }
             return scores;
         }

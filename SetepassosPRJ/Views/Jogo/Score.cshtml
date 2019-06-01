@@ -7,6 +7,10 @@
     <div class="col-md-6">
         <table class="table table-bordered table-hover table-condensed" id="HighScore">
             <tr>
+                <th>ID</th>
+                <td>@Model.ID</td>
+            </tr>
+            <tr>
                 <th> Nome do Jogador</th>
                 <td>@Model.Utilizador</td>
             </tr>
@@ -72,7 +76,7 @@
         </table>
     </div>
     <div class="col-md-6">
-        @if (Model.Resultado == RoundResult.GameHasEnded)
+        @if (Model.PontosVida == 0)
         {
             <img src="~/images/Game Over.gif" />
         }
@@ -88,3 +92,5 @@
 </div>
 
 <a asp-action="NovoJogo" class="btn btn-danger">Novo Jogo</a>
+
+<a asp-action="HighScore" class="btn btn-info">High Score</a>

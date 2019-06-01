@@ -8,12 +8,6 @@ namespace SetepassosPRJ.Models
 {
     public class Jogo:IComparable   
     {
-        public int CompareTo(object obj)
-        {
-            Jogo j = (Jogo)obj;
-            return Score.CompareTo(j.Score);
-        }  
-
         #region Propriedades
         public int ID { get; set; }
         public string Utilizador { get; set; }
@@ -79,13 +73,12 @@ namespace SetepassosPRJ.Models
 
             PocoesVida = 1;
             PocoesTotais = PocoesVida;
-            PosicaoHeroi = 0; //Temos que começar no 0 porque GameApiResponse, por default, devolve a Action 0, i.e., a action GoForward
+            PosicaoHeroi = 0; //Temos que começar no 0 porque a GameApiResponse, por default, devolve a Action 0, i.e., a action GoForward
             DistanciaPorta = 7 - PosicaoHeroi;
             MoedasOuro = 0;
             NumeroJogadas = 0;
         }
         #endregion
-
         
         #region Métodos
         //Método que atualiza o dados do jogo
@@ -205,7 +198,7 @@ namespace SetepassosPRJ.Models
         //Conta quantos inimigos foram vencidos
         public void InimigosVencidos (GameApiResponse resposta)
         {
-            if (resposta.Action == PlayerAction.Attack && resposta.Result == RoundResult.Success)
+            if (resposta.Action == PlayerAction.Attack && resposta.EnemyHealthPoints == 0)
                 NrInimigosVencidos++;
         }
 
@@ -319,6 +312,14 @@ namespace SetepassosPRJ.Models
             {
                 Amuleto = false;
             }
+        }
+        #endregion
+
+        #region CompareTo
+        public int CompareTo(object obj)
+        {
+            Jogo j = (Jogo)obj;
+            return Score.CompareTo(j.Score);
         }
         #endregion
     }
