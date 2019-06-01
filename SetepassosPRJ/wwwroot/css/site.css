@@ -161,6 +161,13 @@ tr:hover th {
     background-size:cover;
 }
 
+.img-over {
+    position: absolute;
+    z-index: auto;
+    left:60px;
+    top:50px;
+}
+
 .regras {
     background: rgb(0,0,0); /* Fallback color */
     background: rgba(0,0,0,0.5);
