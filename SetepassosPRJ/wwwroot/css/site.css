@@ -21,7 +21,7 @@ button {
     width: 150px;
     background-color: #f4511e;
     border: none;
-    color: white;
+    background-image: linear-gradient(red, yellow);
     padding: 16px 32px;
     text-align: center;
     margin: 4px 2px;
@@ -37,6 +37,18 @@ button {
         opacity: 1;
     }
 
+.grad {
+    background-image: linear-gradient(red, yellow);
+}
+.grad1 {
+    background-image: linear-gradient(dodgerblue, lightskyblue);
+}
+.grad2 {
+    background-image: linear-gradient(purple, pink);
+}
+.grad3 {
+    background-image: linear-gradient(lawngreen, mediumspringgreen);
+}
 .HomePage {
     width:100%;
     background-image: url("../images/killBillGif.gif");
