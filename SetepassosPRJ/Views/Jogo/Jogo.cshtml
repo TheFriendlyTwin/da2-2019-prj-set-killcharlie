@@ -2,11 +2,10 @@
 @{
     ViewData["Title"] = "7 Passos";
 }
-
 <h4 class="neon text-center">Salva o Quentin!</h4>
-
-<div class="row">
-    <div class="col-md-12 corredor">
+<div class="jogoCorredor">
+   <div class="row">
+    <div class="col-md-12">
         @if (Model.Inimigo)
         {
             <img src="~/images/minicharlieangels.png" alt="AnjosCharlie" title="Anjos de Charlie" class="inimigo" />
@@ -28,7 +27,7 @@
             </div>
     </div>
 </div>
-<div class="row elementos">
+<div class="row">
     <div class="col-md-4">
         <strong><u>@Model.Utilizador</u>  -  </strong>
         <strong>
@@ -148,4 +147,4 @@
         </div>
     </div>
 </div>
-
+</div>
