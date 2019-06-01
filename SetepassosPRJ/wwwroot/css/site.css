@@ -283,6 +283,27 @@ tr:hover th {
     }
 }
 
-.utilizador{
-    padding-top:50px;
+div.personagens{
+    position:relative;
+    top:150px;
 }
+.utilizador {
+    background: rgb(0,0,0); /* Fallback color */
+    background: rgba(0,0,0,0.5);
+    width: 70%;
+    padding: 20px;
+}
+.inimigos {
+    background: rgb(0,0,0); /* Fallback color */
+    background: rgba(0,0,0,0.5);
+    width: 70%;
+    padding: 20px;
+}
+.itens {
+    font-size:20px;
+    background: rgb(0,0,0); /* Fallback color */
+    background: rgba(0,0,0,0.5);
+    width: 100%;
+    padding: 20px;
+}
+
