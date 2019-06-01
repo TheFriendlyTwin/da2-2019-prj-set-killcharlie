@@ -12,6 +12,16 @@ body {
     background-size: cover;
     background-color: black;
 }
+.jogar {
+    font-family: 'Bangers';
+    font-size: 18px;
+    letter-spacing: 2px;
+    background-image: url("../images/CorredorJogo.jpg");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+    background-color: black;
+}
 
 button {
     font-family: 'Bangers';
@@ -58,7 +68,7 @@ button {
     background-color: black;
 }
 
-.jogoCorredor {
+/*.jogoCorredor {
     padding-top: 70px;
     padding-bottom: 20px;
     background-image: url("../images/CorredorJogo.jpg");
@@ -66,7 +76,7 @@ button {
     background-position: top;
     background-size: cover;
     background-color: black;
-}
+}*/
 
 
 /* Wrapping element */
@@ -177,9 +187,9 @@ tr:hover th {
 
 
 /*Estilo de todas as page-header*/
-.page-header{
-    color:darkred;
-    font-weight:bolder;
+.page-header {
+    color: darkred;
+    font-weight: bolder;
 }
 
 /*Estilo dos elementos do jogo*/
@@ -271,4 +281,8 @@ tr:hover th {
         text-shadow: none;
         box-shadow: none;
     }
+}
+
+.utilizador{
+    padding-top:50px;
 }

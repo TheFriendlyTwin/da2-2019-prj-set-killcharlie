@@ -1,36 +1,12 @@
 ﻿@model SetepassosPRJ.Models.Jogo
 @{
     ViewData["Title"] = "7 Passos";
+    Layout = "_LayoutJogo";
 }
-<h4 class="neon text-center">Salva o Quentin!</h4>
-<div class="jogoCorredor">
+<h1 class="neon text-center page-header">Salva o Quentin!</h1>
+
 <div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-6">
-        @if (Model.Inimigo)
-        {
-            <img src="~/images/minicharlieangels.png" alt="AnjosCharlie" title="Anjos de Charlie" class="inimigo" />
-        }
-        @if (Model.Perfil == "S")
-        {
-            <img src="~/images/mediumcottonmouth.png" alt="Cottonmouth" title="Cottonmouth" class="heroi" />
-        }
-        else if (Model.Perfil == "W")
-        {
-            <img src="~/images/mediumgogoyarubi.png" alt="Gogo Yurabi" title="Gogo Yurabi" class="heroi" />
-        }
-        else
-        {
-            <img src="~/images/mediumblackmamba.png" alt="Black Mamba" title="Black Mamba" class="heroi" />
-        }
-        <div class="collapse img-over" id="boom">
-            <img src="~/images/boom.png" />
-        </div>
-    </div>
-    <div class="col-md-2"></div>
-</div>
-<div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 utilizador">
         <strong><u>@Model.Utilizador</u>  -  </strong>
         <strong>
             <u>
@@ -81,6 +57,82 @@
                 @: Mini-Poção Encontrada! <img src="~/images/minipocao.png" alt="MiniPocai" title="Mini Poção" />
             }
         }
+    </div>
+    <div class="col-md-6">
+        @if (Model.Inimigo)
+        {
+            <img src="~/images/minicharlieangels.png" alt="AnjosCharlie" title="Anjos de Charlie" class="inimigo" />
+        }
+        @if (Model.Perfil == "S")
+        {
+            <img src="~/images/mediumcottonmouth.png" alt="Cottonmouth" title="Cottonmouth" class="heroi" />
+        }
+        else if (Model.Perfil == "W")
+        {
+            <img src="~/images/mediumgogoyarubi.png" alt="Gogo Yurabi" title="Gogo Yurabi" class="heroi" />
+        }
+        else
+        {
+            <img src="~/images/mediumblackmamba.png" alt="Black Mamba" title="Black Mamba" class="heroi" />
+        }
+        <div class="collapse img-over" id="boom">
+            <img src="~/images/boom.png" />
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        @*<strong><u>@Model.Utilizador</u>  -  </strong>
+        <strong>
+            <u>
+                @if (Model.Perfil == "S")
+                {
+                    @:Cottonmouth
+                }
+                else if (Model.Perfil == "W")
+                {
+                    @:Gogo Yurabi
+                }
+                else
+                {
+                    @:Black Mamba
+                }
+            </u>
+        </strong><br />
+        <br />@Model.PontosVida <img src="~/images/miniheart.png" alt="PontosVida" title="Pontos de vida" />
+        <br />@for (int sorte = 0; sorte < Model.PontosSorte; sorte++)
+
+        {
+            <img src="~/images/minitrevo.png" alt="Sorte" title="Sorte" />
+        }
+        <br />@for (int ataque = 0; ataque < Model.PontosAtaque; ataque++)
+        {
+            <img src="~/images/minisword.png" alt="Ataque" title="Ataque" />
+        }
+        <br />@for (int pocoes = 0; pocoes < Model.PocoesVida; pocoes++)
+        {
+            <img src="~/images/minipotion.png" alt="Pocao" title="Poção de vida" />
+        }
+        <br /> @if (Model.Item)
+        {
+            if (Model.Veneno)
+            {
+                @:Veneno Encontrado! <img src="~/images/miniveneno.png" alt="Veneno" title="Veneno" />
+            }
+            else if (Model.Arma)
+            {
+                @:Arma Encontrada! <img src="~/images/miniarma.png" alt="Arma" title="Arma" />
+            }
+            else if (Model.Amuleto)
+            {
+                @:Amuleto Encontrado! <img src="~/images/miniamuleto.png" alt="Amuleto" title="Amuleto" />
+            }
+            else if (Model.MiniPocao)
+            {
+                @: Mini-Poção Encontrada! <img src="~/images/minipocao.png" alt="MiniPocai" title="Mini Poção" />
+            }
+        }*@
     </div>
     <div class="col-md-4">
         @if (Model.PosseChave)
@@ -147,5 +199,4 @@
             </form>
         </div>
     </div>
-</div>
 </div>
