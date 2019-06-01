@@ -224,6 +224,11 @@ tr:hover th {
     top:30px;
 }
 
+/*.speech {
+    position: fixed;
+    bottom:4px;
+}*/
+
 .regras {
     background: rgb(0,0,0); /* Fallback color */
     background: rgba(0,0,0,0.5);

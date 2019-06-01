@@ -7,7 +7,7 @@
 <div class="text-center">
     @if (!Model.Inimigo)
     {
-        <strong>Não há inimigos nesta área! Escolhe o que fazer:</strong> <br />
+        <strong class="alert-info">Não há inimigos nesta área! Escolhe o que fazer:</strong> <br />
     }
     else
     {
@@ -78,6 +78,10 @@
             </div>
         </div>
         <div class="col-md-6 personagens">
+            @*@if (Model.PontosVidaInimigo != 0)
+            {
+                <img src="~/images/herospeech.png" class="speech" />
+            }*@
             @if (Model.Inimigo)
             {
                 <img src="~/images/minicharlieangels.png" alt="AnjosCharlie" title="Anjos de Charlie" class="inimigo" />
@@ -95,11 +99,6 @@
 
                 <img src="~/images/mediumblackmamba.png" alt="Black Mamba" title="Black Mamba" class="heroi" />
             }
-           
-            @if (Model.PontosVidaInimigo != 0 )
-            {
-<img src="~/images/herospeech.png" />
-}
             <div class="collapse img-over" id="boom">
                 <img src="~/images/boom.png" />
             </div>
