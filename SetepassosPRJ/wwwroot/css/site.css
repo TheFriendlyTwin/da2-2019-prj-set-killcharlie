@@ -29,6 +29,7 @@ body {
     background-color: black;
 }
 
+
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
@@ -141,7 +142,7 @@ tr:hover th {
 }
 
 /*Estilo dos elementos do jogo*/
-.elementos{
+/*.elementos{
     border-width: 5px;
     border-style: ridge;
     font-family: 'Book Antiqua';
@@ -149,7 +150,7 @@ tr:hover th {
     background-image: url("../images/Fire.gif");
     background-repeat: no-repeat;
     background-size: cover;
-}
+}*/
 
 /*Indice da página about*/
 #Indice {
@@ -164,17 +165,12 @@ tr:hover th {
     font-size: 20px;
 }
 
-.corredor {
-    background-image: url("../images/Corredor.jpg");
-    background-repeat: no-repeat;
-    background-size:cover;
-}
 
 .img-over {
     position: absolute;
     z-index: auto;
     left:60px;
-    top:50px;
+    top:30px;
 }
 
 .regras {

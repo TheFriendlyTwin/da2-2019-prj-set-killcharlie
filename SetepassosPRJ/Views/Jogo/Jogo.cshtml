@@ -4,8 +4,9 @@
 }
 <h4 class="neon text-center">Salva o Quentin!</h4>
 <div class="jogoCorredor">
-   <div class="row">
-    <div class="col-md-12">
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-6">
         @if (Model.Inimigo)
         {
             <img src="~/images/minicharlieangels.png" alt="AnjosCharlie" title="Anjos de Charlie" class="inimigo" />
@@ -22,10 +23,11 @@
         {
             <img src="~/images/mediumblackmamba.png" alt="Black Mamba" title="Black Mamba" class="heroi" />
         }
-            <div class="collapse img-over" id="boom">
-                <img src="~/images/boom.png" />
-            </div>
+        <div class="collapse img-over" id="boom">
+            <img src="~/images/boom.png" />
+        </div>
     </div>
+    <div class="col-md-2"></div>
 </div>
 <div class="row">
     <div class="col-md-4">
@@ -49,22 +51,22 @@
         <br />@Model.PontosVida <img src="~/images/miniheart.png" alt="PontosVida" title="Pontos de vida" />
         <br />@for (int sorte = 0; sorte < Model.PontosSorte; sorte++)
 
-                {
-                    <img src="~/images/minitrevo.png" alt="Sorte" title="Sorte" />
-                }
+        {
+            <img src="~/images/minitrevo.png" alt="Sorte" title="Sorte" />
+        }
         <br />@for (int ataque = 0; ataque < Model.PontosAtaque; ataque++)
-                {
-                    <img src="~/images/minisword.png" alt="Ataque" title="Ataque" />
-                }
+        {
+            <img src="~/images/minisword.png" alt="Ataque" title="Ataque" />
+        }
         <br />@for (int pocoes = 0; pocoes < Model.PocoesVida; pocoes++)
-                {
-                    <img src="~/images/minipotion.png" alt="Pocao" title="Poção de vida" />
-                }
+        {
+            <img src="~/images/minipotion.png" alt="Pocao" title="Poção de vida" />
+        }
         <br /> @if (Model.Item)
         {
             if (Model.Veneno)
             {
-                @:Veneno Encontrado! <img src="~/images/miniveneno.png" alt="Veneno" title="Veneno"/>
+                @:Veneno Encontrado! <img src="~/images/miniveneno.png" alt="Veneno" title="Veneno" />
             }
             else if (Model.Arma)
             {
@@ -95,13 +97,13 @@
         Efetuaste @Model.NumeroJogadas jogadas!
 
         <br />@if (Model.Inimigo)
-                {
-                <br />@: Pontos de Vida do Inimigo: @Model.PontosVidaInimigo
-                <br /> @: Pontos de Sorte do Inimigo: @Model.PontosSorteInimigo
-                <br /> @: Pontos de Ataque do Inimigo: @Model.PontosAtaqueInimigo
-               }
-        </div>
-    <div class="col-md-4"> 
+        {
+            <br />@: Pontos de Vida do Inimigo: @Model.PontosVidaInimigo
+            <br /> @: Pontos de Sorte do Inimigo: @Model.PontosSorteInimigo
+            <br /> @: Pontos de Ataque do Inimigo: @Model.PontosAtaqueInimigo
+        }
+    </div>
+    <div class="col-md-4">
         <div>
             <form asp-action="Jogo" method="post">
                 <input value="@Model.ID" name="id" hidden />
