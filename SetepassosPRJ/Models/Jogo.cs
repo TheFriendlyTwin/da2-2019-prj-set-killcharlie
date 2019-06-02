@@ -38,6 +38,8 @@ namespace SetepassosPRJ.Models
         public int NrAtaques { get; set; }
         public int NrPocoesUsadas { get; set; }
         public int NrExaminacoesArea { get; set; }
+        public bool[] AreasExaminadas { get; set; } //Propriedade acrescentada para saber quais as áreas já examinadas
+        public bool AreaExaminada { get; set; } //Propriedade acrescentada para saber se a área atual já foi examinada
         public bool Veneno { get; set; }
         public bool Arma { get; set; }
         public bool MiniPocao { get; set; }
@@ -77,6 +79,7 @@ namespace SetepassosPRJ.Models
             DistanciaPorta = 7 - PosicaoHeroi;
             MoedasOuro = 0;
             NumeroJogadas = 0;
+            AreasExaminadas = new bool[7];
         }
         #endregion
         
@@ -108,6 +111,8 @@ namespace SetepassosPRJ.Models
             AtualizarPocoes(resposta);
             AtualizarPontosSorte(resposta);
             AtualizarPontosAtaque(resposta);
+            AtualizarArrayAreasExaminadas(resposta); //NOVO
+            AreaExaminada = AreasExaminadas[PosicaoHeroi - 1]; //NOVO
             Score = ScoreJogo(resposta);
         }
 
@@ -252,6 +257,15 @@ namespace SetepassosPRJ.Models
             if (resposta.Action == PlayerAction.SearchArea && resposta.Result == RoundResult.Success)
             {
                 NrExaminacoesArea++;
+            }
+        }
+
+        //Atualiza para true cada elemento/casa se a área já foi examinada
+        public void AtualizarArrayAreasExaminadas(GameApiResponse resposta)
+        {
+            if(resposta.Action == PlayerAction.SearchArea && resposta.Result == RoundResult.Success)
+            {
+                AreasExaminadas[PosicaoHeroi - 1] = true;
             }
         }
 
