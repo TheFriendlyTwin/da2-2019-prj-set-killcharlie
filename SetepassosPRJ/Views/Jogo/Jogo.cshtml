@@ -84,7 +84,7 @@
                 }
             </div>
         </div>
-        <div class="col-md-6 personagens">
+        <div class="col-md-5 personagens">
             @*@if (Model.PontosVidaInimigo != 0)
             {
                 <img src="~/images/herospeech.png" class="speech" />
@@ -110,7 +110,7 @@
                 <img src="~/images/boom.png" />
             </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
             <div class="itens">
                 @if (Model.PosseChave)
                 {
@@ -119,9 +119,9 @@
                 <br />
                 <img src="~/images/mediumOuro.png" />: @Model.MoedasOuro
                 <br />
-                <strong>Posição do herói: </strong><strong class="alert-info">@Model.PosicaoHeroi</strong>
+                <strong>Posição do herói: </strong><strong>@Model.PosicaoHeroi</strong>
                 <br />
-                Faltam apenas <strong class="alert-info">@Model.DistanciaPorta</strong> passos até ao Quentin!
+                Faltam apenas <strong>@Model.DistanciaPorta</strong> passos até ao Quentin!
                 <br />
                 Efetuaste @Model.NumeroJogadas jogadas!
             </div>
