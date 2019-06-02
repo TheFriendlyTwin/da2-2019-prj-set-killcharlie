@@ -221,6 +221,12 @@ tr:hover th {
     left:60px;
     top:30px;
 }
+.img-over2 {
+    position: absolute;
+    z-index: auto;
+    left: 90px;
+    top: 20px;
+}
 
 /*.speech {
     position: fixed;
