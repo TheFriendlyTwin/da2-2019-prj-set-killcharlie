@@ -71,9 +71,16 @@
             <div class="inimigos">
                 <br />@if (Model.Inimigo)
                 {
-                    <br />@: Pontos de Vida do Inimigo: @Model.PontosVidaInimigo
-                    <br /> @: Pontos de Sorte do Inimigo: @Model.PontosSorteInimigo
-                    <br /> @: Pontos de Ataque do Inimigo: @Model.PontosAtaqueInimigo
+                    <br />@:Pontos do Inimigo:
+                    <br />@: <span class="glyphicon glyphicon-heart"></span>: @Model.PontosVidaInimigo
+                    <br />@for (int sorte = 0; sorte < Model.PontosSorteInimigo; sorte++)
+                    {
+                        <span class="glyphicon glyphicon-leaf"></span>
+                    }
+                    <br />@for (int ataque = 0; ataque < Model.PontosAtaqueInimigo; ataque++)
+                    {
+                        <img src="~/images/EnemyDagger.png" alt="Ataque" title="Ataque" />
+                    }
                 }
             </div>
         </div>
