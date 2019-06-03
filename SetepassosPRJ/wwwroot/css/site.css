@@ -316,3 +316,40 @@ div.personagens{
     padding: 20px;
 }
 
+#chave {
+    position: relative;
+    -webkit-animation: mymove 5s infinite; /* Safari 4.0 - 8.0 */
+    animation: mymove 5s infinite;
+}
+
+/* Safari 4.0 - 8.0 */
+#chave {
+    -webkit-animation-timing-function: ease-in-out;
+}
+
+/* Standard syntax */
+#chave {
+    animation-timing-function: ease-in-out;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes mymove {
+    from {
+        left: 0px;
+    }
+
+    to {
+        left: 90px;
+    }
+}
+
+/* Standard syntax */
+@keyframes mymove {
+    from {
+        left: 0px;
+    }
+
+    to {
+        left: 90px;
+    }
+}

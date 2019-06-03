@@ -32,7 +32,7 @@ namespace SetepassosPRJ.Models
             InvestigacoesArea = jogo.NrExaminacoesArea;
             IntensEcontrados = jogo.NrItensEncontrados;
             PocoesUsadas = jogo.NrPocoesUsadas;
-            PocoesTotal = jogo.PocoesVida;
+            PocoesTotal = jogo.PocoesTotais;
         }
 
         public int CompareTo(object obj)
