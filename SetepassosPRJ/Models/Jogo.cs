@@ -275,7 +275,7 @@ namespace SetepassosPRJ.Models
             int moedas = MoedasOuro;
             if (resposta.Result == RoundResult.SuccessVictory)
             {
-                moedas += 3000 + 1000;
+                moedas += 3000;
                 if (PontosVida < 0.5)
                 {
                     moedas += 999;
@@ -288,6 +288,10 @@ namespace SetepassosPRJ.Models
                 {
                     moedas += 800;
                 }
+            }
+            if (PosseChave == true)
+            {
+                moedas += 1000;
             }
             moedas += PocoesVida * 750;
             moedas += NrInimigosVencidos * 300;
