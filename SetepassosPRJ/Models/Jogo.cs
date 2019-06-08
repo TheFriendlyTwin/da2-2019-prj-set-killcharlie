@@ -76,7 +76,7 @@ namespace SetepassosPRJ.Models
             PocoesVida = 1;
             PocoesTotais = PocoesVida;
             PosicaoHeroi = 0; //Temos que começar no 0 porque a GameApiResponse, por default, devolve a Action 0, i.e., a action GoForward
-            DistanciaPorta = 7 - PosicaoHeroi;
+            DistanciaPorta = 8 - PosicaoHeroi;
             MoedasOuro = 0;
             NumeroJogadas = 0;
             AreasExaminadas = new bool[7];
@@ -197,7 +197,7 @@ namespace SetepassosPRJ.Models
             {
                 PosicaoHeroi--;
             }
-            DistanciaPorta = 7 - PosicaoHeroi;
+            DistanciaPorta = 8 - PosicaoHeroi;
         }
 
         //Conta quantos inimigos foram vencidos

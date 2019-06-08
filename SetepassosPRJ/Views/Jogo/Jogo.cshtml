@@ -37,55 +37,55 @@
                 <br />@Model.PontosVida <img src="~/images/miniheart.png" alt="PontosVida" title="Pontos de vida" />
                 <br />@for (int sorte = 0; sorte < Model.PontosSorte; sorte++)
 
-                {
-                    <img src="~/images/minitrevo.png" alt="Sorte" title="Sorte" />
-                }
+                        {
+                            <img src="~/images/minitrevo.png" alt="Sorte" title="Sorte" />
+                        }
                 <br />@for (int ataque = 0; ataque < Model.PontosAtaque; ataque++)
-                {
-                    <img src="~/images/minisword.png" alt="Ataque" title="Ataque" />
-                }
+                        {
+                            <img src="~/images/minisword.png" alt="Ataque" title="Ataque" />
+                        }
                 <br />@for (int pocoes = 0; pocoes < Model.PocoesVida; pocoes++)
-                {
-                    <img src="~/images/minipotion.png" alt="Pocao" title="Poção de vida" />
-                }
+                        {
+                            <img src="~/images/minipotion.png" alt="Pocao" title="Poção de vida" />
+                        }
                 <br /> @if (Model.Item)
-                {
-                    if (Model.Veneno)
-                    {
-                        @:Veneno Encontrado! 
-                <img src="~/images/miniveneno.png" alt="Veneno" title="Veneno" />
-                    }
-                    else if (Model.Arma)
-                    {
-                        @:Arma Encontrada! 
-                <img src="~/images/miniarma.png" alt="Arma" title="Arma" />
-                    }
-                    else if (Model.Amuleto)
-                    {
-                        @:Amuleto Encontrado! 
-                <img src="~/images/miniamuleto.png" alt="Amuleto" title="Amuleto" />
-                    }
-                    else if (Model.MiniPocao)
-                    {
-                        @:Mini-Poção Encontrada!
-                        <img src="~/images/minipocao.png" alt="MiniPocai" title="Mini Poção" />
-                    }
-                }
+                        {
+                            if (Model.Veneno)
+                            {
+                                @:Veneno Encontrado! 
+                                <img src="~/images/miniveneno.png" alt="Veneno" title="Veneno" />
+                            }
+                            else if (Model.Arma)
+                            {
+                                @:Arma Encontrada! 
+                                <img src="~/images/miniarma.png" alt="Arma" title="Arma" />
+                            }
+                            else if (Model.Amuleto)
+                            {
+                                @:Amuleto Encontrado! 
+                                <img src="~/images/miniamuleto.png" alt="Amuleto" title="Amuleto" />
+                            }
+                            else if (Model.MiniPocao)
+                            {
+                                @:Mini-Poção Encontrada!
+                                <img src="~/images/minipocao.png" alt="MiniPocai" title="Mini Poção" />
+                            }
+                        }
             </div>
             <div class="inimigos">
                 <br />@if (Model.Inimigo)
-                {
-                    <br />@:Pontos do Inimigo:
-                    <br />@: <span class="glyphicon glyphicon-heart"></span>: @Model.PontosVidaInimigo
-                    <br />@for (int sorte = 0; sorte < Model.PontosSorteInimigo; sorte++)
-                    {
-                        <span class="glyphicon glyphicon-leaf"></span>
-                    }
-                    <br />@for (int ataque = 0; ataque < Model.PontosAtaqueInimigo; ataque++)
-                    {
-                        <img src="~/images/EnemyDagger.png" alt="Ataque" title="Ataque" />
-                    }
-                }
+                        {
+                            <br />@:Pontos do Inimigo:
+                            <br />@Model.PontosVidaInimigo<img src="~/images/enemyHealth.png" alt="Vida do Inimigo" title="Pontos de vida do inimigo" />
+                            <br />@for (int sorte = 0; sorte < Model.PontosSorteInimigo; sorte++)
+                                    {
+                                        <img src="~/images/EnemyLuck.png" alt="Sorte do Inimigo" title="Pontos de vida do inimigo" />
+                                    }
+                            <br />@for (int ataque = 0; ataque < Model.PontosAtaqueInimigo; ataque++)
+                                    {
+                                        <img src="~/images/EnemyDagger.png" alt="Ataque" title="Ataque" />
+                                    }
+                        }
             </div>
         </div>
         <div class="col-md-6 personagens">
@@ -134,7 +134,7 @@
             </div>
             <div>
                 <form asp-action="Jogo" method="post">
-                    <input value="@Model.ID" name="id"/>
+                    <input value="@Model.ID" name="id" class="idJogo"/>
                     <button type="submit" class="btn btn-default" name="playerAction" value="6">Desistir</button> <br />
                     @if (Model.Inimigo)
                     {

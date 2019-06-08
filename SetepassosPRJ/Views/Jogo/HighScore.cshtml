@@ -2,56 +2,59 @@
 @{
     ViewData["Title"] = "High Score";
 }
-<div class="container">
-    <div class="page-header">
-        <h1>High Scores</h1>
-        <h3> Descobre aqui se o teu score está nos 10 melhores!</h3>
-    </div>
-    <table class="table table-bordered table-hover table-condensed" id="HighScore">
-        <tr>
-            <th> Ranking</th>
-            <th> Nome do Jogador</th>
-            <th>Pontuação</th>
-            <th>Resultado Final</th>
-            <th>Chave</th>
-            <th>Nr. Inimigos Derrotados</th>
-            <th>Nr. Fugas do Inimigo</th>
-            <th>Nr. Investigações na área</th>
-            <th>Nr. Itens Encontrados</th>
-            <th>Nr. Poções Usadas/Totais</th>
-        </tr>
-        @foreach (SetepassosPRJ.Models.HighScore score in Model)
-        {
-            <tr>
-                <td>@(Model.IndexOf(score)+1)</td>
-                <td>@score.Nome</td>
-                <td>@score.Score</td>
-                <td>
-                    @if (score.ResultadoFinal == RoundResult.SuccessVictory)
-                    {
-                        @:Vitória
-                    }
-                    else
-                    {
-                        @:Derrota
-                    }
-                </td>
-                <td>
-                    @if (score.Chave)
-                    {
-                        @:Encontrada
-                    }
-                    else
-                    {
-                        @:Não encontrada
-                    }
-                 </td>
-                <td>@score.InimigosVencidos</td>
-                <td>@score.FugasInimigos</td>
-                <td>@score.InvestigacoesArea</td>
-                <td>@score.IntensEcontrados</td>
-                <td>@score.PocoesUsadas/@score.PocoesTotal</td>
-            </tr>
-        }
-    </table>
+
+<div class="page-header">
+    <h1>High Scores</h1>
+    <h3> Descobre aqui se o teu score está nos 10 melhores!</h3>
 </div>
+<table class="table table-bordered table-hover table-condensed" id="HighScore">
+    <tr>
+        <th> Ranking</th>
+        <th> Nome do Jogador</th>
+        <th>Pontuação</th>
+        <th>Resultado Final</th>
+        <th>Chave</th>
+        <th>Nr. Inimigos Derrotados</th>
+        <th>Nr. Fugas do Inimigo</th>
+        <th>Nr. Investigações na área</th>
+        <th>Nr. Itens Encontrados</th>
+        <th>Nr. Poções Usadas/Totais</th>
+    </tr>
+    @foreach (SetepassosPRJ.Models.HighScore score in Model)
+    {
+        <tr>
+            <td>@(Model.IndexOf(score) + 1)</td>
+            <td>@score.Nome</td>
+            <td>@score.Score</td>
+            <td>
+                @if (score.ResultadoFinal == RoundResult.SuccessVictory)
+                {
+                    @:Vitória
+                }
+                else
+                {
+                    @:Derrota
+                }
+            </td>
+            <td>
+                @if (score.Chave)
+                {
+                    @:Encontrada
+                }
+                else
+                {
+                    @:Não encontrada
+                }
+            </td>
+            <td>@score.InimigosVencidos</td>
+            <td>@score.FugasInimigos</td>
+            <td>@score.InvestigacoesArea</td>
+            <td>@score.IntensEcontrados</td>
+            <td>@score.PocoesUsadas/@score.PocoesTotal</td>
+        </tr>
+    }
+</table>
+
+<audio controls="controls" autoplay hidden loop>
+    <source src="~/music/Kill Bill-soundtrack whistle.mp3" type="audio/mpeg" />
+</audio>

@@ -66,17 +66,6 @@ button {
     background-color: black;
 }
 
-/*.jogoCorredor {
-    padding-top: 70px;
-    padding-bottom: 20px;
-    background-image: url("../images/CorredorJogo.jpg");
-    background-repeat: no-repeat;
-    background-position: top;
-    background-size: cover;
-    background-color: black;
-}*/
-
-
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
@@ -352,4 +341,8 @@ div.personagens{
     to {
         left: 100px;
     }
+}
+
+.idJogo{
+    color:black;
 }
