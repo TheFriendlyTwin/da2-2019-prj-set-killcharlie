@@ -14,7 +14,7 @@ namespace SetepassosPRJ.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             string connection =
-            @"Server=(localdb)\mssqllocaldb;Database=DA2_2018_LABCOMPRAS;
+            @"Server=(localdb)\mssqllocaldb;Database=SetepassosPRJ;
 Trusted_Connection=True;";
             optionsBuilder.UseSqlServer(connection);
         }
