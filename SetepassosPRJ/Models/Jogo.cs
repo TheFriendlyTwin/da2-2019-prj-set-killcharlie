@@ -46,6 +46,7 @@ namespace SetepassosPRJ.Models
         public bool Amuleto { get; set; }
         public RoundResult Resultado { get; set; } //Acrescentei esta propriedade para sabermos qual o resultado final
         public PlayerAction Acao { get; set; }
+        public bool JogoTerminado { get; set; }
         #endregion
 
         #region Construtor
@@ -105,15 +106,19 @@ namespace SetepassosPRJ.Models
             NrPassos += NrRecuos + NrAvancos + NrFugasInimigo;
             Ataques(resposta);
             ExaminarArea(resposta);
-            Resultado = resposta.Result; //NOVO
-            Acao = resposta.Action; //NOVO - de forma a que o botão Examinar Área não apareça numa posição em que já foi examinada
+            Resultado = resposta.Result; 
+            Acao = resposta.Action; //De forma a que o botão Examinar Área não apareça numa posição em que já foi examinada
             AtualizarPontosVida(resposta);
             AtualizarPocoes(resposta);
             AtualizarPontosSorte(resposta);
             AtualizarPontosAtaque(resposta);
-            AtualizarArrayAreasExaminadas(resposta); //NOVO
-            AreaExaminada = AreasExaminadas[PosicaoHeroi - 1]; //NOVO
-            Score = ScoreJogo(resposta);
+            AtualizarArrayAreasExaminadas(resposta); 
+            AreaExaminada = AreasExaminadas[PosicaoHeroi - 1];
+            TerminarJogo(resposta);
+            if (JogoTerminado)
+            {
+                ScoreJogo(resposta);
+            }
         }
 
         //Atualiza o número de poções e os pontos de vida quando se bebe poções
@@ -270,33 +275,32 @@ namespace SetepassosPRJ.Models
         }
 
         //Calcula o Score do herói
-        public int ScoreJogo(GameApiResponse resposta)
+        public void ScoreJogo(GameApiResponse resposta)
         {
-            int moedas = MoedasOuro;
+            Score = MoedasOuro;
             if (resposta.Result == RoundResult.SuccessVictory)
             {
-                moedas += 3000;
+                Score += 3000;
                 if (PontosVida < 0.5)
                 {
-                    moedas += 999;
+                    Score += 999;
                 }
                 if (NrRecuos == 0)
                 {
-                    moedas += 400;
+                    Score += 400;
                 }
                 if (NrAtaques == 0)
                 {
-                    moedas += 800;
+                    Score += 800;
                 }
             }
             if (PosseChave == true)
             {
-                moedas += 1000;
+                Score += 1000;
             }
-            moedas += PocoesVida * 750;
-            moedas += NrInimigosVencidos * 300;
-            moedas += NrItensEncontrados * 100;
-            return moedas;
+            Score += PocoesVida * 750;
+            Score += NrInimigosVencidos * 300;
+            Score += NrItensEncontrados * 100;
         }
 
         //Método que retorna o item surpresa
@@ -330,6 +334,13 @@ namespace SetepassosPRJ.Models
             {
                 Amuleto = false;
             }
+        }
+
+        //Informa se o jogo foi terminado ou não
+        public void TerminarJogo(GameApiResponse resposta)
+        {
+            if (resposta.Action == PlayerAction.Quit || PontosVida == 0 || resposta.Result == RoundResult.SuccessVictory)
+                JogoTerminado = true;
         }
         #endregion
 

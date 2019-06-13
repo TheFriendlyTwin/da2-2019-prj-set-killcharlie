@@ -29,7 +29,6 @@ namespace SetepassosPRJ.Models
 
         public HighScore(Jogo jogo)
         {
-            ID = jogo.ID;
             Nome = jogo.Utilizador;
             Score = jogo.Score;
             ResultadoFinal = jogo.Resultado;
