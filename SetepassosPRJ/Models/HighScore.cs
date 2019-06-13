@@ -18,15 +18,22 @@ namespace SetepassosPRJ.Models
         public int IntensEcontrados { get; set; }
         public int PocoesUsadas { get; set; }
         public int PocoesTotal { get; set; }
+        public int ID { get; set; }
         #endregion
 
         #region Métodos
+        public HighScore()
+        {
+
+        }
+
         public HighScore(Jogo jogo)
         {
+            ID = jogo.ID;
             Nome = jogo.Utilizador;
             Score = jogo.Score;
             ResultadoFinal = jogo.Resultado;
-            Chave = jogo.PosseChave; //MAL
+            Chave = jogo.PosseChave;
             InimigosVencidos = jogo.NrInimigosVencidos;
             FugasInimigos = jogo.NrFugasInimigo;
             InvestigacoesArea = jogo.NrExaminacoesArea;
@@ -40,6 +47,7 @@ namespace SetepassosPRJ.Models
             HighScore h = (HighScore)obj;
             return Score.CompareTo(h.Score);
         }
+
         #endregion
     }
 }

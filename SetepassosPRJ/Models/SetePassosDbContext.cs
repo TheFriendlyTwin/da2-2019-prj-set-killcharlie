@@ -8,8 +8,7 @@ namespace SetepassosPRJ.Models
 {
     public class SetePassosDbContext : DbContext
     {
-
-    public DbSet<Jogo> Jogos { get; set; }
+        public DbSet<HighScore> Scores {get; set;}
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

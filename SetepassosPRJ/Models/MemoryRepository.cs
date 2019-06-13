@@ -9,7 +9,7 @@ namespace SetepassosPRJ.Models
     public static class MemoryRepository
     {
         #region Listas
-
+        private static List<Jogo> jogos = new List<Jogo>();
         #endregion
 
         #region Propriedades
@@ -17,23 +17,18 @@ namespace SetepassosPRJ.Models
         {
             get
             {
-                SetePassosDbContext context = new SetePassosDbContext();
-                List<Jogo> jogos = context.Jogos.ToList();
                 return jogos;
             }
         }
         #endregion
 
-#region Métodos
+        #region Métodos
         //Adiciona o jogo à lista de jogos
         public static void AdicionarJogo(Jogo novoJogo)
         {
-            SetePassosDbContext context = new SetePassosDbContext();
-            context.Jogos.Add(novoJogo);
-            context.SaveChanges();
+            jogos.Add(novoJogo);
         }
 
-        
         //Devolve o jogo dado um certo game id
         public static Jogo DevolverJogo(int gameID)
         {

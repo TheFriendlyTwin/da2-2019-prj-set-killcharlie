@@ -8,8 +8,9 @@ namespace SetepassosPRJ.Models
 {
     public static class Repositorio
     {
+       
         #region Listas
-        public static List<Jogo> jogos = new List<Jogo>();
+       private static List<Jogo> jogos = new List<Jogo>();
         #endregion
 
         #region Propriedades
@@ -20,43 +21,50 @@ namespace SetepassosPRJ.Models
                 return jogos;
             }
         }
-        #endregion
 
+
+
+        #endregion
         #region Métodos
         //Adiciona o jogo à lista de jogos
         public static void AdicionarJogo(Jogo novoJogo)
-        {
-            jogos.Add(novoJogo);
+    {
+            Jogos.Add(novoJogo);
         }
 
-        //Devolve o jogo dado um certo game id
-        public static Jogo DevolverJogo(int gameID)
+
+    //Devolve o jogo dado um certo game id
+    public static Jogo DevolverJogo(int gameID)
+    {
+        Jogo jogo = null;
+        for (int i = 0; i < Jogos.Count; i++)
         {
-            Jogo jogo = null;
-            for(int i = 0; i < Jogos.Count; i++)
+            if (Jogos[i].ID == gameID)
             {
-                if(Jogos[i].ID == gameID)
-                {
-                    jogo = Jogos[i];
-                }
+                jogo = Jogos[i];
             }
-            return jogo;
         }
+        return jogo;
+    }
+
 
         //Adiciona os 10 melhores elementos da lista de jogos na lista de scores
         public static List<HighScore> ListaScores(List<Jogo> jogos)
         {
-            List<HighScore> scores = new List<HighScore>();
-            for(int i = 0; i < jogos.Count; i++)
+            SetePassosDbContext context = new SetePassosDbContext();
+            List<HighScore> scores = context.Scores.ToList();
+            for (int i = 0; i < jogos.Count; i++)
             {
                 if (scores.Count < 10)
                 {
                     HighScore score = new HighScore(jogos[i]);
-                    scores.Add(score);
+                    context.Scores.Add(score);
+                    context.SaveChanges();
                 }
             }
             return scores;
         }
         #endregion
+
     }
-}
+    }
