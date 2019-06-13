@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SetepassosPRJ.Models
 {
-    public class Jogo:IComparable   
+    public class Jogo : IComparable
     {
         #region Propriedades
         public int ID { get; set; }
@@ -46,7 +46,6 @@ namespace SetepassosPRJ.Models
         public bool Amuleto { get; set; }
         public RoundResult Resultado { get; set; } //Acrescentei esta propriedade para sabermos qual o resultado final
         public PlayerAction Acao { get; set; }
-        public bool JogoTerminado { get; set; }
         #endregion
 
         #region Construtor
@@ -114,11 +113,6 @@ namespace SetepassosPRJ.Models
             AtualizarPontosAtaque(resposta);
             AtualizarArrayAreasExaminadas(resposta); 
             AreaExaminada = AreasExaminadas[PosicaoHeroi - 1];
-            TerminarJogo(resposta);
-            if (JogoTerminado)
-            {
-                ScoreJogo(resposta);
-            }
         }
 
         //Atualiza o número de poções e os pontos de vida quando se bebe poções
@@ -168,6 +162,7 @@ namespace SetepassosPRJ.Models
             {
                 PontosVida = 5;
             }
+            Math.Round(PontosVida, 1); //Arredondar os pontos de vida a 1 casa decimal
         }
 
         //Atualiza os pontos de sorte do herói
@@ -274,11 +269,44 @@ namespace SetepassosPRJ.Models
             }
         }
 
-        //Calcula o Score do herói
-        public void ScoreJogo(GameApiResponse resposta)
+        //Método que retorna o item surpresa
+        public void ItemSurpresa(GameApiResponse resposta)
         {
-            Score = MoedasOuro;
-            if (resposta.Result == RoundResult.SuccessVictory)
+            if (resposta.ItemHealthEffect == -2)
+            {
+                Veneno = true;
+                MiniPocao = false;
+            }
+            else if (resposta.ItemHealthEffect == 1)
+            {
+                MiniPocao = true;
+                Veneno = false;
+            }
+
+            if (resposta.ItemAttackEffect == 1)
+            {
+                Arma = true;
+            }
+            else
+            {
+                Arma = false;
+            }
+
+            if (resposta.ItemLuckEffect == 2)
+            {
+                Amuleto = true;
+            }
+            else
+            {
+                Amuleto = false;
+            }
+        }
+        
+        //Calcula o Score do herói
+        public void ScoreJogo()
+        {
+            Score += MoedasOuro;
+            if (Resultado == RoundResult.SuccessVictory)
             {
                 Score += 3000;
                 if (PontosVida < 0.5)
@@ -301,46 +329,6 @@ namespace SetepassosPRJ.Models
             Score += PocoesVida * 750;
             Score += NrInimigosVencidos * 300;
             Score += NrItensEncontrados * 100;
-        }
-
-        //Método que retorna o item surpresa
-        public void ItemSurpresa(GameApiResponse resposta)
-        {
-            if (resposta.ItemHealthEffect==-2)
-            {
-                Veneno = true;
-                MiniPocao = false;
-            }
-            else if (resposta.ItemHealthEffect == 1)
-            {
-                MiniPocao = true;
-                Veneno = false;
-            }
-
-            if (resposta.ItemAttackEffect==1)
-            {
-                Arma = true;
-            }
-            else
-            {
-                Arma = false;
-            }
-
-            if (resposta.ItemLuckEffect==2)
-            {
-                Amuleto = true;
-            }
-            else
-            {
-                Amuleto = false;
-            }
-        }
-
-        //Informa se o jogo foi terminado ou não
-        public void TerminarJogo(GameApiResponse resposta)
-        {
-            if (resposta.Action == PlayerAction.Quit || PontosVida == 0 || resposta.Result == RoundResult.SuccessVictory)
-                JogoTerminado = true;
         }
         #endregion
 

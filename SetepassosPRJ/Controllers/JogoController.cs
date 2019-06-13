@@ -84,6 +84,8 @@ namespace SetepassosPRJ.Controllers
 
                 if (jogo.PontosVida == 0 || resposta.Result == RoundResult.SuccessVictory)
                 {
+                    jogo.ScoreJogo();
+                    Repositorio.AdicionarScore(jogo); //NOVO
                     return View("Score", jogo);
                 }
                 else
@@ -93,18 +95,20 @@ namespace SetepassosPRJ.Controllers
             }
             else
             {
+                jogo.ScoreJogo();
+                Repositorio.AdicionarScore(jogo); //NOVO
                 return View("Score", jogo);
             }
         }
 
         public IActionResult HighScore()
         {
-            List<Jogo> jogos = Repositorio.Jogos;
-            jogos.Sort();
-            jogos.Reverse();
-            
-            List<HighScore> scores = Repositorio.ListaScores(jogos);
-            return View(scores);
+            List<HighScore> scores = Repositorio.Scores;
+            scores.Sort();
+            scores.Reverse();
+
+            List<HighScore> highScores = Repositorio.ListaScores(scores);
+            return View(highScores);
         }
     }
 }

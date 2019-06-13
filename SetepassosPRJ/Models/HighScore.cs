@@ -21,7 +21,7 @@ namespace SetepassosPRJ.Models
         public int ID { get; set; }
         #endregion
 
-        #region Métodos
+        #region Construtor
         public HighScore()
         {
 
@@ -40,13 +40,14 @@ namespace SetepassosPRJ.Models
             PocoesUsadas = jogo.NrPocoesUsadas;
             PocoesTotal = jogo.PocoesTotais;
         }
+        #endregion
 
+        #region CompareTo
         public int CompareTo(object obj)
         {
             HighScore h = (HighScore)obj;
             return Score.CompareTo(h.Score);
         }
-
         #endregion
     }
 }

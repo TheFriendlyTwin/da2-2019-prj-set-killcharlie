@@ -8,15 +8,15 @@ namespace SetepassosPRJ.Models
 {
     public class SetePassosDbContext : DbContext
     {
+        //Lista de todos os Scores
         public DbSet<HighScore> Scores {get; set;}
-
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             string connection =
             @"Server=(localdb)\mssqllocaldb;Database=SetepassosPRJ;
-Trusted_Connection=True;";
+            Trusted_Connection=True;";
             optionsBuilder.UseSqlServer(connection);
         }
     }
-
 }
