@@ -11,6 +11,8 @@ namespace SetepassosPRJ.Models
        
         #region Listas
         private static List<Jogo> jogos = new List<Jogo>();
+
+        private static List<TeamMember> teamMembers = new List<TeamMember>();
         #endregion
 
         #region Propriedades
@@ -32,6 +34,24 @@ namespace SetepassosPRJ.Models
                 return scores;
             }
         }
+
+        //Nova lista para os teamMembers
+        public static List<TeamMember> TeamMembers
+        {
+            get
+            {
+                TeamMember alexandra = new TeamMember("Alexandra", 160323018);
+                TeamMember mafalda = new TeamMember("Mafalda", 170323021);
+                TeamMember marta = new TeamMember("Marta", 170323021);
+
+                teamMembers.Add(alexandra);
+                teamMembers.Add(mafalda);
+                teamMembers.Add(marta);
+                return teamMembers;
+            }  
+        }
+
+        
 
         #endregion
         #region Métodos

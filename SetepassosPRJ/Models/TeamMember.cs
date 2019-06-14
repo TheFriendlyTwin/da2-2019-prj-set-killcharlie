@@ -10,5 +10,12 @@ namespace SetepassosPRJ.Models
         public string NomeEquipa { get; set; }
         public string NomeMembroEquipa { get; set; }
         public int NrAlunoMembroEquipa { get; set; }
+
+        public TeamMember(string nome, int numero)
+        {
+            NomeEquipa = "KillCharlie";
+            NomeMembroEquipa = nome;
+            NrAlunoMembroEquipa = numero;
+        }
     }
 }

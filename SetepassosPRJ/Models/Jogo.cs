@@ -49,6 +49,12 @@ namespace SetepassosPRJ.Models
         #endregion
 
         #region Construtor
+        public Jogo()
+        {
+
+        }
+
+
         public Jogo(string utilizador, string perfil)
         {
             Utilizador = utilizador;
