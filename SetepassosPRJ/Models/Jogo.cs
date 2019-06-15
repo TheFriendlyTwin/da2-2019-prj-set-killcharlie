@@ -16,17 +16,19 @@ namespace SetepassosPRJ.Models
         public int PontosAtaque { get; set; }
         public int PontosSorte { get; set; }
         public int PocoesVida { get; set; }
+        public int PocoesTotais { get; set; }
+        public bool PocaoEncontrada { get; set; } //NOVO - Para avisar na view do jogo se encontrou poções
         public bool Chave { get; set; }
         public bool PosseChave { get; set; }
         public int PosicaoHeroi { get; set; }
         public int DistanciaPorta { get; set; } //propriedade acrescentada, que retorna os número de passos restantes para alcançar a porta
         public bool Inimigo { get; set; }
-        public int PocoesTotais { get; set; }
         public int MoedasOuro { get; set; }
         public int NumeroJogadas { get; set; } //propriedade acrescentada para contar quantas jogadas já foram efetuadas
         public double PontosVidaInimigo { get; set; }
         public int PontosSorteInimigo { get; set; }
         public int PontosAtaqueInimigo { get; set; }
+        public double DanoInimigo { get; set; } //NOVO - Para avisar na view do jogo quantos PV ganhou/perdeu 
         public bool Item { get; set; }
         public int Score { get; set; }
         public int NrInimigosVencidos { get; set; } 
@@ -81,7 +83,7 @@ namespace SetepassosPRJ.Models
 
             PocoesVida = 1;
             PocoesTotais = PocoesVida;
-            PosicaoHeroi = 0; //Temos que começar no 0 porque a GameApiResponse, por default, devolve a Action 0, i.e., a action GoForward
+            PosicaoHeroi = 0; //Temos que começar no 0 pois a GameApiResponse, por default, devolve a Action 0 (GoForward)
             DistanciaPorta = 8 - PosicaoHeroi;
             MoedasOuro = 0;
             NumeroJogadas = 0;
@@ -100,6 +102,7 @@ namespace SetepassosPRJ.Models
             PontosVidaInimigo = resposta.EnemyHealthPoints;
             PontosSorteInimigo = resposta.EnemyLuckPoints;
             PontosAtaqueInimigo = resposta.EnemyAttackPoints;
+            DanoInimigo = resposta.EnemyDamageSuffered; //NOVO
             ItemSurpresa(resposta);
             ChaveGuardada(resposta);
             NumeroJogadas = resposta.RoundNumber;
@@ -257,7 +260,7 @@ namespace SetepassosPRJ.Models
             }
         }
 
-        //Calcula o número de fugas do inimigo
+        //Calcula o número de examinações de área
         public void ExaminarArea(GameApiResponse resposta)
         {
             if (resposta.Action == PlayerAction.SearchArea && resposta.Result == RoundResult.Success)

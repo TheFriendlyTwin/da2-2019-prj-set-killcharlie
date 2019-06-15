@@ -54,6 +54,7 @@ namespace SetepassosPRJ.Models
         
 
         #endregion
+
         #region Métodos
         //Adiciona o jogo à lista de jogos
         public static void AdicionarJogo(Jogo novoJogo)

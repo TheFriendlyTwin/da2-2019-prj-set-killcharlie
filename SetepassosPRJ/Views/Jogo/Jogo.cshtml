@@ -35,40 +35,63 @@
                     </u>
                 </strong><br />
                 <br />@Model.PontosVida <img src="~/images/miniheart.png" alt="PontosVida" title="Pontos de vida" />
+                      @if(Model.DanoInimigo != 0)
+                      {
+                          <b class="vermelho w3-animate-fading">-@Model.DanoInimigo</b>
+                      }
+                      @if (Model.Veneno)
+                      {
+                          <b class="vermelho w3-animate-fading">-2</b>
+                      }
+                      else if (Model.MiniPocao)
+                      {
+                          <b class="verde w3-animate-fading">+1</b>
+                      }
                 <br />@for (int sorte = 0; sorte < Model.PontosSorte; sorte++)
-
                         {
                             <img src="~/images/minitrevo.png" alt="Sorte" title="Sorte" />
+                        }
+                        @if (Model.Amuleto)
+                        {
+                            <b class="verde w3-animate-fading">+2</b>
                         }
                 <br />@for (int ataque = 0; ataque < Model.PontosAtaque; ataque++)
                         {
                             <img src="~/images/minisword.png" alt="Ataque" title="Ataque" />
                         }
+                        @if (Model.Arma)
+                        {
+                            <b class="verde w3-animate-fading">+1</b>
+                        }
                 <br />@for (int pocoes = 0; pocoes < Model.PocoesVida; pocoes++)
                         {
                             <img src="~/images/minipotion.png" alt="Pocao" title="Poção de vida" />
+                        }
+                        @if (Model.PocaoEncontrada)
+                        {
+                            <b class="verde w3-animate-fading">+1</b>
                         }
                 <br /> @if (Model.Item)
                         {
                             if (Model.Veneno)
                             {
-                                @:Veneno Encontrado! 
+                                @:Veneno Encontrado!
                                 <img src="~/images/miniveneno.png" alt="Veneno" title="Veneno" />
                             }
                             else if (Model.Arma)
                             {
-                                @:Arma Encontrada! 
+                                @:Arma Encontrada!
                                 <img src="~/images/miniarma.png" alt="Arma" title="Arma" />
                             }
                             else if (Model.Amuleto)
                             {
-                                @:Amuleto Encontrado! 
+                                @:Amuleto Encontrado!
                                 <img src="~/images/miniamuleto.png" alt="Amuleto" title="Amuleto" />
                             }
                             else if (Model.MiniPocao)
                             {
                                 @:Mini-Poção Encontrada!
-                                <img src="~/images/minipocao.png" alt="MiniPocai" title="Mini Poção" />
+                                <img src="~/images/minipocao.png" alt="MiniPocao" title="Mini Poção" />
                             }
                         }
             </div>
@@ -90,9 +113,9 @@
         </div>
         <div class="col-md-6 personagens">
             @*@if (Model.PontosVidaInimigo != 0)
-            {
-                <img src="~/images/herospeech.png" class="speech" />
-            }*@
+        {
+            <img src="~/images/herospeech.png" class="speech" />
+        }*@
             @if (Model.Inimigo)
             {
                 <img src="~/images/minicharlieangels.png" alt="AnjosCharlie" title="Anjos de Charlie" class="inimigo w3-animate-left" />
@@ -116,6 +139,14 @@
             <div class="collapse img-over2" id="flee">
                 <img src="~/images/Flee.png" />
             </div>
+            @if (Model.PontosVida <= 1.5)
+            {
+                <div class="mensagem w3-animate-fading">Bebe uma poção!</div>
+            }
+            @if (Model.Chave)
+            {
+                <div class="chave w3-animate-fading">Encontras-te a chave!</div>            
+            }
         </div>
         <div class="col-md-3">
             <div class="itens">

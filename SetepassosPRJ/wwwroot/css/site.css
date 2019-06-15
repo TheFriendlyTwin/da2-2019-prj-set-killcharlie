@@ -179,17 +179,6 @@ tr:hover th {
     font-weight: bolder;
 }
 
-/*Estilo dos elementos do jogo*/
-/*.elementos{
-    border-width: 5px;
-    border-style: ridge;
-    font-family: 'Book Antiqua';
-    color: white;
-    background-image: url("../images/Fire.gif");
-    background-repeat: no-repeat;
-    background-size: cover;
-}*/
-
 /*Indice da página about*/
 #Indice {
     color:darkred;
@@ -215,6 +204,34 @@ tr:hover th {
     z-index: auto;
     left: 90px;
     top: 20px;
+}
+
+.mensagem {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%; 
+    color:darkred;
+}
+
+.chave {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    color: gold;
+}
+
+.vermelho {
+    color:red;
+    width: 100%;
+}
+
+.verde{
+    color:lawngreen;
+    width:100%;
 }
 
 /*.speech {
