@@ -286,12 +286,19 @@ namespace SetepassosPRJ.Models
             if (resposta.ItemHealthEffect == -2)
             {
                 Veneno = true;
-                MiniPocao = false;
             }
-            else if (resposta.ItemHealthEffect == 1)
+            else
+            {
+                Veneno = false;
+            }
+
+            if (resposta.ItemHealthEffect == 1)
             {
                 MiniPocao = true;
-                Veneno = false;
+            }
+            else
+            {
+                MiniPocao = false;
             }
 
             if (resposta.ItemAttackEffect == 1)
