@@ -116,12 +116,12 @@ namespace SetepassosPRJ.Models
             Ataques(resposta);
             ExaminarArea(resposta);
             Resultado = resposta.Result; 
-            Acao = resposta.Action; //De forma a que o botão Examinar Área não apareça numa posição em que já foi examinada
+            Acao = resposta.Action; 
             AtualizarPontosVida(resposta);
             AtualizarPocoes(resposta);
             AtualizarPontosSorte(resposta);
             AtualizarPontosAtaque(resposta);
-            AtualizarArrayAreasExaminadas(resposta); 
+            AtualizarArrayAreasExaminadas(resposta); //De forma a que o botão Examinar Área não apareça numa posição em que já foi examinada
             AreaExaminada = AreasExaminadas[PosicaoHeroi - 1];
         }
 
@@ -173,7 +173,6 @@ namespace SetepassosPRJ.Models
             {
                 PontosVida = 5;
             }
-            Math.Round(PontosVida, 1); //Arredondar os pontos de vida a 1 casa decimal
         }
 
         //Atualiza os pontos de sorte do herói
@@ -211,6 +210,16 @@ namespace SetepassosPRJ.Models
             DistanciaPorta = 8 - PosicaoHeroi;
         }
 
+        //Indica se o herói está na posse da chave
+        public void ChaveGuardada(GameApiResponse resposta)
+        {
+            Chave = resposta.FoundKey;
+            if (Chave)
+            {
+                PosseChave = true;
+            }
+        }
+
         //Conta quantos inimigos foram vencidos
         public void InimigosVencidos (GameApiResponse resposta)
         {
@@ -224,21 +233,14 @@ namespace SetepassosPRJ.Models
             if (resposta.FoundItem)
                 NrItensEncontrados++;
         }
-
-        public void ChaveGuardada(GameApiResponse resposta)
-        {
-            Chave = resposta.FoundKey; 
-            if (Chave)
-            {
-                PosseChave = true;
-            }
-        }
+        
         //Conta quantos vezes o herói avançou
         public void Avancos(GameApiResponse resposta)
         {
             if (resposta.Action == PlayerAction.GoForward)
                 NrAvancos++;
         }
+
         //Conta quantos vezes o herói recuou
         public void Recuos(GameApiResponse resposta)
         {

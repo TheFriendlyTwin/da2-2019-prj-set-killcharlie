@@ -34,7 +34,7 @@
                         }
                     </u>
                 </strong><br />
-                <br />@Model.PontosVida <img src="~/images/miniheart.png" alt="PontosVida" title="Pontos de vida" />
+                <br />@Math.Round(Model.PontosVida, 1) <img src="~/images/miniheart.png" alt="PontosVida" title="Pontos de vida" />
                         @if (Model.DanoInimigo != 0)
                         {
                             <b class="vermelho w3-animate-fading">-@Model.DanoInimigo</b>
@@ -103,7 +103,7 @@
                 <br />@if (Model.Inimigo)
                         {
                             <br />@:Pontos do Inimigo:
-                            <br />@Model.PontosVidaInimigo<img src="~/images/enemyHealth.png" alt="Vida do Inimigo" title="Pontos de vida do inimigo" />
+                            <br />@Math.Round(Model.PontosVidaInimigo, 1)<img src="~/images/enemyHealth.png" alt="Vida do Inimigo" title="Pontos de vida do inimigo" />
                             <br />@for (int sorte = 0; sorte < Model.PontosSorteInimigo; sorte++)
                                     {
                                         <img src="~/images/EnemyLuck.png" alt="Sorte do Inimigo" title="Pontos de vida do inimigo" />

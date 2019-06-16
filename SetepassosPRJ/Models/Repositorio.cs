@@ -11,7 +11,6 @@ namespace SetepassosPRJ.Models
        
         #region Listas
         private static List<Jogo> jogos = new List<Jogo>();
-
         private static List<TeamMember> teamMembers = new List<TeamMember>();
         #endregion
 
