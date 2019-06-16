@@ -206,32 +206,34 @@ tr:hover th {
     top: 20px;
 }
 
-.mensagem {
+.personagens > .mensagem {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%; 
-    color:darkred;
-}
-
-.chave {
-    position: absolute;
-    top: 60%;
-    left: 50%;
+    top: 5%;
+    left: 85%;
     transform: translate(-50%, -50%);
     width: 100%;
-    color: gold;
+    color: darkred;
+    font-size:30px;
 }
 
-.vermelho {
+.personagens > .chave {
+    position: absolute;
+    top: 0%;
+    left: 85%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    color: orangered;
+    font-size: 30px;
+}
+
+.utilizador > .vermelho {
     color:red;
     width: 100%;
 }
 
-.verde{
-    color:lawngreen;
-    width:100%;
+.utilizador > .verde {
+    color: lawngreen;
+    width: 100%;
 }
 
 /*.speech {

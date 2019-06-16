@@ -29,6 +29,7 @@ namespace SetepassosPRJ.Models
         public int PontosSorteInimigo { get; set; }
         public int PontosAtaqueInimigo { get; set; }
         public double DanoInimigo { get; set; } //NOVO - Para avisar na view do jogo quantos PV ganhou/perdeu 
+        public bool Cansaco { get; set; } //NOVO - Para avisar na view do jogo quantos PV ganhou/perdeu 
         public bool Item { get; set; }
         public int Score { get; set; }
         public int NrInimigosVencidos { get; set; } 
@@ -158,6 +159,7 @@ namespace SetepassosPRJ.Models
             if (NrAtaques > 7 || NrPassos > 7 || NrExaminacoesArea > 7 || NrPocoesUsadas > 7)
             {
                 PontosVida -= 0.5;
+                Cansaco = true;
             }
 
             PontosVida -= resposta.EnemyDamageSuffered; //Dano causado pelo inimigo

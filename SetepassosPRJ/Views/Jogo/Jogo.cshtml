@@ -35,18 +35,22 @@
                     </u>
                 </strong><br />
                 <br />@Model.PontosVida <img src="~/images/miniheart.png" alt="PontosVida" title="Pontos de vida" />
-                      @if(Model.DanoInimigo != 0)
-                      {
-                          <b class="vermelho w3-animate-fading">-@Model.DanoInimigo</b>
-                      }
-                      @if (Model.Veneno)
-                      {
-                          <b class="vermelho w3-animate-fading">-2</b>
-                      }
-                      else if (Model.MiniPocao)
-                      {
-                          <b class="verde w3-animate-fading">+1</b>
-                      }
+                        @if (Model.DanoInimigo != 0)
+                        {
+                            <b class="vermelho w3-animate-fading">-@Model.DanoInimigo</b>
+                        }
+                        @if (Model.Veneno)
+                        {
+                            <b class="vermelho w3-animate-fading">-2</b>
+                        }
+                        else if (Model.MiniPocao)
+                        {
+                            <b class="verde w3-animate-fading">+1</b>
+                        }
+                        @if (Model.Cansaco)
+                        {
+                            <b class="vermelho w3-animate-fading">-0.5</b>
+                        }
                 <br />@for (int sorte = 0; sorte < Model.PontosSorte; sorte++)
                         {
                             <img src="~/images/minitrevo.png" alt="Sorte" title="Sorte" />
@@ -113,9 +117,9 @@
         </div>
         <div class="col-md-6 personagens">
             @*@if (Model.PontosVidaInimigo != 0)
-        {
-            <img src="~/images/herospeech.png" class="speech" />
-        }*@
+            {
+                <img src="~/images/herospeech.png" class="speech" />
+            }*@
             @if (Model.Inimigo)
             {
                 <img src="~/images/minicharlieangels.png" alt="AnjosCharlie" title="Anjos de Charlie" class="inimigo w3-animate-left" />
@@ -139,7 +143,7 @@
             <div class="collapse img-over2" id="flee">
                 <img src="~/images/Flee.png" />
             </div>
-            @if (Model.PontosVida <= 1.5)
+            @if (Model.PontosVida <= 1.5 && Model.PocoesVida!=0)
             {
                 <div class="mensagem w3-animate-fading">Bebe uma poção!</div>
             }
