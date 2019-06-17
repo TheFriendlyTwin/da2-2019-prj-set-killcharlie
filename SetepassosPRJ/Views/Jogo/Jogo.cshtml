@@ -169,8 +169,8 @@
             </div>
             <div>
                 <form asp-action="Jogo" method="post">
-                    <input value="@Model.ID" name="id" class="idJogo" />
                     <button type="submit" class="btn btn-default" name="playerAction" value="6">Desistir</button> <br />
+                    <input value="@Model.ID" name="id" class="idJogo" />
                     @if (Model.Inimigo)
                     {
                         <button type="submit" class="btn grad" name="playerAction" value="4" data-toggle="collapse" data-target="#boom">BANG BANG <img src="~/images/minipistol.png" /><img src="~/images/minicowboy.png" /><img src="~/images/minipistolmirror.png" /></button>

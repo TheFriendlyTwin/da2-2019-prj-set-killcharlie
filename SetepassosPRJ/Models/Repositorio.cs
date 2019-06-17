@@ -54,15 +54,12 @@ namespace SetepassosPRJ.Models
         #endregion
 
         #region Métodos
-          
         public static void AdicionarRonda(RoundSummary round)
         {
             rondas.Add(round);
-
         }
 
-
-
+        //Método que adiciona membros à lista Members
         public static void AdicionarMembro()
         {
             TeamMember alexandra = new TeamMember("Alexandra", 160323018);
@@ -74,6 +71,7 @@ namespace SetepassosPRJ.Models
             context.Members.Add(alexandra);
             context.Members.Add(mafalda);
             context.Members.Add(marta);
+            context.SaveChanges();
         }
 
 
@@ -134,20 +132,21 @@ namespace SetepassosPRJ.Models
             List<HighScore> rankings = Scores; //Lista scores da base de dados
             rankings.Sort();
             rankings.Reverse();
+
             foreach(HighScore pontuacao in rankings)
             {
-                if (scoresJogador.Count < jogador.numeroResultados)
+                if (scoresJogador.Count < jogador.NumeroResultados)
                 {
-                    if (jogador.nomeJogador =="")
+                    if (jogador.NomeJogador =="")
                     {
                         scoresJogador.Add(pontuacao);
                     }
-                    else if( pontuacao.Nome == jogador.nomeJogador)
+                    else if( pontuacao.Nome == jogador.NomeJogador)
                     {
                         scoresJogador.Add(pontuacao);
                     }
                 }
-                if (scoresJogador.Count==jogador.numeroResultados)
+                if (scoresJogador.Count==jogador.NumeroResultados)
                 {
                     break;
                 }
