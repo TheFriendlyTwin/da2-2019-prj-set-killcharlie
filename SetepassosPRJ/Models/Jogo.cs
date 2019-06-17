@@ -162,6 +162,13 @@ namespace SetepassosPRJ.Models
                 Cansaco = true;
             }
 
+            //Caso o herói esteja na última área e na posse de chave, não lhe deve ser retirado os 0.5 PV
+            if(PosicaoHeroi == 7 && PosseChave && Cansaco)
+            {
+                PontosVida += 0.5;
+                Cansaco = false;
+            }
+
             PontosVida -= resposta.EnemyDamageSuffered; //Dano causado pelo inimigo
             PontosVida += resposta.ItemHealthEffect; //Mini poção ou veneno
 
