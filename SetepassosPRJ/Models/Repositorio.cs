@@ -97,9 +97,58 @@ namespace SetepassosPRJ.Models
                     HighScore score = scores[i];
                     highScores.Add(score);
                 }
+                if (highScores.Count==10)
+                {
+                    break;
+                }
             }
             return highScores;
         }
+
+        //Lista com n scores do jogador pedido
+        public static List<HighScore> TopScoreJogador(ScoreJogador jogador)
+        {
+            List<HighScore> scoresJogador = new List<HighScore>();
+            List<HighScore> rankings = Scores; //Lista scores da base de dados
+            rankings.Sort();
+            rankings.Reverse();
+            foreach(HighScore pontuacao in rankings)
+            {
+                if (scoresJogador.Count < jogador.numeroResultados)
+                {
+                    if (jogador.nomeJogador =="")
+                    {
+                        scoresJogador.Add(pontuacao);
+                    }
+                    else if( pontuacao.Nome == jogador.nomeJogador)
+                    {
+                        scoresJogador.Add(pontuacao);
+                    }
+                }
+                if (scoresJogador.Count==jogador.numeroResultados)
+                {
+                    break;
+                }
+            }
+            return scoresJogador;
+        }
+
+        ////Lista com n scores 
+        //public static List<HighScore> BestScores(ScoreJogador jogador)
+        //{
+        //    List<HighScore> scoresJogador = new List<HighScore>();
+        //    List<HighScore> rankings = Scores; //Lista scores da base de dados
+        //    rankings.Sort();
+        //    rankings.Reverse();
+        //    for (int i = 0; i < rankings.Count; i++)
+        //    {
+        //        if (scoresJogador.Count < jogador.numeroResultados)
+        //        {
+        //           scoresJogador.Add(rankings[i]);
+        //        }
+        //    }
+        //    return scoresJogador;
+        //}
         #endregion
     }
 }
