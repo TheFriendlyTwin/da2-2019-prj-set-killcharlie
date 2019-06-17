@@ -56,8 +56,7 @@ namespace SetepassosPRJ.Models
         {
 
         }
-
-
+        
         public Jogo(string utilizador, string perfil)
         {
             Utilizador = utilizador;
