@@ -10,8 +10,9 @@ using SetepassosPRJ.Models;
 namespace SetepassosPRJ.Controllers
 {
     [Route("api/[controller]")]
-    public class ApiTeamMemberController : Controller
+    public class IdentificarEquipaProjetoController : Controller
     {
+
         // GET: api/<controller>
         [HttpGet]
         public List<TeamMember> Get()
@@ -19,22 +20,13 @@ namespace SetepassosPRJ.Controllers
             return Repositorio.TeamMembers;
         }
 
-        // POST api/<controller>
-        [HttpPost]
-        public void Post([FromBody]string value)
+        // GET api/<controller>/5
+        [HttpGet("{id}")]
+        public string Get(int id)
         {
+            return "value";
         }
 
-        // PUT api/<controller>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+       
     }
 }
