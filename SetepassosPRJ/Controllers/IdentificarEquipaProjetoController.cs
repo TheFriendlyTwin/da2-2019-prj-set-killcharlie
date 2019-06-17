@@ -17,7 +17,9 @@ namespace SetepassosPRJ.Controllers
         [HttpGet]
         public List<TeamMember> Get()
         {
-            return Repositorio.TeamMembers;
+            if (Repositorio.Members.Count == 0)
+                Repositorio.AdicionarMembro();
+            return Repositorio.Members;
         }
 
         // GET api/<controller>/5

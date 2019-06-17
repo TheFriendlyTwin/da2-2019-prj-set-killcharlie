@@ -8,10 +8,9 @@ namespace SetepassosPRJ.Models
 {
     public static class Repositorio
     {
-       
         #region Listas
         private static List<Jogo> jogos = new List<Jogo>();
-        private static List<TeamMember> teamMembers = new List<TeamMember>();
+        private static List<RoundSummary> rondas = new List<RoundSummary>();
         #endregion
 
         #region Propriedades
@@ -23,6 +22,14 @@ namespace SetepassosPRJ.Models
             }
         }
 
+        public static List<RoundSummary> Rondas
+        {
+            get
+            {
+                return rondas;
+            }
+        }
+        
         //NOVA LISTA DE SCORES, DA QUAL VAMOS RETIRAR OS 10 MELHORES E METER NA LISTA DOS TOP 10 SCORES
         public static List<HighScore> Scores
         {
@@ -35,26 +42,41 @@ namespace SetepassosPRJ.Models
         }
 
         //Nova lista para os teamMembers
-        public static List<TeamMember> TeamMembers
+        public static List<TeamMember> Members
         {
             get
             {
-                TeamMember alexandra = new TeamMember("Alexandra", 160323018);
-                TeamMember mafalda = new TeamMember("Mafalda", 170323021);
-                TeamMember marta = new TeamMember("Marta", 170323021);
-
-                teamMembers.Add(alexandra);
-                teamMembers.Add(mafalda);
-                teamMembers.Add(marta);
-                return teamMembers;
+                SetePassosDbContext context = new SetePassosDbContext();
+                List<TeamMember> members = context.Members.ToList();
+                return members;
             }  
         }
-
-        
-
         #endregion
 
         #region Métodos
+          
+        public static void AdicionarRonda(RoundSummary round)
+        {
+            rondas.Add(round);
+
+        }
+
+
+
+        public static void AdicionarMembro()
+        {
+            TeamMember alexandra = new TeamMember("Alexandra", 160323018);
+            TeamMember mafalda = new TeamMember("Mafalda", 170323021);
+            TeamMember marta = new TeamMember("Marta", 170323021);
+
+            SetePassosDbContext context = new SetePassosDbContext();
+
+            context.Members.Add(alexandra);
+            context.Members.Add(mafalda);
+            context.Members.Add(marta);
+        }
+
+
         //Adiciona o jogo à lista de jogos
         public static void AdicionarJogo(Jogo novoJogo)
         {
@@ -132,23 +154,6 @@ namespace SetepassosPRJ.Models
             }
             return scoresJogador;
         }
-
-        ////Lista com n scores 
-        //public static List<HighScore> BestScores(ScoreJogador jogador)
-        //{
-        //    List<HighScore> scoresJogador = new List<HighScore>();
-        //    List<HighScore> rankings = Scores; //Lista scores da base de dados
-        //    rankings.Sort();
-        //    rankings.Reverse();
-        //    for (int i = 0; i < rankings.Count; i++)
-        //    {
-        //        if (scoresJogador.Count < jogador.numeroResultados)
-        //        {
-        //           scoresJogador.Add(rankings[i]);
-        //        }
-        //    }
-        //    return scoresJogador;
-        //}
         #endregion
     }
 }

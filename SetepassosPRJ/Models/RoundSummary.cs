@@ -9,22 +9,34 @@ namespace SetepassosPRJ.Models
     public class RoundSummary
     {
         public int NrRondas { get; set; }
-    //    public DecisaoTomada {get;set;}
-    //public PosicaoFinalRonda {get; set;}
-        public  string NomeMembroEquipa { get; set; }
-      public int NrAlunoMembroEquipa { get; set; }
-    public int TotalAcumuladoFugas { get; set; }
-    public int TotalAcumuladoItensEncontrado { get; set; }
-    public bool TerChave { get; set; }
-    public int MoedasDeOuro { get; set; }
-    public int TotalAcumuladoInimigosVencidos { get; set; }
-    public int PocoesVidaFinais { get; set; }
-    public int PontosVidaFinais { get; set; }
-    public int PontosAtaqueFinais { get; set; }
-    public int PontosSorteFinais{ get; set; }
+        public PlayerAction DecisaoTomada {get;set;}
+        public int PosicaoFinalRonda {get; set;}
+        public int TotalAcumuladoInimigosVencidos { get; set; }
+        public int TotalAcumuladoFugas { get; set; }
+        public int TotalAcumuladoItensEncontrado { get; set; }
+        public bool TerChave { get; set; }
+        public int MoedasDeOuro { get; set; }
+        public double PontosVidaFinais { get; set; }
+        public int PontosAtaqueFinais { get; set; }
+        public int PontosSorteFinais{ get; set; }
+        public int PocoesVidaFinais { get; set; }
+
+        public RoundSummary(int nRondas, PlayerAction acao, int posicaoFinalRonda, int inimigosVencidos, int fugas, int itensEncontrados, 
+            bool chave, int ouro, double vidaFinal, int ataqueFinal, int sorteFinal, int pocoesFinal)
+        {
+            NrRondas = nRondas;
+            DecisaoTomada = acao;
+            PosicaoFinalRonda = posicaoFinalRonda;
+            TotalAcumuladoInimigosVencidos = inimigosVencidos;
+            TotalAcumuladoFugas = fugas;
+            TotalAcumuladoItensEncontrado = itensEncontrados;
+            TerChave = chave;
+            MoedasDeOuro = ouro;
+            PontosVidaFinais = vidaFinal;
+            PontosSorteFinais = sorteFinal;
+            PontosAtaqueFinais = ataqueFinal;
+            PocoesVidaFinais = pocoesFinal;
+        }
     
-
-
-
-}
+    }
 }

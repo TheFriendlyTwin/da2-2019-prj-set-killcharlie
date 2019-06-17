@@ -49,6 +49,7 @@ namespace SetepassosPRJ.Models
         public bool Amuleto { get; set; }
         public RoundResult Resultado { get; set; } //Acrescentei esta propriedade para sabermos qual o resultado final
         public PlayerAction Acao { get; set; }
+        public int NumeroRondas { get; set; }
         #endregion
 
         #region Construtor
@@ -355,6 +356,21 @@ namespace SetepassosPRJ.Models
             Score += PocoesVida * 750;
             Score += NrInimigosVencidos * 300;
             Score += NrItensEncontrados * 100;
+        }
+
+        //NOVO
+        public void AutoPlay(GameApiResponse resposta)
+        {
+            int ronda = 1;
+            while (ronda < NumeroRondas)
+            {
+                //estratégia
+                RoundSummary nRonda = new RoundSummary(ronda, Acao, PosicaoHeroi, NrInimigosVencidos, NrFugasInimigo, NrItensEncontrados,
+                    PosseChave, MoedasOuro, PontosVida, PontosAtaque, PontosSorte, PocoesVida);
+                Repositorio.AdicionarRonda(nRonda);
+                AtualizarJogo(resposta);
+                ronda++;
+            }
         }
         #endregion
 

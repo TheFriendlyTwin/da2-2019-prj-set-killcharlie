@@ -11,6 +11,9 @@ namespace SetepassosPRJ.Models
         //Lista de todos os Scores
         public DbSet<HighScore> Scores {get; set;}
 
+        //Lista dos membros da equipa
+        public DbSet<TeamMember> Members { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             string connection =
