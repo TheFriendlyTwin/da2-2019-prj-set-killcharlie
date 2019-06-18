@@ -49,7 +49,7 @@ namespace SetepassosPRJ.Models
         public bool Amuleto { get; set; }
         public RoundResult Resultado { get; set; } //Acrescentei esta propriedade para sabermos qual o resultado final
         public PlayerAction Acao { get; set; }
-        public int NumeroRondas { get; set; }
+        public int NumeroRondasJogadas { get; set; } //MODO AUTONOMO
         #endregion
 
         #region Construtor
@@ -156,17 +156,19 @@ namespace SetepassosPRJ.Models
         //Atualiza os pontos de vida do herói
         public void AtualizarPontosVida(GameApiResponse resposta)
         {
-            if (NrAtaques > 7 || NrPassos > 7 || NrExaminacoesArea > 7 || NrPocoesUsadas > 7)
+            if (PosicaoHeroi != 7 && !PosseChave)
             {
-                PontosVida -= 0.5;
-                Cansaco = true;
+                if ((NrAtaques > 7 || NrPassos > 7 || NrExaminacoesArea > 7 || NrPocoesUsadas > 7))
+                {
+                    PontosVida -= 0.5;
+                    Cansaco = true;
+                }
             }
 
             //Caso o herói esteja na última área e na posse de chave, não lhe deve ser retirado os 0.5 PV
             if(PosicaoHeroi == 7 && PosseChave && Cansaco)
             {
-                PontosVida += 0.5;
-                Cansaco = false;
+                Cansaco = false; //Para que na view não apareça -0.5 à frente dos PV
             }
 
             PontosVida -= resposta.EnemyDamageSuffered; //Dano causado pelo inimigo
@@ -359,10 +361,10 @@ namespace SetepassosPRJ.Models
         }
 
         //NOVO
-        public void AutoPlay(GameApiResponse resposta)
+        public void AutoPlay(GameApiResponse resposta, int numeroRondas)
         {
             int ronda = 1;
-            while (ronda < NumeroRondas)
+            while (ronda < numeroRondas)
             {
                 //estratégia
                 RoundSummary nRonda = new RoundSummary(ronda, Acao, PosicaoHeroi, NrInimigosVencidos, NrFugasInimigo, NrItensEncontrados,

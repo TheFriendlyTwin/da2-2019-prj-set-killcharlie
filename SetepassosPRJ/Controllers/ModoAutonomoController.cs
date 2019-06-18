@@ -54,7 +54,7 @@ namespace SetepassosPRJ.Controllers
             GameApiResponse gr = JsonConvert.DeserializeObject<GameApiResponse>(json_r);
 
             Jogo novoJogo = new Jogo(nome, "S");
-            novoJogo.AutoPlay(gr);
+            novoJogo.AutoPlay(gr,rondas);
             //Repositorio.AdicionarJogo(novoJogo);
 
             return View("Resultados", novoJogo);
