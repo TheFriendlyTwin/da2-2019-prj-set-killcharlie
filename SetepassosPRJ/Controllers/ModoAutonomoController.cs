@@ -57,7 +57,7 @@ namespace SetepassosPRJ.Controllers
             novoJogo.AutoPlay(gr,rondas);
             //Repositorio.AdicionarJogo(novoJogo);
 
-            return View("Resultados", novoJogo);
+            return View("Resultados");
         }
     }
 }

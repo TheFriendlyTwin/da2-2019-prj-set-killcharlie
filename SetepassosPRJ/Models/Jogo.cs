@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SetepassosPRJ.Models
 {
-    public class Jogo : IComparable
+    public class Jogo
     {
         #region Propriedades
         public int ID { get; set; }
@@ -159,18 +159,16 @@ namespace SetepassosPRJ.Models
         //Atualiza os pontos de vida do herói
         public void AtualizarPontosVida(GameApiResponse resposta)
         {
-            if (PosicaoHeroi != 7 && !PosseChave)
+            if ((NrAtaques > 7 || NrPassos > 7 || NrExaminacoesArea > 7 || NrPocoesUsadas > 7))
             {
-                if ((NrAtaques > 7 || NrPassos > 7 || NrExaminacoesArea > 7 || NrPocoesUsadas > 7))
-                {
-                    PontosVida -= 0.5;
-                    Cansaco = true;
-                }
+                PontosVida -= 0.5;
+                Cansaco = true;
             }
 
             //Caso o herói esteja na última área e na posse de chave, não lhe deve ser retirado os 0.5 PV
-            if(PosicaoHeroi == 7 && PosseChave && Cansaco)
+            if (PosicaoHeroi == 7 && PosseChave && Cansaco)
             {
+                PontosVida += 0.5;
                 Cansaco = false; //Para que na view não apareça -0.5 à frente dos PV
             }
 
@@ -362,7 +360,9 @@ namespace SetepassosPRJ.Models
             Score += NrInimigosVencidos * 300;
             Score += NrItensEncontrados * 100;
         }
+        #endregion
 
+        #region Modo Autónomo
         //NOVO
         public void AutoPlay(GameApiResponse resposta, int numeroRondas)
         {
@@ -376,14 +376,6 @@ namespace SetepassosPRJ.Models
                 AtualizarJogo(resposta);
                 ronda++;
             }
-        }
-        #endregion
-
-        #region CompareTo
-        public int CompareTo(object obj)
-        {
-            Jogo j = (Jogo)obj;
-            return Score.CompareTo(j.Score);
         }
         #endregion
     }

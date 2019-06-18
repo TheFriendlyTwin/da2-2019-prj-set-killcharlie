@@ -39,7 +39,7 @@ namespace SetepassosPRJ.Controllers
             string json_r = await response.Content.ReadAsStringAsync();
 
             GameApiResponse gr = JsonConvert.DeserializeObject<GameApiResponse>(json_r);
-
+            
             Jogo novoJogo = new Jogo(playerName, playerClass);
             novoJogo.AtualizarJogo(gr);
             Repositorio.AdicionarJogo(novoJogo);
