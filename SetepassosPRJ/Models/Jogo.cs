@@ -130,8 +130,11 @@ namespace SetepassosPRJ.Models
         {
             if (resposta.FoundPotion)
             {
-                PocoesVida++;
-                PocoesTotais++;
+                if(PocoesVida < 3)
+                {
+                    PocoesVida++;
+                    PocoesTotais++;
+                }
             }
             if (resposta.Action == PlayerAction.DrinkPotion && resposta.Result == RoundResult.Success)
             {
