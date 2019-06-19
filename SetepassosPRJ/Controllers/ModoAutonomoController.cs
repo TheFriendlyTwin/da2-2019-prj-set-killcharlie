@@ -61,6 +61,8 @@ namespace SetepassosPRJ.Controllers
             {
                 path = "/api/Play";
 
+                novoJogo.AutoPlay(gr, rondas);
+
                 PlayApiRequest pedido = new PlayApiRequest(novoJogo.ID, novoJogo.Acao);
                 json = JsonConvert.SerializeObject(pedido);
 
@@ -77,8 +79,8 @@ namespace SetepassosPRJ.Controllers
                 json_r = await response.Content.ReadAsStringAsync();
 
                 gr = JsonConvert.DeserializeObject<GameApiResponse>(json_r);
-
-                novoJogo.AutoPlay(gr,rondas);
+                novoJogo.AtualizarJogo(gr);
+                
                 ronda++;
             }
             novoJogo.ScoreJogo();

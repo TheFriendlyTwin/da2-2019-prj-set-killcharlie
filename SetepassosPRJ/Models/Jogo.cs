@@ -399,7 +399,6 @@ namespace SetepassosPRJ.Models
                 RoundSummary nRonda = new RoundSummary(NumeroJogadas+1, Acao, PosicaoHeroi, NrInimigosVencidos, NrFugasInimigo, NrItensEncontrados,
                 PosseChave, MoedasOuro, PontosVida, PontosAtaque, PontosSorte, PocoesVida, Resultado);
                 AdicionarRonda(nRonda);
-                AtualizarJogo(resposta);
             }
             else
             {
@@ -431,15 +430,8 @@ namespace SetepassosPRJ.Models
                     }
                     else
                     {
-                        if (AreaExaminada)
-                        {
-                            resposta.Action = PlayerAction.Flee;
-                        }
-                        else
-                            resposta.Action = PlayerAction.Attack;
+                        resposta.Action = PlayerAction.Attack;
                     }
-                    
-
                 }
                 else
                 {
@@ -455,11 +447,9 @@ namespace SetepassosPRJ.Models
                     {
                         resposta.Action = PlayerAction.GoForward;
                     }
-
                 }
             }
-
-
+            Acao = resposta.Action;
         }
         #endregion
     }
