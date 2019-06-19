@@ -10,7 +10,6 @@ namespace SetepassosPRJ.Models
     {
         #region Listas
         private static List<Jogo> jogos = new List<Jogo>();
-        private static List<RoundSummary> rondas = new List<RoundSummary>();
         #endregion
 
         #region Propriedades
@@ -22,13 +21,6 @@ namespace SetepassosPRJ.Models
             }
         }
 
-        public static List<RoundSummary> Rondas
-        {
-            get
-            {
-                return rondas;
-            }
-        }
         
         //NOVA LISTA DE SCORES, DA QUAL VAMOS RETIRAR OS 10 MELHORES E METER NA LISTA DOS TOP 10 SCORES
         public static List<HighScore> Scores
@@ -54,11 +46,6 @@ namespace SetepassosPRJ.Models
         #endregion
 
         #region Métodos
-        public static void AdicionarRonda(RoundSummary round)
-        {
-            rondas.Add(round);
-        }
-
         //Método que adiciona membros à lista Members
         public static void AdicionarMembro()
         {

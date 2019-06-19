@@ -8,6 +8,10 @@ namespace SetepassosPRJ.Models
 {
     public class Jogo
     {
+        #region Lista Rondas
+        private static List<RoundSummary> rondas = new List<RoundSummary>();
+        #endregion
+
         #region Propriedades
         public int ID { get; set; }
         public string Utilizador { get; set; }
@@ -49,7 +53,14 @@ namespace SetepassosPRJ.Models
         public bool Amuleto { get; set; }
         public RoundResult Resultado { get; set; } //Acrescentei esta propriedade para sabermos qual o resultado final
         public PlayerAction Acao { get; set; }
-        public int NumeroRondasJogadas { get; set; } //MODO AUTONOMO
+        //PROPRIEDADE DA LISTA DE RONDAS
+        public static List<RoundSummary> Rondas
+        {
+            get
+            {
+                return rondas;
+            }
+        }
         #endregion
 
         #region Construtor
@@ -130,11 +141,16 @@ namespace SetepassosPRJ.Models
         {
             if (resposta.FoundPotion)
             {
+                PocaoEncontrada = true;
                 if(PocoesVida < 3)
                 {
                     PocoesVida++;
                     PocoesTotais++;
                 }
+            }
+            else
+            {
+                PocaoEncontrada = false;
             }
             if (resposta.Action == PlayerAction.DrinkPotion && resposta.Result == RoundResult.Success)
             {
@@ -363,18 +379,66 @@ namespace SetepassosPRJ.Models
         #endregion
 
         #region Modo Autónomo
+        public static void AdicionarRonda(RoundSummary round)
+        {
+            Rondas.Add(round);
+        }
+
+
         //NOVO
         public void AutoPlay(GameApiResponse resposta, int numeroRondas)
         {
             int ronda = 1;
-            while (ronda < numeroRondas)
+            while (ronda <= numeroRondas && PontosVida != 0 && resposta.Result != RoundResult.SuccessVictory)
             {
                 //estratégia
                 RoundSummary nRonda = new RoundSummary(ronda, Acao, PosicaoHeroi, NrInimigosVencidos, NrFugasInimigo, NrItensEncontrados,
                     PosseChave, MoedasOuro, PontosVida, PontosAtaque, PontosSorte, PocoesVida);
-                Repositorio.AdicionarRonda(nRonda);
+                AdicionarRonda(nRonda);
                 AtualizarJogo(resposta);
                 ronda++;
+            }
+            NumeroJogadas = ronda;
+        }
+
+        public void Estrategia(GameApiResponse resposta)
+        {
+            if (PosicaoHeroi!=7 && NrRecuos == 0)
+            {
+                if (PontosVida < 1 && PocoesVida != 0)
+                {
+                    resposta.Action = PlayerAction.DrinkPotion;
+                }
+                if (!Inimigo && !AreaExaminada)
+                {
+                    resposta.Action = PlayerAction.SearchArea;
+                }
+                else if (Inimigo && !PosseChave && (PontosVidaInimigo - PontosVida) < 1.5)
+                {
+                    resposta.Action = PlayerAction.Attack;
+                }
+                else if ((Inimigo && !PosseChave && (PontosVidaInimigo - PontosVida) >= 1.5) || (Inimigo && PosseChave))
+                {
+                    resposta.Action = PlayerAction.Flee;
+                }
+                else if (!Inimigo && AreaExaminada)
+                {
+                    resposta.Action = PlayerAction.GoForward;
+                }
+            }
+            else if(PosicaoHeroi == 7)
+            {
+                if (!PosseChave)
+                {
+                    if (!Inimigo)
+                    {
+                        resposta.Action = PlayerAction.GoBack;
+                    }
+                    else if (Inimigo)
+                    {
+                        resposta.Action = PlayerAction.Attack;
+                    }
+                }
             }
         }
         #endregion
