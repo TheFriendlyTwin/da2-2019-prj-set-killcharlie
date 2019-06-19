@@ -3,7 +3,7 @@
     ViewData["Title"] = "Resultados";
 }
 
-<h1>Resultados do jogo autónomo</h1>
+<h1>Resultados do jogo autónomo - @Model.ID</h1>
 
 <table class="table table-bordered table-hover table-condensed" id="HighScore">
     <tr>
@@ -17,20 +17,30 @@
         <th>Moedas de Ouro</th>
         <th>Pontos de vida/ataque/sorte</th>
         <th>Poções de vida</th>
+        <th>Resultado da Ação</th>
     </tr>
     @foreach (RoundSummary ronda in Model.Rondas)
     {
         <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
+            <td>@ronda.NrRonda</td>
+            <td>@ronda.DecisaoTomada</td>
+            <td>@ronda.PosicaoFinalRonda</td>
+            <td>@ronda.TotalAcumuladoInimigosVencidos</td>
+            <td>@ronda.TotalAcumuladoFugas</td>
+            <td>@ronda.TotalAcumuladoItensEncontrado</td>
+            <td>@if (ronda.TerChave)
+            {
+                @:Encontrada!
+            }
+            else
+            {
+                @:Não Encontrada!
+            }
+            </td>
+            <td>@ronda.MoedasDeOuro</td>
+            <td>@ronda.PontosVidaFinais/@ronda.PontosAtaqueFinais/@ronda.PontosSorteFinais</td>
+            <td>@ronda.PocoesVidaFinais</td>
+            <td>@ronda.ResultadoAcao</td>
         </tr>
     }
 </table>
@@ -54,18 +64,34 @@
             <th>% de áreas investigadas</th>
         </tr>
         <tr>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
+            <td>@Model.NumeroJogadas</td>
+            <td>@Model.Score</td>
+            <td>@if (Model.Resultado == RoundResult.SuccessVictory)
+                {
+                    @:Vitória!
+                }
+                else
+                {
+                    @:Derrota.
+                }
+            </td>
+            <td>@if (Model.PosseChave)
+            {
+                @:Encontrada! 
+            }
+            else
+            {
+                @:Não Encontrada.
+            }
+            </td>
+            <td>@Model.NrPassos</td>
+            <td>@Model.NrExaminacoesArea</td>
+            <td>@Model.NrPocoesUsadas</td>
+            <td>@Model.NrAtaques</td>
+            <td>@Model.NrFugasInimigo</td>
+            <td>@Model.NrInimigosVencidos</td>
+            <td>@Model.NrItensEncontrados</td>
+            <td>@Model.PercentagemInvestigacao</td>
         </tr>
     </table>
 </div>

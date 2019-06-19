@@ -81,9 +81,11 @@ namespace SetepassosPRJ.Controllers
                 novoJogo.AutoPlay(gr,rondas);
                 ronda++;
             }
-            novoJogo.NumeroJogadas = ronda;
-            
-            return View("Resultados");
+            novoJogo.ScoreJogo();
+            //HighScore resultado = new HighScore(novoJogo);
+            //novoJogo.ResultadoFinal = resultado;
+
+            return View("Resultados",novoJogo);
         }
     }
 }

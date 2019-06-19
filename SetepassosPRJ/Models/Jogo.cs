@@ -47,6 +47,7 @@ namespace SetepassosPRJ.Models
         public int NrExaminacoesArea { get; set; }
         public bool[] AreasExaminadas { get; set; } //Propriedade acrescentada para saber quais as áreas já examinadas
         public bool AreaExaminada { get; set; } //Propriedade acrescentada para saber se a área atual já foi examinada
+        public double PercentagemInvestigacao { get; set; }
         public bool Veneno { get; set; }
         public bool Arma { get; set; }
         public bool MiniPocao { get; set; }
@@ -61,6 +62,8 @@ namespace SetepassosPRJ.Models
                 return rondas;
             }
         }
+        ////Resultado Final do JOGO AUTONOMO
+        //public HighScore ResultadoFinal { get; set; }
         #endregion
 
         #region Construtor
@@ -100,6 +103,7 @@ namespace SetepassosPRJ.Models
             MoedasOuro = 0;
             NumeroJogadas = 0;
             AreasExaminadas = new bool[7];
+            NrPassos = 0;
         }
         #endregion
         
@@ -121,9 +125,10 @@ namespace SetepassosPRJ.Models
             AtualizarPosicao(resposta);
             InimigosVencidos(resposta);
             ItensEncontrados(resposta);
+            Avancos(resposta);
             Recuos(resposta);
             FugasInimigo(resposta);
-            NrPassos += NrRecuos + NrAvancos + NrFugasInimigo;
+            NrPassos = NrRecuos + NrAvancos + NrFugasInimigo;
             Ataques(resposta);
             ExaminarArea(resposta);
             Resultado = resposta.Result; 
@@ -134,6 +139,7 @@ namespace SetepassosPRJ.Models
             AtualizarPontosAtaque(resposta);
             AtualizarArrayAreasExaminadas(resposta); //De forma a que o botão Examinar Área não apareça numa posição em que já foi examinada
             AreaExaminada = AreasExaminadas[PosicaoHeroi - 1];
+            PercentagemInvestigacao = (NrExaminacoesArea * 100) / 7; //Calcula a percentagem de areas examinadas
         }
 
         //Atualiza o número de poções e os pontos de vida quando se bebe poções
@@ -307,7 +313,7 @@ namespace SetepassosPRJ.Models
                 AreasExaminadas[PosicaoHeroi - 1] = true;
             }
         }
-
+        
         //Método que retorna o item surpresa
         public void ItemSurpresa(GameApiResponse resposta)
         {
@@ -390,8 +396,8 @@ namespace SetepassosPRJ.Models
             if(resposta.RoundNumber <= rondas)
             {
                 Estrategia(resposta);
-                RoundSummary nRonda = new RoundSummary(NumeroJogadas, Acao, PosicaoHeroi, NrInimigosVencidos, NrFugasInimigo, NrItensEncontrados,
-                PosseChave, MoedasOuro, PontosVida, PontosAtaque, PontosSorte, PocoesVida);
+                RoundSummary nRonda = new RoundSummary(NumeroJogadas+1, Acao, PosicaoHeroi, NrInimigosVencidos, NrFugasInimigo, NrItensEncontrados,
+                PosseChave, MoedasOuro, PontosVida, PontosAtaque, PontosSorte, PocoesVida, Resultado);
                 AdicionarRonda(nRonda);
                 AtualizarJogo(resposta);
             }
@@ -404,23 +410,44 @@ namespace SetepassosPRJ.Models
         //Estratégia para o jogo autónomo
         public void Estrategia(GameApiResponse resposta)
         {
-            if (PontosVida < 1 && PocoesVida != 0)
+            if (PontosVida < 1.2 && PocoesVida != 0)
             {
                 resposta.Action = PlayerAction.DrinkPotion;
             }
             else
             {
-                if (NrPassos <= 7 && NrRecuos == 0)
+                if (!PosseChave)
+                {
+                    if (!Inimigo)
+                    {
+                        if (!AreaExaminada)
+                        {
+                            resposta.Action = PlayerAction.SearchArea;
+                        }
+                        else
+                        {
+                            resposta.Action = PlayerAction.GoForward;
+                        }
+                    }
+                    else
+                    {
+                        if (AreaExaminada)
+                        {
+                            resposta.Action = PlayerAction.Flee;
+                        }
+                        else
+                            resposta.Action = PlayerAction.Attack;
+                    }
+                    
+
+                }
+                else
                 {
                     if (!Inimigo && !AreaExaminada)
                     {
                         resposta.Action = PlayerAction.SearchArea;
                     }
-                    else if (Inimigo && !PosseChave && (PontosVidaInimigo - PontosVida) < 1.5)
-                    {
-                        resposta.Action = PlayerAction.Attack;
-                    }
-                    else if ((Inimigo && !PosseChave && (PontosVidaInimigo - PontosVida) >= 1.5) || (Inimigo && PosseChave))
+                    else if ((Inimigo && AreaExaminada) || (Inimigo && !AreaExaminada)) //redundante
                     {
                         resposta.Action = PlayerAction.Flee;
                     }
@@ -428,34 +455,11 @@ namespace SetepassosPRJ.Models
                     {
                         resposta.Action = PlayerAction.GoForward;
                     }
-                }
-                else if (!PosseChave && (PosicaoHeroi == 7 || NrRecuos > 0))
-                {
-                    if (!Inimigo && AreaExaminada)
-                    {
-                        resposta.Action = PlayerAction.GoBack;
-                    }
-                    else if (Inimigo)
-                    {
-                        resposta.Action = PlayerAction.Attack;
-                    }
-                    else if (!Inimigo && !AreaExaminada)
-                    {
-                        resposta.Action = PlayerAction.SearchArea;
-                    }
-                }
-                else if (PosseChave)
-                {
-                    if (!Inimigo)
-                    {
-                        resposta.Action = PlayerAction.GoForward;
-                    }
-                    else
-                    {
-                        resposta.Action = PlayerAction.Flee;
-                    }
+
                 }
             }
+
+
         }
         #endregion
     }

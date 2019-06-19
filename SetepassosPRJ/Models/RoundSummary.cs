@@ -8,8 +8,9 @@ namespace SetepassosPRJ.Models
 {
     public class RoundSummary
     {
-        public int NrRondas { get; set; }
+        public int NrRonda { get; set; }
         public PlayerAction DecisaoTomada {get;set;}
+        public RoundResult ResultadoAcao { get; set; }
         public int PosicaoFinalRonda {get; set;}
         public int TotalAcumuladoInimigosVencidos { get; set; }
         public int TotalAcumuladoFugas { get; set; }
@@ -21,10 +22,10 @@ namespace SetepassosPRJ.Models
         public int PontosSorteFinais{ get; set; }
         public int PocoesVidaFinais { get; set; }
 
-        public RoundSummary(int nRondas, PlayerAction acao, int posicaoFinalRonda, int inimigosVencidos, int fugas, int itensEncontrados, 
-            bool chave, int ouro, double vidaFinal, int ataqueFinal, int sorteFinal, int pocoesFinal)
+        public RoundSummary(int nRonda, PlayerAction acao, int posicaoFinalRonda, int inimigosVencidos, int fugas, int itensEncontrados, 
+            bool chave, int ouro, double vidaFinal, int ataqueFinal, int sorteFinal, int pocoesFinal, RoundResult resultadoAcao)
         {
-            NrRondas = nRondas;
+            NrRonda = nRonda;
             DecisaoTomada = acao;
             PosicaoFinalRonda = posicaoFinalRonda;
             TotalAcumuladoInimigosVencidos = inimigosVencidos;
@@ -36,6 +37,7 @@ namespace SetepassosPRJ.Models
             PontosSorteFinais = sorteFinal;
             PontosAtaqueFinais = ataqueFinal;
             PocoesVidaFinais = pocoesFinal;
+            ResultadoAcao = resultadoAcao;
         }
     
     }
