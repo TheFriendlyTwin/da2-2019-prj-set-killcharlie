@@ -1,4 +1,4 @@
-﻿<!--Recebe a Lista Round Summary e Resultado final, os quais devem estar na class Jogo-->
+﻿@model SetepassosPRJ.Models.Jogo
 @{
     ViewData["Title"] = "Resultados";
 }
@@ -18,18 +18,21 @@
         <th>Pontos de vida/ataque/sorte</th>
         <th>Poções de vida</th>
     </tr>
-    <tr>
-        <td>--</td>
-        <td>--</td>
-        <td>--</td>
-        <td>--</td>
-        <td>--</td>
-        <td>--</td>
-        <td>--</td>
-        <td>--</td>
-        <td>--</td>
-        <td>--</td>
-    </tr>
+    @foreach (RoundSummary ronda in Model.Rondas)
+    {
+        <tr>
+            <td>--</td>
+            <td>--</td>
+            <td>--</td>
+            <td>--</td>
+            <td>--</td>
+            <td>--</td>
+            <td>--</td>
+            <td>--</td>
+            <td>--</td>
+            <td>--</td>
+        </tr>
+    }
 </table>
 
 <button class="collapsible btn grad3" data-toggle="collapse" data-target="#resultados">Resultados globais</button>

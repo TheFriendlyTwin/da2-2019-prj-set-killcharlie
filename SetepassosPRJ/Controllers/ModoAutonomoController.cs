@@ -54,9 +54,35 @@ namespace SetepassosPRJ.Controllers
             GameApiResponse gr = JsonConvert.DeserializeObject<GameApiResponse>(json_r);
 
             Jogo novoJogo = new Jogo(nome, "S");
-            novoJogo.AutoPlay(gr,rondas);
-            //Repositorio.AdicionarJogo(novoJogo);
+            novoJogo.AtualizarJogo(gr);
 
+            int ronda = 1;
+            while (ronda <= rondas+1 && novoJogo.PontosVida != 0 && gr.Result != RoundResult.SuccessVictory)
+            {
+                path = "/api/Play";
+
+                PlayApiRequest pedido = new PlayApiRequest(novoJogo.ID, novoJogo.Acao);
+                json = JsonConvert.SerializeObject(pedido);
+
+                request = new HttpRequestMessage(HttpMethod.Post, path);
+                request.Content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+
+                response = await client.SendAsync(request);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return Redirect("/");
+                }
+
+                json_r = await response.Content.ReadAsStringAsync();
+
+                gr = JsonConvert.DeserializeObject<GameApiResponse>(json_r);
+
+                novoJogo.AutoPlay(gr,rondas);
+                ronda++;
+            }
+            novoJogo.NumeroJogadas = ronda;
+            
             return View("Resultados");
         }
     }

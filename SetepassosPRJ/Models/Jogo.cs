@@ -9,7 +9,7 @@ namespace SetepassosPRJ.Models
     public class Jogo
     {
         #region Lista Rondas
-        private static List<RoundSummary> rondas = new List<RoundSummary>();
+        private List<RoundSummary> rondas = new List<RoundSummary>();
         #endregion
 
         #region Propriedades
@@ -54,7 +54,7 @@ namespace SetepassosPRJ.Models
         public RoundResult Resultado { get; set; } //Acrescentei esta propriedade para sabermos qual o resultado final
         public PlayerAction Acao { get; set; }
         //PROPRIEDADE DA LISTA DE RONDAS
-        public static List<RoundSummary> Rondas
+        public List<RoundSummary> Rondas
         {
             get
             {
@@ -379,64 +379,80 @@ namespace SetepassosPRJ.Models
         #endregion
 
         #region Modo Autónomo
-        public static void AdicionarRonda(RoundSummary round)
+        public void AdicionarRonda(RoundSummary round)
         {
             Rondas.Add(round);
         }
-
-
+        
         //NOVO
-        public void AutoPlay(GameApiResponse resposta, int numeroRondas)
+        public void AutoPlay(GameApiResponse resposta, int rondas)
         {
-            int ronda = 1;
-            while (ronda <= numeroRondas && PontosVida != 0 && resposta.Result != RoundResult.SuccessVictory)
+            if(resposta.RoundNumber <= rondas)
             {
-                //estratégia
-                RoundSummary nRonda = new RoundSummary(ronda, Acao, PosicaoHeroi, NrInimigosVencidos, NrFugasInimigo, NrItensEncontrados,
-                    PosseChave, MoedasOuro, PontosVida, PontosAtaque, PontosSorte, PocoesVida);
+                Estrategia(resposta);
+                RoundSummary nRonda = new RoundSummary(NumeroJogadas, Acao, PosicaoHeroi, NrInimigosVencidos, NrFugasInimigo, NrItensEncontrados,
+                PosseChave, MoedasOuro, PontosVida, PontosAtaque, PontosSorte, PocoesVida);
                 AdicionarRonda(nRonda);
                 AtualizarJogo(resposta);
-                ronda++;
             }
-            NumeroJogadas = ronda;
+            else
+            {
+                resposta.Action = PlayerAction.Quit;
+            }
         }
 
+        //Estratégia para o jogo autónomo
         public void Estrategia(GameApiResponse resposta)
         {
-            if (PosicaoHeroi!=7 && NrRecuos == 0)
+            if (PontosVida < 1 && PocoesVida != 0)
             {
-                if (PontosVida < 1 && PocoesVida != 0)
-                {
-                    resposta.Action = PlayerAction.DrinkPotion;
-                }
-                if (!Inimigo && !AreaExaminada)
-                {
-                    resposta.Action = PlayerAction.SearchArea;
-                }
-                else if (Inimigo && !PosseChave && (PontosVidaInimigo - PontosVida) < 1.5)
-                {
-                    resposta.Action = PlayerAction.Attack;
-                }
-                else if ((Inimigo && !PosseChave && (PontosVidaInimigo - PontosVida) >= 1.5) || (Inimigo && PosseChave))
-                {
-                    resposta.Action = PlayerAction.Flee;
-                }
-                else if (!Inimigo && AreaExaminada)
-                {
-                    resposta.Action = PlayerAction.GoForward;
-                }
+                resposta.Action = PlayerAction.DrinkPotion;
             }
-            else if(PosicaoHeroi == 7)
+            else
             {
-                if (!PosseChave)
+                if (NrPassos <= 7 && NrRecuos == 0)
                 {
-                    if (!Inimigo)
+                    if (!Inimigo && !AreaExaminada)
+                    {
+                        resposta.Action = PlayerAction.SearchArea;
+                    }
+                    else if (Inimigo && !PosseChave && (PontosVidaInimigo - PontosVida) < 1.5)
+                    {
+                        resposta.Action = PlayerAction.Attack;
+                    }
+                    else if ((Inimigo && !PosseChave && (PontosVidaInimigo - PontosVida) >= 1.5) || (Inimigo && PosseChave))
+                    {
+                        resposta.Action = PlayerAction.Flee;
+                    }
+                    else if (!Inimigo && AreaExaminada)
+                    {
+                        resposta.Action = PlayerAction.GoForward;
+                    }
+                }
+                else if (!PosseChave && (PosicaoHeroi == 7 || NrRecuos > 0))
+                {
+                    if (!Inimigo && AreaExaminada)
                     {
                         resposta.Action = PlayerAction.GoBack;
                     }
                     else if (Inimigo)
                     {
                         resposta.Action = PlayerAction.Attack;
+                    }
+                    else if (!Inimigo && !AreaExaminada)
+                    {
+                        resposta.Action = PlayerAction.SearchArea;
+                    }
+                }
+                else if (PosseChave)
+                {
+                    if (!Inimigo)
+                    {
+                        resposta.Action = PlayerAction.GoForward;
+                    }
+                    else
+                    {
+                        resposta.Action = PlayerAction.Flee;
                     }
                 }
             }
