@@ -37,7 +37,7 @@ namespace SetepassosPRJ.Models
             PontosSorteFinais = sorteFinal;
             PontosAtaqueFinais = ataqueFinal;
             PocoesVidaFinais = pocoesFinal;
-            ResultadoAcao = resultadoAcao;
+            ResultadoAcao = resultadoAcao; //Apenas para ver se as ações são válidas
         }
     
     }
