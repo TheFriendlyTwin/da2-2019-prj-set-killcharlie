@@ -425,20 +425,55 @@ namespace SetepassosPRJ.Models
             {
                 if (!PosseChave)
                 {
-                    if (!Inimigo)
+                    if(NrPassos < 7)
                     {
-                        if (!AreaExaminada)
+                        if (!Inimigo)
                         {
-                            resposta.Action = PlayerAction.SearchArea;
+                            if (!AreaExaminada)
+                            {
+                                resposta.Action = PlayerAction.SearchArea;
+                            }
+                            else
+                            {
+                                resposta.Action = PlayerAction.GoForward;
+                            }
                         }
                         else
                         {
-                            resposta.Action = PlayerAction.GoForward;
+                            if(PontosVidaInimigo - PontosVida < 1)
+                            {
+                                resposta.Action = PlayerAction.Attack;
+                            }
+                            else
+                            {
+                                resposta.Action = PlayerAction.Flee;
+                            }
                         }
                     }
                     else
                     {
-                        resposta.Action = PlayerAction.Attack;
+                        if (!Inimigo)
+                        {
+                            if (!AreaExaminada)
+                            {
+                                resposta.Action = PlayerAction.SearchArea;
+                            }
+                            else
+                            {
+                                resposta.Action = PlayerAction.GoBack;
+                            }
+                        }
+                        else
+                        {
+                            if (PontosVidaInimigo - PontosVida < 2)
+                            {
+                                resposta.Action = PlayerAction.Attack;
+                            }
+                            else
+                            {
+                                resposta.Action = PlayerAction.Flee;
+                            }
+                        }
                     }
                 }
                 else
@@ -449,7 +484,7 @@ namespace SetepassosPRJ.Models
                     }
                     else if ((Inimigo && AreaExaminada) || (Inimigo && !AreaExaminada))
                     {
-                        resposta.Action = PlayerAction.Flee;
+                        resposta.Action = PlayerAction.Attack;
                     }
                     else if (!Inimigo && AreaExaminada)
                     {
