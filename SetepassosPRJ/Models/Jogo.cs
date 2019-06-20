@@ -62,8 +62,6 @@ namespace SetepassosPRJ.Models
                 return rondas;
             }
         }
-        ////Resultado Final do JOGO AUTONOMO
-        //public HighScore ResultadoFinal { get; set; }
         #endregion
 
         #region Construtor
@@ -103,7 +101,16 @@ namespace SetepassosPRJ.Models
             MoedasOuro = 0;
             NumeroJogadas = 0;
             AreasExaminadas = new bool[7];
+            NrAtaques = 0;
+            NrInimigosVencidos = 0;
+            NrItensEncontrados = 0;
+            NrExaminacoesArea = 0;
+            NrPocoesUsadas = 0;
+            NrRecuos = 0;
+            NrAvancos = 0;
+            NrFugasInimigo = 0;
             NrPassos = 0;
+            PercentagemInvestigacao = 0;
         }
         #endregion
         
@@ -118,7 +125,7 @@ namespace SetepassosPRJ.Models
             PontosVidaInimigo = resposta.EnemyHealthPoints;
             PontosSorteInimigo = resposta.EnemyLuckPoints;
             PontosAtaqueInimigo = resposta.EnemyAttackPoints;
-            DanoInimigo = resposta.EnemyDamageSuffered; //NOVO
+            DanoInimigo = resposta.EnemyDamageSuffered; 
             ItemSurpresa(resposta);
             ChaveGuardada(resposta);
             NumeroJogadas = resposta.RoundNumber;
@@ -385,12 +392,13 @@ namespace SetepassosPRJ.Models
         #endregion
 
         #region Modo Autónomo
+        //Método que adiciona cada ronda à lista de rondas (do tipo Round Summary)
         public void AdicionarRonda(RoundSummary round)
         {
             Rondas.Add(round);
         }
         
-        //NOVO
+        //Método que joga automaticamente
         public void AutoPlay(GameApiResponse resposta, int rondas)
         {
             if(resposta.RoundNumber <= rondas)
@@ -439,7 +447,7 @@ namespace SetepassosPRJ.Models
                     {
                         resposta.Action = PlayerAction.SearchArea;
                     }
-                    else if ((Inimigo && AreaExaminada) || (Inimigo && !AreaExaminada)) //redundante
+                    else if ((Inimigo && AreaExaminada) || (Inimigo && !AreaExaminada))
                     {
                         resposta.Action = PlayerAction.Flee;
                     }
@@ -449,7 +457,7 @@ namespace SetepassosPRJ.Models
                     }
                 }
             }
-            Acao = resposta.Action;
+            Acao = resposta.Action; //Para atualizar o valor da propriedade Acao que é enviada como parâmetro no pedido (controller)
         }
         #endregion
     }

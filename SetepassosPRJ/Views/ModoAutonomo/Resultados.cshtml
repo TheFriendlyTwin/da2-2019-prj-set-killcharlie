@@ -66,7 +66,8 @@
         <tr>
             <td>@Model.NumeroJogadas</td>
             <td>@Model.Score</td>
-            <td>@if (Model.Resultado == RoundResult.SuccessVictory)
+            <td>
+                @if (Model.Resultado == RoundResult.SuccessVictory)
                 {
                     @:Vitória!
                 }
@@ -74,25 +75,30 @@
                 {
                     @:Derrota.
                 }
-            </td>
-            <td>@if (Model.PosseChave)
+        </td>
+        <td>
+            @if (Model.PosseChave)
             {
-                @:Encontrada! 
+                @:Encontrada!
             }
             else
             {
                 @:Não Encontrada.
             }
-            </td>
-            <td>@Model.NrPassos</td>
-            <td>@Model.NrExaminacoesArea</td>
-            <td>@Model.NrPocoesUsadas</td>
-            <td>@Model.NrAtaques</td>
-            <td>@Model.NrFugasInimigo</td>
-            <td>@Model.NrInimigosVencidos</td>
-            <td>@Model.NrItensEncontrados</td>
-            <td>@Model.PercentagemInvestigacao</td>
-        </tr>
+        </td>
+        <td>@Model.NrPassos</td>
+        <td>@Model.NrExaminacoesArea</td>
+        <td>@Model.NrPocoesUsadas</td>
+        <td>@Model.NrAtaques</td>
+        <td>@Model.NrFugasInimigo</td>
+        <td>@Model.NrInimigosVencidos</td>
+        <td>@Model.NrItensEncontrados</td>
+        <td>@Model.PercentagemInvestigacao</td>
+    </tr>
     </table>
+<div>
+    <a asp-action="NovoAutoJogo" class="btn grad center-block">Novo Auto-Jogo</a>
 </div>
+</div>
+
 
