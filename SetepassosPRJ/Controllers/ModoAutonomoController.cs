@@ -57,7 +57,7 @@ namespace SetepassosPRJ.Controllers
             novoJogo.AtualizarJogo(gr);
 
             int ronda = 1;
-            while (ronda <= rondas+1 && novoJogo.PontosVida != 0 && gr.Result != RoundResult.SuccessVictory)
+            while (ronda <= rondas && novoJogo.PontosVida != 0 && gr.Result != RoundResult.SuccessVictory)
             {
                 path = "/api/Play";
 
