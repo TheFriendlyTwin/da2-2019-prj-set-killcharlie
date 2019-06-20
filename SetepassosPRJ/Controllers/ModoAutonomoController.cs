@@ -84,8 +84,6 @@ namespace SetepassosPRJ.Controllers
                 ronda++;
             }
             novoJogo.ScoreJogo();
-            //HighScore resultado = new HighScore(novoJogo);
-            //novoJogo.ResultadoFinal = resultado;
 
             return View("Resultados",novoJogo);
         }

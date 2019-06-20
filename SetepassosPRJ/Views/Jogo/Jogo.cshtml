@@ -152,12 +152,22 @@
             <div class="itens">
                 @if (Model.PosseChave)
                 {
-                    <img src="~/images/miniKey.png" alt="Chave" title="Chave!" id="chave"/>
+                    <img src="~/images/miniKey.png" alt="Chave" title="Chave!" id="chave" />
                 }
                 <br />
                 <img src="~/images/mediumOuro.png" />: @Model.MoedasOuro
                 <br />
-                <strong>Posição do herói: </strong><strong>@Model.PosicaoHeroi</strong>
+                @for(int i = 1;i < 8; i++)
+                {
+                    if (Model.PosicaoHeroi == i)
+                    {
+                        <span class="glyphicon glyphicon-map-marker"></span>
+                    }
+                    else
+                    {
+                        @:_
+                    }
+                }
                 <br />
                 Faltam apenas <strong>@Model.DistanciaPorta</strong> passos até ao Quentin!
                 <br />
