@@ -50,7 +50,7 @@ namespace SetepassosPRJ.Models
         public static void AdicionarMembro()
         {
             TeamMember alexandra = new TeamMember("Alexandra", 160323018);
-            TeamMember mafalda = new TeamMember("Mafalda", 170323021);
+            TeamMember mafalda = new TeamMember("Mafalda", 180323044);
             TeamMember marta = new TeamMember("Marta", 170323021);
 
             SetePassosDbContext context = new SetePassosDbContext();
@@ -60,15 +60,13 @@ namespace SetepassosPRJ.Models
             context.Members.Add(marta);
             context.SaveChanges();
         }
-
-
+        
         //Adiciona o jogo à lista de jogos
         public static void AdicionarJogo(Jogo novoJogo)
         {
             Jogos.Add(novoJogo);
         }
-
-
+        
         //Devolve o jogo dado um certo game id
         public static Jogo DevolverJogo(int gameID)
         {

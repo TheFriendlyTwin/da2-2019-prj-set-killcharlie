@@ -401,17 +401,10 @@ namespace SetepassosPRJ.Models
         //Método que joga automaticamente
         public void AutoPlay(GameApiResponse resposta, int rondas)
         {
-            if(resposta.RoundNumber <= rondas)
-            {
-                Estrategia(resposta);
-                RoundSummary nRonda = new RoundSummary(NumeroJogadas+1, Acao, PosicaoHeroi, NrInimigosVencidos, NrFugasInimigo, NrItensEncontrados,
-                PosseChave, MoedasOuro, PontosVida, PontosAtaque, PontosSorte, PocoesVida, Resultado);
-                AdicionarRonda(nRonda);
-            }
-            else
-            {
-                resposta.Action = PlayerAction.Quit;
-            }
+            Estrategia(resposta);
+            RoundSummary nRonda = new RoundSummary(NumeroJogadas + 1, Acao, PosicaoHeroi, NrInimigosVencidos, NrFugasInimigo, NrItensEncontrados,
+            PosseChave, MoedasOuro, PontosVida, PontosAtaque, PontosSorte, PocoesVida, Resultado);
+            AdicionarRonda(nRonda);
         }
 
         //Estratégia para o jogo autónomo

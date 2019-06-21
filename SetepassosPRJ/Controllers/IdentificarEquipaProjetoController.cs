@@ -19,7 +19,6 @@ namespace SetepassosPRJ.Controllers
         {
             if (Repositorio.Members.Count == 0)
                 Repositorio.AdicionarMembro();
-
             return Repositorio.Members;
         }
 

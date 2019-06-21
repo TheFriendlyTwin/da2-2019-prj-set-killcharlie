@@ -56,12 +56,20 @@ namespace SetepassosPRJ.Controllers
             Jogo novoJogo = new Jogo(nome, "S");
             novoJogo.AtualizarJogo(gr);
 
-            int ronda = 1;
-            while (ronda <= rondas && novoJogo.PontosVida != 0 && gr.Result != RoundResult.SuccessVictory)
+            //int ronda = 1;
+            while (novoJogo.PontosVida != 0 && gr.Result != RoundResult.SuccessVictory)
             {
                 path = "/api/Play";
 
-                novoJogo.AutoPlay(gr, rondas);
+                if(gr.RoundNumber == rondas)
+                {
+                    novoJogo.Acao = PlayerAction.Quit;
+                    break;
+                }
+                else
+                {
+                    novoJogo.AutoPlay(gr, rondas);
+                }
 
                 PlayApiRequest pedido = new PlayApiRequest(novoJogo.ID, novoJogo.Acao);
                 json = JsonConvert.SerializeObject(pedido);
@@ -80,8 +88,7 @@ namespace SetepassosPRJ.Controllers
 
                 gr = JsonConvert.DeserializeObject<GameApiResponse>(json_r);
                 novoJogo.AtualizarJogo(gr);
-                
-                ronda++;
+                //ronda++;
             }
             novoJogo.ScoreJogo();
 
